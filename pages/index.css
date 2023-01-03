@@ -45,7 +45,7 @@
 
 /*profile*/
 /*profile__img*/
-.profile__image {
+.profile__img {
   height: 120px;
   width: 120px;
   border-radius: 50%;
@@ -57,8 +57,17 @@
 /*profile__title*/
 /*profile__descr*/
 /*profile__edit-button*/
+.profile__edit-button {
+  height: 24px;
+  width: 24px;
+  background: transparent url("../images/icons/Edit\ Button.svg") center;
+}
 /*profile__add-button*/
-
+.profile__add-button {
+  height: 50px;
+  width: 150px;
+  background: transparent url("../images/icons/Add\ Button.svg") center;
+}
 /*elements<cards>*/
 /*element__img*/
 /*element__descr*/
