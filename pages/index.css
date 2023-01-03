@@ -16,5 +16,15 @@
   margin-right: 200px;
 }
 .header {
-  margin-top: 45pn;
+  margin-top: 45px;
+  max-width: 880px;
+}
+
+.profile {
+  display: flex;
+}
+
+.profile__info {
+  display: grid;
+  grid-template-areas: "title button";
 }
