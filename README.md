@@ -21,4 +21,5 @@ The way you'll do this at work is by exporting images directly from Figma — we
 Good luck and have fun!
 
 **AboutMe**
+
 Hello my name is Joshua B. Zimmerman. This project is remake as I dumped the previous project and I needed to retry to completely understand what I was doing. I have built a design based on a FIGMA shared project, additionally I have improvised troubleshooting, testing and released this project on gitPages.
