@@ -6,7 +6,13 @@
 @import url(../blocks/page.css);
 @import url(../blocks/profile.css);
 @import url(../fonts/inter-web.css);
+/*content*/
+.content {
+  padding-left: 200px;
+  padding-right: 200px;
+}
 
+/*page*/
 .page {
   background-color: black;
   color: white;
@@ -27,40 +33,43 @@
   max-width: 880px;
 }
 
+/*header*/
 .header {
   margin-top: 45px;
   border-bottom: 1px solid rgba(239, 239, 240, 0.7);
 }
+/*header__logo*/
+/*header__title*/
+/*header__descr*/
+/*header__edit-button*/
 
-.profile {
-  display: flex;
-  align-items: center;
-  padding-top: 40px;
-}
+/*profile*/
+/*profile__img*/
+/*profile__title*/
+/*profile__descr*/
+/*profile__edit-button*/
+/*profile__add-button*/
 
-profile__image {
-}
+/*elements<cards>*/
+/*element__img*/
+/*element__descr*/
+/*element__image*/
+/*element__heart-button*/
 
-.profile__info {
-  display: grid;
-  grid-template-areas: "title button";
-}
+/*button states*/
+/*button:hover*/
+/*button:active*/
 
-.cards {
+/*footer*/
+.footer {
+  padding-top: 67px;
 }
-.cards__list {
-}
-.card {
-}
-.card__image {
-}
-.card__caption {
+.footer__copywrite {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
   font-size: 18px;
-}
-.card__button {
-}
-
-.card__title {
-}
-.card__ + _button {
+  line-height: 22px;
+  color: #545454;
+  margin-top: 0;
+  margin-bottom: 0;
 }
