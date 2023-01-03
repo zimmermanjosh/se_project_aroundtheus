@@ -44,6 +44,12 @@
 /*header__edit-button*/
 
 /*profile*/
+.profile {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+}
+
 /*profile__img*/
 .profile__img {
   height: 120px;
@@ -55,22 +61,61 @@
 }
 
 /*profile__title*/
+.profile__title {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  grid-area: title;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
 /*profile__descr*/
 /*profile__edit-button*/
 .profile__edit-button {
   height: 24px;
   width: 24px;
   background: transparent url("../images/icons/Edit\ Button.svg") center;
+  border: white 2px solid;
 }
 /*profile__add-button*/
 .profile__add-button {
   height: 50px;
   width: 150px;
   background: transparent url("../images/icons/Add\ Button.svg") center;
+  border: white 2px solid;
 }
 /*elements<cards>*/
+.element {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
 /*element__img*/
 /*element__descr*/
+.element__descr {
+  display: flex;
+  background-color: white;
+  color: black;
+  padding: 25px 20px 25px 20px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0 0 10px 10px;
+}
+.element__text {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 29px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 0;
+  margin-top: 0;
+}
 /*element__image*/
 .element__image {
   max-width: 282px;
@@ -78,13 +123,21 @@
   border-radius: 10 10 0 0;
 }
 /*element__heart-button*/
-.elements__list {
-  display: flex;
-  flex-direction: column;
+.element__like-button {
+  background: transparent url("../images/icons/Like\ Button_disabled.svg")
+    center;
+  height: 18px;
+  width: 21px;
+  border: none;
+  cursor: pointer;
 }
 
 /*button states*/
 /*button:hover*/
+.element__like-button:hover {
+  transition: 0.5s;
+  background: transparent url("../images/icons/Like\ Button_hover.svg") center;
+}
 /*button:active*/
 
 /*footer*/
