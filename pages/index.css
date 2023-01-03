@@ -45,6 +45,15 @@
 
 /*profile*/
 /*profile__img*/
+.profile__image {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-position: center;
+  margin-right: 24px;
+}
+
 /*profile__title*/
 /*profile__descr*/
 /*profile__edit-button*/
@@ -54,7 +63,16 @@
 /*element__img*/
 /*element__descr*/
 /*element__image*/
+.element__image {
+  max-width: 282px;
+  max-height: 282px;
+  border-radius: 10 10 0 0;
+}
 /*element__heart-button*/
+.elements__list {
+  display: flex;
+  flex-direction: column;
+}
 
 /*button states*/
 /*button:hover*/
