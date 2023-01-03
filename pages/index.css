@@ -50,6 +50,15 @@
   padding-top: 40px;
 }
 
+.profile__info {
+  display: grid;
+  grid-template-areas:
+    "title button"
+    "description description";
+  grid-template-columns: minmax(auto, 373px) auto;
+  align-items: center;
+}
+
 /*profile__img*/
 .profile__img {
   height: 120px;
@@ -73,19 +82,41 @@
   overflow: hidden;
 }
 /*profile__descr*/
+.profile__descr {
+  font-size: 18px;
+  line-height: 24px;
+  grid-area: description;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
 /*profile__edit-button*/
 .profile__edit-button {
   height: 24px;
   width: 24px;
   background: transparent url("../images/icons/Edit\ Button.svg") center;
   border: white 2px solid;
+  grid-area: button;
+  margin-left: 25px;
+  cursor: pointer;
 }
 /*profile__add-button*/
 .profile__add-button {
   height: 50px;
   width: 150px;
+  margin-left: auto;
   background: transparent url("../images/icons/Add\ Button.svg") center;
   border: white 2px solid;
+  cursor: pointer;
+  border-width: 2px;
+  border-radius: 2px;
+}
+/*button:hover*/
+.profile__like-button:hover {
+  transition: 0.5s;
 }
 /*elements<cards>*/
 .element {
