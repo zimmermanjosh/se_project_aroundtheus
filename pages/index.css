@@ -6,6 +6,7 @@
 @import url(../blocks/page.css);
 @import url(../blocks/profile.css);
 @import url(../fonts/inter-web.css);
+
 /*content*/
 .content {
   padding-left: 200px;
@@ -44,8 +45,23 @@
 /*header__edit-button*/
 
 /*profile*/
+.profile {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.profile__info {
+  display: grid;
+  grid-template-areas:
+    "title button"
+    "description description";
+  grid-template-columns: minmax(auto, 373px) auto;
+  align-items: center;
+}
+
 /*profile__img*/
-.profile__image {
+.profile__img {
   height: 120px;
   width: 120px;
   border-radius: 50%;
@@ -55,13 +71,83 @@
 }
 
 /*profile__title*/
+.profile__title {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  grid-area: title;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
 /*profile__descr*/
+.profile__descr {
+  font-size: 18px;
+  line-height: 24px;
+  grid-area: description;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
 /*profile__edit-button*/
+.profile__edit-button {
+  height: 24px;
+  width: 24px;
+  background: transparent url("../images/icons/Edit\ Button.svg") center;
+  border: white 2px solid;
+  grid-area: button;
+  margin-left: 25px;
+  cursor: pointer;
+}
 /*profile__add-button*/
-
+.profile__add-button {
+  height: 50px;
+  width: 150px;
+  margin-left: auto;
+  background: transparent url("../images/icons/Add\ Button.svg") center;
+  border: white 2px solid;
+  cursor: pointer;
+  border-width: 2px;
+  border-radius: 2px;
+}
+/*button:hover*/
+.profile__like-button:hover {
+  transition: 0.5s;
+}
 /*elements<cards>*/
+.element {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
 /*element__img*/
 /*element__descr*/
+.element__descr {
+  display: flex;
+  background-color: white;
+  color: black;
+  padding: 25px 20px 25px 20px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0 0 10px 10px;
+}
+.element__text {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 29px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 0;
+  margin-top: 0;
+}
 /*element__image*/
 .element__image {
   max-width: 282px;
@@ -69,13 +155,36 @@
   border-radius: 10 10 0 0;
 }
 /*element__heart-button*/
+.element__like-button {
+  background: transparent url("../images/icons/Like\ Button_disabled.svg")
+    center;
+  height: 18px;
+  width: 21px;
+  border: none;
+  cursor: pointer;
+}
+
+/*element(s)*/
 .elements__list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto, 282px);
+  row-gap: 20px;
+  column-gap: 17px;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 30px 0 0 0;
 }
 
 /*button states*/
 /*button:hover*/
+.element__like-button:hover {
+  transition: 0.5s;
+  background: transparent url("../images/icons/Like\ Button_hover.svg") center;
+}
 /*button:active*/
 
 /*footer*/
