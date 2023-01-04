@@ -52,7 +52,7 @@
 .profile__edit-button {
   height: 24px;
   width: 24px;
-  background: transparent url("../images/icons/Edit\ Button.svg") center;
+  background: transparent url("../images/icons/Edit\ Button.svg") center no-repeat;
   border: white 2px solid;
   grid-area: button;
   margin-left: 25px;
@@ -63,7 +63,7 @@
   height: 50px;
   width: 150px;
   margin-left: auto;
-  background: transparent url("../images/icons/Add\ Button.svg") center;
+  background: transparent url("../images/icons/Add\ Button.svg") center no-repeat;
   border: white 2px solid;
   cursor: pointer;
   border-width: 2px;
