@@ -1,0 +1,13 @@
+/*footer*/
+.footer {
+  padding-top: 67px;
+}
+.footer__copywrite {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #545454;
+  margin-top: 0;
+  margin-bottom: 0;
+}
