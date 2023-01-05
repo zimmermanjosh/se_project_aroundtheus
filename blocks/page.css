@@ -18,3 +18,10 @@
   min-height: 100%;
   max-width: 880px;
 }
+
+/*320px*/
+@media screen and (min-width: 320px) and (max-width: 700px) {
+  .page {
+    max-width: 700px;
+  }
+}
