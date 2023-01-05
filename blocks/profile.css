@@ -75,3 +75,22 @@
 .profile__like-button:hover {
   transition: 0.5s;
 }
+/*1200*/
+@media screen and (min-width: 701px) and (max-width: 1200px) {
+  .profile__info {
+    grid-template-columns: minmax(auto, auto) auto;
+  }
+  .profile__title {
+    font-size: 24px;
+    line-height: 25px;
+  }
+  .profile__edit-button {
+    padding-left: 10px;
+  }
+}
+/*1500*/
+@media screen and (min-width: 1201px) and (max-width: 1500px) {
+  .profile__info {
+    grid-template-columns: minmax(auto, auto) auto;
+  }
+}
