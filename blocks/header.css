@@ -7,3 +7,15 @@
 /*header__title*/
 /*header__descr*/
 /*header__edit-button*/
+
+@media screen and (min-width: 100px) and (max-width: 500px) {
+  .header__image {
+    width: 126px;
+    height: 24px;
+    margin-left: 27px;
+    margin-top: 28px;
+  }
+  .header {
+    margin-top: 0;
+  }
+}

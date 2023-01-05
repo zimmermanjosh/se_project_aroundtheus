@@ -14,11 +14,22 @@
 }
 /*320px*/
 @media screen and (min-width: 320px) and (max-width: 700px) {
-  .cards {
+  .elements {
     margin-bottom: 48px;
     margin-top: 36px;
   }
 }
+
 /*1000px*/
+@media screen and (min-width: 700px) and (max-width: 1000px) {
+  .elements__list {
+    grid-template-columns: repeat(2, 282px);
+  }
+}
 
 /*1500px*/
+@media screen and (min-width: 1001px) and (max-width: 1500px) {
+  .elements__list {
+    grid-template-columns: repeat(3, 282px);
+  }
+}
