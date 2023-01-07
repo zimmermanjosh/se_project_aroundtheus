@@ -109,8 +109,14 @@
   }
   .profile__add-button {
     width: 282px;
-    height: 18px;
-    margin: 0 19px 0 19px;
+    margin-left: 19px;
+    margin-right: 19px;
+  }
+  .profile__add-button:hover {
+    opacity: 0.5;
+  }
+  .profile__edit-button:hover {
+    opacity: 0.5;
   }
 }
 
