@@ -20,7 +20,7 @@
   padding-bottom: 25px;
   padding-left: 20px;
   padding-right: 20px;*/
-  /*align-items: center;*/
+  align-items: center;
   justify-content: space-between;
   border-radius: 0 0 10px 10px;
 }
@@ -45,18 +45,35 @@
   width: 21px;
   border: none;
   cursor: pointer;
+  transition: 0.5 ease-in;
 }
 
 /*button states*/
 /*button:hover*/
 .element__like-button:hover {
-  transition: 0.5s;
-  background: transparent url("../images/icons/Like\ Button_hover.svg") center;
+  opacity: 0.5;
+  cursor: pointer;
+
+  /*background: transparent url("../images/icons/Like\ Button_hover.svg") center;*/
 }
 /*button:active*/
 
 /*320px*/
+@media screen and (min-width: 320px) and (max-width: 760px) {
+  .element {
+    width: 282px;
+  }
+  .element__like-button {
+    align-self: center;
+  }
+}
 
 /*1000px*/
 
+@media screen and (min-width: 768px) and (max-width: 1275px) {
+  .element {
+    justify-content: center;
+    flex-direction: column;
+  }
+}
 /*1500px*/

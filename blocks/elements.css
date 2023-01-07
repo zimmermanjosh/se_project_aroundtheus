@@ -1,4 +1,7 @@
 /*element(s)*/
+elements {
+  margin-top: 30px;
+}
 .elements__list {
   display: grid;
   grid-template-columns: repeat(auto-fit, 282px);
@@ -15,21 +18,20 @@
 /*320px*/
 @media screen and (min-width: 320px) and (max-width: 700px) {
   .elements {
-    margin-bottom: 48px;
-    margin-top: 36px;
+    width: auto;
+    align-items: center;
+    margin-right: 19 px;
+  }
+  .elements__list {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    place-items: center;
   }
 }
 
 /*1000px*/
-@media screen and (min-width: 700px) and (max-width: 1000px) {
-  .elements__list {
-    grid-template-columns: repeat(2, 282px);
-  }
-}
-
-/*1500px*/
-@media screen and (min-width: 1001px) and (max-width: 1500px) {
-  .elements__list {
-    grid-template-columns: repeat(3, 282px);
+@media screen and (min-width: 700px) and (max-width: 1275px) {
+  .elements {
+    text-align: center;
   }
 }
