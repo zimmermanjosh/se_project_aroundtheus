@@ -88,7 +88,7 @@
     font-size: 14px;
     margin: 14px 0 36px 0;
     max-width: 282px;
-    height: 14px;
+    height: 18px;
   }
   .profile__img {
     justify-self: center;
@@ -108,7 +108,7 @@
     margin: 0 15px 0 15px;
   }
   .profile__add-button {
-    width: 282px;
+    max-width: 282px;
     margin-left: 19px;
     margin-right: 19px;
   }
