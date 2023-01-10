@@ -9,17 +9,12 @@
 .element__img {
   max-width: 282px;
   max-height: 282px;
-  border-radius: 10px 10px 0 0;
 }
 .element__descr {
   display: flex;
   background-color: white;
   color: black;
   padding: 25px 20px 25px 20px;
-  /*padding-top: 25px;
-  padding-bottom: 25px;
-  padding-left: 20px;
-  padding-right: 20px;*/
   align-items: center;
   justify-content: space-between;
   border-radius: 0 0 10px 10px;
