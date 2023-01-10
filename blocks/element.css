@@ -45,7 +45,7 @@
   width: 21px;
   border: none;
   cursor: pointer;
-  transition: 0.5 ease-in;
+  transition: 0.5s ease-in;
 }
 
 /*button states*/
@@ -53,27 +53,4 @@
 .element__like-button:hover {
   opacity: 0.5;
   cursor: pointer;
-
-  /*background: transparent url("../images/icons/Like\ Button_hover.svg") center;*/
 }
-/*button:active*/
-
-/*320px*/
-@media screen and (min-width: 320px) and (max-width: 760px) {
-  .element {
-    width: 282px;
-  }
-  .element__like-button {
-    align-self: center;
-  }
-}
-
-/*1000px*/
-
-@media screen and (min-width: 768px) and (max-width: 1275px) {
-  .element {
-    justify-content: center;
-    flex-direction: column;
-  }
-}
-/*1500px*/
