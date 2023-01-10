@@ -17,17 +17,21 @@
   flex-direction: column;
   min-height: 100%;
   max-width: 880px;
+  width: 100%;
 }
 
 /*320px*/
-@media screen and (min-width: 320px) and (max-width: 700px) {
-  .page {
-    display: flex;
-    flex-direction: column;
-  }
+@media screen and (min-width: 320px) and (max-width: 760px) {
   .page__section {
-    max-width: 880px;
-    margin-right: 19px;
-    margin-top: 30px;
+    width: calc(100% - 38px);
+  }
+}
+
+@media screen and (min-width: 760px) and (max-width: 1100px) {
+  .page__section {
+    padding-left: 19px;
+    padding-right: 19px;
+    margin: 0 auto;
+    width: calc(100% - 38px);
   }
 }

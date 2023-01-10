@@ -17,16 +17,11 @@
   .footer {
     padding-top: 48px;
     padding-bottom: 36px;
+    padding-left: 19px;
   }
 
   .footer__copyright {
     font-size: 14px;
     line-height: 17px;
-  }
-}
-
-@media screen and (min-width: 701px) and (max-width: 1500px) {
-  .footer__copyright {
-    margin-bottom: 60px;
   }
 }
