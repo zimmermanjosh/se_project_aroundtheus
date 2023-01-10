@@ -51,6 +51,6 @@
 /*button states*/
 /*button:hover*/
 .element__like-button:hover {
-  opacity: 0.5;
+  opacity: 60%;
   cursor: pointer;
 }
