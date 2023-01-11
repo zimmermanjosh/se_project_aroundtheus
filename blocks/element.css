@@ -7,8 +7,9 @@
 
 /*element__image*/
 .element__img {
-  max-width: 282px;
-  max-height: 282px;
+  width: 282px;
+  height: 282px;
+  border-radius: 10px 10px 0 0;
 }
 .element__descr {
   display: flex;
@@ -46,6 +47,6 @@
 /*button states*/
 /*button:hover*/
 .element__like-button:hover {
-  opacity: 60%;
+  opacity: 0.6;
   cursor: pointer;
 }
