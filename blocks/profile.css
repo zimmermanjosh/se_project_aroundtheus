@@ -8,7 +8,7 @@
 
 .profile__info {
   display: grid;
-  margin-top: 26px;
+
   align-items: center;
   grid-template-areas:
     "title button"
@@ -42,7 +42,7 @@
 .profile__descr {
   font-size: 18px;
   line-height: 22px;
-  grid-area: "description";
+  grid-area: description;
   font-family: "Inter", sans-serif;
   font-weight: 400;
   margin: 0;
@@ -54,10 +54,11 @@
 .profile__edit-button {
   height: 24px;
   width: 24px;
+  background-size: auto auto;
   background: transparent url("../images/icons/Edit\ Button.svg") center
     no-repeat;
   border: white 1px solid;
-  grid-area: "button";
+  grid-area: button;
   margin-left: 18px;
   cursor: pointer;
 }
@@ -99,6 +100,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 26px;
     max-width: 282px;
   }
   .profile__title {
@@ -107,7 +109,10 @@
     max-width: 196px;
   }
   .profile__edit-button {
-    background-size: 18px 18px;
+    height: 18px;
+    width: 18px;
+    /*border-radius: 50%;*/
+    background-size: 7px 7.5px;
     margin-left: 10px;
   }
   .profile__add-button {
