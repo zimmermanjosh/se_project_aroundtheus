@@ -38,6 +38,7 @@
 .element__like-button {
   background: transparent url("../images/icons/Like\ Button_disabled.svg")
     center;
+  flex-shrink: 0;
   height: 18px;
   width: 21px;
   border: none;
@@ -48,6 +49,6 @@
 /*button states*/
 /*button:hover*/
 .element__like-button:hover {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: pointer;
 }
