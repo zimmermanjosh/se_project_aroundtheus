@@ -1,5 +1,5 @@
 /* rer's of the .js */
-initialCards = [
+let initialCards = [
   {
     //object 1
     name: "Yosemite Valley",
