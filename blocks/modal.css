@@ -11,7 +11,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
   /*display: none;*/
 }
 .modal__opened {
@@ -49,6 +48,7 @@
 }
 .modal__heading {
   color: #000;
+  font-family: "Inter";
   font-size: 24px;
   font-weight: 900;
   line-height: 29px;
@@ -61,6 +61,7 @@
   margin: 54px;
 }
 .modal__button {
+  font-family: "Inter";
   height: 50px;
   line-height: 22px;
   font-size: 18px;
