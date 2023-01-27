@@ -7,29 +7,56 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
   padding: 0 19px;
-  display: none;
+  /*display: none;*/
 }
 .modal__opened {
   display: flex;
 }
 
 .modal__container {
-  position: relative;
   padding: 36px;
   background-color: #ffff;
   margin: auto;
   border-radius: 10px;
+  position: relative;
+  width: 430px;
+  height: 330px;
 }
 
 .modal__close {
   border: none;
-  background-image: url("../images/icons/Close\ Icon.svg");
+  background-image: url("../images/icons/modal-close.svg");
   background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
   position: absolute;
   top: calc(100% + 5px);
   right: calc(100% + 5px);
   width: 40px;
   height: 40px;
-  background-repeat: no-repeat;
-  background-size: contain;
+  transition: opacity 0.4s;
+}
+.modal__heading {
+  color: #000;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+  margin: 0;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  margin: 54px;
+}
+.modal__button {
+  height: 50px;
+  line-height: 22px;
+  font-size: 18px;
+  font-weight: 400;
+  background-color: #000;
+  color: #fff;
+  margin-top: 18px;
+  padding: 0;
+  cursor: pointer;
 }
