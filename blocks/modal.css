@@ -33,6 +33,12 @@
   height: 330px;
 }
 
+.modal__close:hover {
+  opacity: 0.6;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
 .modal__close {
   border: none;
   background-image: url("../images/icons/modal-close.svg");
