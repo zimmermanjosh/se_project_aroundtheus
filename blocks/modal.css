@@ -79,6 +79,7 @@
   cursor: pointer;
 }
 .modal__form-input {
+  font-family: "Inter";
   height: 50px;
   border-top: 1px;
   border-left: 1px;
