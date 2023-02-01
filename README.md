@@ -15,6 +15,9 @@ This project is made so all the elements are displayed correctly on popular scre
 - [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
 
 **Images**
+here is an example 
+https://github.com/zimmermanjosh/se_project_aroundtheus/blob/6b79410ed06b16424a9875314cef842ba39d6087/images/pictures/Screenshot_overview.png
+
 
 The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster.
 
