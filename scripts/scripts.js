@@ -1,5 +1,11 @@
-/* rer's of the .js */
-let initialCards = [
+/**
+=========================================================
+this is my re-org to  help me apply work and school, this need to be the same
+=========================================================
+array of pics for app
+**/
+// these are not going to be reassigned in the future remove let
+const initialCards = [
   {
     //object 1
     name: "Yosemite Valley",
@@ -31,10 +37,25 @@ let initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
-
-//element functions
+/**
+=========================================================
+javascript for app
+=========================================================
+elements hooks for app
+=========================================================
+const
+**/
 const profileCloseButton = document.querySelector("#modal-close-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
+
+/**
+=========================================================
+javascript for app
+=========================================================
+elements hooks for app
+=========================================================
+functions
+**/
 
 function closePopUp(popUp) {
   popUp.classList.remove("modal_opened");
@@ -55,3 +76,12 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 profileCloseButton.addEventListener("click", () => {
   closePopUp(profileEditModal);
 });
+
+/**
+=========================================================
+javascript for app
+=========================================================
+elements hooks for app
+=========================================================
+heavy lifting
+**/
