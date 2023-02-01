@@ -8,7 +8,7 @@
 
 **Intro**
 
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.
+This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
 
 **Figma**
 
@@ -16,7 +16,7 @@ This project is made so all the elements are displayed correctly on popular scre
 
 **Images**
 here is an example 
-https://github.com/zimmermanjosh/se_project_aroundtheus/blob/6b79410ed06b16424a9875314cef842ba39d6087/images/pictures/Screenshot_overview.png
+![Alt text](images/pictures/Screenshot_overview.png "aroundthewrold")
 
 
 The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster.
