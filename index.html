@@ -125,7 +125,30 @@
     </div>
     <!--/modal-->
     <!-- Modal fix open and close 2023/02/01-->
-
+    <div class="modal" id="profile-edit-modal">
+      <div class="modal" id="modal__container">
+        <button class="modal__close" id="modal-close-button"></button>
+        <p class="modal__heading">Edit Profile</p>
+        <form class="modal__form" id="profile-edit-form">
+          <input
+            class="form__input"
+            type="text"
+            name="title"
+            placeholder="Name"
+            id="profile-name-input"
+            required
+          />
+          <input
+            class="form__input"
+            type="text"
+            name="description"
+            placeholder="About me"
+            id="profile-job-input"
+            required
+          />
+        </form>
+      </div>
+    </div>
     <!--/scripts-->
     <script src="./scripts/scripts.js"></script>
   </body>
