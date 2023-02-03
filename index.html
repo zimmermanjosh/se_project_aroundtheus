@@ -49,72 +49,6 @@
           <!--/elements_list || cards from website-->
           <ul class="elements__list">
             <!--/element_object  || this is an element of element(s)-->
-            <li class="element">
-              <img
-                src="./images/pictures/yosemite-valley.png"
-                alt="yosemite-valley"
-                class="element__img"
-              />
-              <div class="element__descr">
-                <h2 class="element__text">Yosemite Valley</h2>
-                <button type="button" class="element__like-button"></button>
-              </div>
-            </li>
-            <li class="element">
-              <img
-                src="./images/pictures/lake-louise.png"
-                alt="lake-louise"
-                class="element__img"
-              />
-              <div class="element__descr">
-                <h2 class="element__text">Lake Louise</h2>
-                <button type="button" class="element__like-button"></button>
-              </div>
-            </li>
-            <li class="element">
-              <img
-                src="./images/pictures/bald-mountains.png"
-                alt="bald-mountains"
-                class="element__img"
-              />
-              <div class="element__descr">
-                <h2 class="element__text">Bald Mountains</h2>
-                <button type="button" class="element__like-button"></button>
-              </div>
-            </li>
-            <li class="element">
-              <img
-                src="./images/pictures/latemar.png"
-                alt="latemar"
-                class="element__img"
-              />
-              <div class="element__descr">
-                <h2 class="element__text">Latemar</h2>
-                <button type="button" class="element__like-button"></button>
-              </div>
-            </li>
-            <li class="element">
-              <img
-                src="./images/pictures/vanoise-national-park.png"
-                alt="vanoise-national-park"
-                class="element__img"
-              />
-              <div class="element__descr">
-                <h2 class="element__text">Vanoise National Park</h2>
-                <button type="button" class="element__like-button"></button>
-              </div>
-            </li>
-            <li class="element">
-              <img
-                src="./images/pictures/lago-di-braies.png"
-                alt="lago-di-braies"
-                class="element__img"
-              />
-              <div class="element__descr">
-                <h2 class="element__text">Lago di Braies</h2>
-                <button type="button" class="element__like-button"></button>
-              </div>
-            </li>
           </ul>
         </section>
       </main>
@@ -147,6 +81,58 @@
             required
           />
           <button class="modal__button">Save</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="element-add-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="modal-close-button"></button>
+        <p class="modal__heading">Edit profile</p>
+        <form class="modal__form" id="profile-edit-form">
+          <input
+            class="modal__form-input"
+            type="text"
+            name="title"
+            placeholder="Name"
+            id="element-title-input"
+            required
+          />
+          <input
+            class="modal__form-input"
+            type="text"
+            name="description"
+            placeholder="Description"
+            id="element-descr-input"
+            required
+          />
+          <button class="modal__button">Save</button>
+        </form>
+      </div>
+    </div>
+    <div class="modal" id="element-image-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="element-add-close"></button>
+        <p class="modal__heading">New Place</p>
+        <form class="modal__form" id="element-add-form">
+          <input
+            class="modal__form-input"
+            type="text"
+            name="title"
+            placeholder="Title"
+            id="element-title-input"
+            required
+          />
+          <input
+            class="modal__form-input"
+            type="text"
+            name="link"
+            placeholder="Image link"
+            id="element-image-input"
+            required
+          />
+          <button class="modal__button">Create</button>
         </form>
       </div>
     </div>
