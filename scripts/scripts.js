@@ -52,7 +52,7 @@ const profileTitle = document.querySelector("#profile-title");
 const profileDescription = document.querySelector("#profile-descr");
 const profileTitleInput = document.querySelector("#profile-title-input");
 const profileDescriptionInput = document.querySelector("#profile-descr-input");
-
+const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
 /**
 =========================================================
 javascript for app
@@ -93,7 +93,7 @@ profileEditButton.addEventListener("click", () => {
 profileCloseButton.addEventListener("click", () => {
   closePopUp(profileEditModal);
 });
-
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 /**
 =========================================================
 javascript for app
