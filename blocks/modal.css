@@ -11,8 +11,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /*display: none;*/
+  display: none;
 }
+
 .modal__opened {
   display: flex;
   align-items: center;
@@ -52,6 +53,7 @@
   height: 40px;
   transition: opacity 0.4s;
 }
+
 .modal__heading {
   color: #000;
   font-family: "Inter";
@@ -66,6 +68,7 @@
   flex-direction: column;
   margin: 54px;
 }
+
 .modal__button {
   font-family: "Inter";
   height: 50px;
@@ -78,6 +81,7 @@
   padding: 0;
   cursor: pointer;
 }
+
 .modal__form-input {
   font-family: "Inter";
   height: 50px;
@@ -94,4 +98,9 @@
   font-size: 18px;
   line-height: 17px;
   color: #000;
+}
+
+.form-input {
+  font-family: "Inter";
+  height: 50px;
 }

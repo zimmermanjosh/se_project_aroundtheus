@@ -1,4 +1,8 @@
-/* rer's of the .js */
+/*
+====================================
+element array / card array
+====================================
+*/
 let initialCards = [
   {
     //object 1
@@ -32,9 +36,20 @@ let initialCards = [
   },
 ];
 
-//element functions
+/*
+====================================
+element const
+====================================
+*/
+
 const profileCloseButton = document.querySelector("#modal-close-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
+const profileSaveButton = document.querySelector("#profile-save-button");
+/*
+====================================
+element functions
+====================================
+*/
 
 function closePopUp(popUp) {
   popUp.classList.remove("modal_opened");
@@ -44,7 +59,11 @@ function openPopUp(popUp) {
   popUp.classList.add("modal_opened");
 }
 
-// event listeners
+/*
+====================================
+element Event Listeners
+====================================
+*/
 
 cardCloseButton.addEventListener("click", () => {
   closePopUp(cardAddModal);
