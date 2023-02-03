@@ -126,26 +126,27 @@
     <!--/modal-->
     <!-- Modal fix open and close 2023/02/01-->
     <div class="modal" id="profile-edit-modal">
-      <div class="modal" id="modal__container">
+      <div class="modal__container">
         <button class="modal__close" id="modal-close-button"></button>
-        <p class="modal__heading">Edit Profile</p>
+        <p class="modal__heading">Edit profile</p>
         <form class="modal__form" id="profile-edit-form">
           <input
-            class="form__input"
+            class="modal__form-input"
             type="text"
             name="title"
             placeholder="Name"
-            id="profile-name-input"
+            id="profile-title-input"
             required
           />
           <input
-            class="form__input"
+            class="modal__form-input"
             type="text"
             name="description"
-            placeholder="About me"
-            id="profile-job-input"
+            placeholder="Description"
+            id="profile-description-input"
             required
           />
+          <button class="modal__button">Save</button>
         </form>
       </div>
     </div>

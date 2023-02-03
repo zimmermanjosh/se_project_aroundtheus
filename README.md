@@ -1,4 +1,11 @@
-# Project 3: Around The U.S.
+# Sprint4 : final project 
+
+This project includes 
+- adding supporting logic to use 1/3 form fields
+- adding supporting logic to use 2/3 Editing your name and about me
+- adding supporting logic to 3/3. Rendering cards
+
+# Project 4: Around The U.S.
 
 ### Overview
 
