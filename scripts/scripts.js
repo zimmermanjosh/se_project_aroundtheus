@@ -45,10 +45,13 @@ elements hooks for app
 =========================================================
 const
 **/
+const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
-const profileModal = document.querySelector("#profile-edit-modal");
-
 const profileCloseButton = document.querySelector("#modal-close-button");
+const profileTitle = document.querySelector("#profile-title");
+const profileDescription = document.querySelector("#profile-descr");
+const profileTitleInput = document.querySelector("#profile-title-input");
+const profileDescriptionInput = document.querySelector("#profile-descr-input");
 
 /**
 =========================================================
@@ -65,6 +68,13 @@ function closePopUp(popUp) {
 function openPopUp(popUp) {
   popUp.classList.add("modal_opened");
 }
+
+function handleProfileEditSubmit(e) {
+  e.preventDefault();
+  profileTitle.textContent = profileTitleInput.value;
+  profileDescription.textContent = profileDescriptionInput.value;
+  closePopUp(profileEditModal);
+}
 /**
 =========================================================
 javascript for app
@@ -73,11 +83,16 @@ elements hooks for app
 =========================================================
 event listeners
 **/
-cardCloseButton.addEventListener("click", () => {
-  closePopUp(cardAddModal);
+
+profileEditButton.addEventListener("click", () => {
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
+  openPopUp(profileEditModal);
 });
 
-profileCloseButton.addEventListener("click", closeProfileEditModal);
+profileCloseButton.addEventListener("click", () => {
+  closePopUp(profileEditModal);
+});
 
 /**
 =========================================================

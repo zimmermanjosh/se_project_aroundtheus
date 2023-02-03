@@ -39,7 +39,7 @@
 .modal__close {
   width: 40px;
   height: 40px;
-  background-image: url(../images/modal-close.svg);
+  background-image: url(../images/icons/modal-close.svg);
   border: none;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -58,6 +58,7 @@
 }
 
 .modal__heading {
+  font-family: "Inter";
   color: black;
   font-weight: 900;
   font-size: 24px;
@@ -72,6 +73,7 @@
 }
 
 .modal__form-input {
+  font-family: "Inter";
   height: 50px;
   border-top: 1px;
   border-right: 1px;
