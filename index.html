@@ -30,7 +30,7 @@
             class="profile__img"
           />
           <div class="profile__info">
-            <h1 class="profile__title">Jacques Cousteau</h1>
+            <h1 class="profile__title" id="profile-title">Jacques Cousteau</h1>
             <button
               type="button"
               class="profile__edit-button"
@@ -46,75 +46,9 @@
         </section>
         <!--/elements_section-->
         <section class="elements page__section">
-          <!--/elements_list || cards from website-->
+          <!--/elements_list || elements from website-->
           <ul class="elements__list">
             <!--/element_object  || this is an element of element(s)-->
-            <li class="element">
-              <img
-                src="./images/pictures/yosemite-valley.png"
-                alt="yosemite-valley"
-                class="element__img"
-              />
-              <div class="element__descr">
-                <h2 class="element__text">Yosemite Valley</h2>
-                <button type="button" class="element__like-button"></button>
-              </div>
-            </li>
-            <li class="element">
-              <img
-                src="./images/pictures/lake-louise.png"
-                alt="lake-louise"
-                class="element__img"
-              />
-              <div class="element__descr">
-                <h2 class="element__text">Lake Louise</h2>
-                <button type="button" class="element__like-button"></button>
-              </div>
-            </li>
-            <li class="element">
-              <img
-                src="./images/pictures/bald-mountains.png"
-                alt="bald-mountains"
-                class="element__img"
-              />
-              <div class="element__descr">
-                <h2 class="element__text">Bald Mountains</h2>
-                <button type="button" class="element__like-button"></button>
-              </div>
-            </li>
-            <li class="element">
-              <img
-                src="./images/pictures/latemar.png"
-                alt="latemar"
-                class="element__img"
-              />
-              <div class="element__descr">
-                <h2 class="element__text">Latemar</h2>
-                <button type="button" class="element__like-button"></button>
-              </div>
-            </li>
-            <li class="element">
-              <img
-                src="./images/pictures/vanoise-national-park.png"
-                alt="vanoise-national-park"
-                class="element__img"
-              />
-              <div class="element__descr">
-                <h2 class="element__text">Vanoise National Park</h2>
-                <button type="button" class="element__like-button"></button>
-              </div>
-            </li>
-            <li class="element">
-              <img
-                src="./images/pictures/lago-di-braies.png"
-                alt="lago-di-braies"
-                class="element__img"
-              />
-              <div class="element__descr">
-                <h2 class="element__text">Lago di Braies</h2>
-                <button type="button" class="element__like-button"></button>
-              </div>
-            </li>
           </ul>
         </section>
       </main>
@@ -126,29 +60,43 @@
     <!--/modal-->
     <!-- Modal fix open and close 2023/02/01-->
     <div class="modal" id="profile-edit-modal">
-      <div class="modal" id="modal__container">
+      <div class="modal__container">
         <button class="modal__close" id="modal-close-button"></button>
-        <p class="modal__heading">Edit Profile</p>
+        <p class="modal__heading">Edit profile</p>
         <form class="modal__form" id="profile-edit-form">
           <input
-            class="form__input"
+            class="modal__form-input"
             type="text"
             name="title"
             placeholder="Name"
-            id="profile-name-input"
+            id="profile-title-input"
             required
           />
           <input
-            class="form__input"
+            class="modal__form-input"
             type="text"
             name="description"
-            placeholder="About me"
-            id="profile-job-input"
+            placeholder="Description"
+            id="profile-descr-input"
             required
           />
+          <button class="modal__button">Save</button>
         </form>
       </div>
     </div>
+
+    <!-- Modal -->
+
+    <template id="element-template">
+      <li class="element">
+        <img class="element__img" src="#" alt="" id="element-image" />
+        <div class="element__descr">
+          <h2 class="element__text" id="element-title"></h2>
+          <button class="element__like-button" type="button"></button>
+        </div>
+      </li>
+    </template>
+
     <!--/scripts-->
     <script src="./scripts/scripts.js"></script>
   </body>
