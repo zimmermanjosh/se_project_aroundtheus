@@ -56,13 +56,21 @@ const profileDescriptionInput = document.querySelector("#profile-descr-input");
 const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
 
 /**  element **/
-const elementAddModal = document.querySelector("#element-add-modal");
-const elementAddButton = document.querySelector("#profile-add-button");
+
 const elementTitle = document.querySelector("#element-title");
 const elementImage = document.querySelector("#element-image");
 const elementTitleInput = document.querySelector("#element-title-input");
 const elementImageInput = document.querySelector("#element-image-input");
-const elementCloseButton = elementAddModal.querySelector("#element-add-close");
+//const elementCloseButton = elementAddModal.querySelector("#element-add-close");
+
+const elementListElement = document.querySelector(".elements__list");
+const elementTemplate =
+  document.querySelector("#element-template").content.firstElementChild;
+
+const modalImage = document.querySelector("#element-modal-image");
+const modalCaption = document.querySelector("#element-modal-caption");
+const elementImageModal = document.querySelector("#element-image-modal");
+const elementImageModalClose = document.querySelector("#element-image-close");
 
 /**
 =========================================================
@@ -85,20 +93,6 @@ function handleProfileEditSubmit(e) {
   closePopUp(profileEditModal);
 }
 
-function getCardView(elementData) {
-  const elementElement = elementTemplate.cloneNode(true);
-  const elementImageElement = elementElement.querySelector(".element__image");
-  const elementTitleElement = elementElement.querySelector(".element__title");
-  const elementDeleteButton = elementElement.querySelector(
-    "#element-delete-button"
-  );
-
-  cardImageElement.src = cardData.link;
-  cardImageElement.alt = cardData.name;
-  cardTitleElement.textContent = cardData.name;
-  return cardElement;
-}
-
 /**
 =========================================================
 javascript for app
@@ -117,15 +111,26 @@ profileCloseButton.addEventListener("click", () => {
 });
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
-elementCloseButton.addEventListener("click", () => {
-  closePopUp(profileEditModal);
-});
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+// lets get the element(s) showing up
+function renderElement(element, container) {
+  container.prepend(element);
+}
 
 initializeElement.forEach((elementData) => {
-  const elementView = getCardView(elementData);
-  renderCard(elementView, elementListElement);
+  const elementView = getElementView(elementData);
+  renderElement(elementView, elementListElement);
 });
+
+function getElementView(elementData) {
+  const element = elementTemplate.cloneNode(true);
+  const elementImageElement = element.querySelector(".element__img");
+  const elementTitleElement = element.querySelector(".element__text");
+
+  elementImageElement.src = elementData.link;
+  elementImageElement.alt = elementData.name;
+  elementTitleElement.textContent = elementData.name;
+  return element;
+}
 
 /**
 =========================================================

@@ -46,7 +46,7 @@
         </section>
         <!--/elements_section-->
         <section class="elements page__section">
-          <!--/elements_list || cards from website-->
+          <!--/elements_list || elements from website-->
           <ul class="elements__list">
             <!--/element_object  || this is an element of element(s)-->
           </ul>
@@ -86,56 +86,17 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal" id="element-add-modal">
-      <div class="modal__container">
-        <button class="modal__close" id="modal-close-button"></button>
-        <p class="modal__heading">Edit profile</p>
-        <form class="modal__form" id="profile-edit-form">
-          <input
-            class="modal__form-input"
-            type="text"
-            name="title"
-            placeholder="Name"
-            id="element-title-input"
-            required
-          />
-          <input
-            class="modal__form-input"
-            type="text"
-            name="description"
-            placeholder="Description"
-            id="element-descr-input"
-            required
-          />
-          <button class="modal__button">Save</button>
-        </form>
-      </div>
-    </div>
-    <div class="modal" id="element-image-modal">
-      <div class="modal__container">
-        <button class="modal__close" id="element-add-close"></button>
-        <p class="modal__heading">New Place</p>
-        <form class="modal__form" id="element-add-form">
-          <input
-            class="modal__form-input"
-            type="text"
-            name="title"
-            placeholder="Title"
-            id="element-title-input"
-            required
-          />
-          <input
-            class="modal__form-input"
-            type="text"
-            name="link"
-            placeholder="Image link"
-            id="element-image-input"
-            required
-          />
-          <button class="modal__button">Create</button>
-        </form>
-      </div>
-    </div>
+
+    <template id="element-template">
+      <li class="element">
+        <img class="element__img" src="#" alt="" id="element-image" />
+        <div class="element__descr">
+          <h2 class="element__text" id="element-title"></h2>
+          <button class="element__like-button" type="button"></button>
+        </div>
+      </li>
+    </template>
+
     <!--/scripts-->
     <script src="./scripts/scripts.js"></script>
   </body>
