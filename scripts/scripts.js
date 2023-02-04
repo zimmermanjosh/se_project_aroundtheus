@@ -92,6 +92,19 @@ function handleProfileEditSubmit(e) {
   profileDescription.textContent = profileDescriptionInput.value;
   closePopUp(profileEditModal);
 }
+function renderElement(element, container) {
+  container.prepend(element);
+}
+function getElementView(elementData) {
+  const element = elementTemplate.cloneNode(true);
+  const elementImageElement = element.querySelector(".element__img");
+  const elementTitleElement = element.querySelector(".element__text");
+
+  elementImageElement.src = elementData.link;
+  elementImageElement.alt = elementData.name;
+  elementTitleElement.textContent = elementData.name;
+  return element;
+}
 
 /**
 =========================================================
@@ -106,31 +119,17 @@ profileEditButton.addEventListener("click", () => {
   profileDescriptionInput.value = profileDescription.textContent;
   openPopUp(profileEditModal);
 });
+
 profileCloseButton.addEventListener("click", () => {
   closePopUp(profileEditModal);
 });
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
-// lets get the element(s) showing up
-function renderElement(element, container) {
-  container.prepend(element);
-}
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 initializeElement.forEach((elementData) => {
   const elementView = getElementView(elementData);
   renderElement(elementView, elementListElement);
 });
-
-function getElementView(elementData) {
-  const element = elementTemplate.cloneNode(true);
-  const elementImageElement = element.querySelector(".element__img");
-  const elementTitleElement = element.querySelector(".element__text");
-
-  elementImageElement.src = elementData.link;
-  elementImageElement.alt = elementData.name;
-  elementTitleElement.textContent = elementData.name;
-  return element;
-}
 
 /**
 =========================================================
