@@ -2,6 +2,7 @@
 .page {
   background-color: black;
   color: white;
+  font-family: "Inter", Arial, sans-serif;
 }
 
 .page__section {

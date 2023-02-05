@@ -91,6 +91,7 @@
 }
 
 .modal__button {
+  font-size: "Inter";
   height: 50px;
   line-height: 22px;
   font-size: 18px;
