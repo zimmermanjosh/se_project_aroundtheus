@@ -14,11 +14,11 @@
   align-items: center;
   justify-content: center;
   pointer-events: none;
+  display: flex;
+  align-items: center;
 }
 
 .modal_opened {
-  display: flex;
-  align-items: center;
   justify-content: center;
   visibility: visible;
   pointer-events: all;
@@ -73,7 +73,7 @@
 }
 
 .modal__form-input {
-  font-family: "Inter";
+  font-family: "Inter", Arial, sans-serif;
   height: 50px;
   border-top: 1px;
   border-right: 1px;
@@ -91,7 +91,7 @@
 }
 
 .modal__button {
-  font-size: "Inter";
+  font-family: "Inter", Arial, sans-serif;
   height: 50px;
   line-height: 22px;
   font-size: 18px;
