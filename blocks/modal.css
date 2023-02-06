@@ -14,10 +14,10 @@
   align-items: center;
   justify-content: center;
   pointer-events: none;
+  display: flex;
 }
 
 .modal_opened {
-  display: flex;
   align-items: center;
   justify-content: center;
   visibility: visible;
