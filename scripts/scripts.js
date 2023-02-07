@@ -5,7 +5,7 @@ this is my re-org to  help me apply work and school, this need to be the same
 array of pics for app
 **/
 // these are not going to be reassigned in the future remove let
-const initializeCard = [
+const initializeCards = [
   {
     //object 1
     name: "Yosemite Valley",
@@ -126,7 +126,7 @@ profileCloseButton.addEventListener("click", () => {
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
-initializeCard.forEach((elementData) => {
+initializeCards.forEach((elementData) => {
   const elementView = getElementView(elementData);
   renderElement(elementView, elementListElement);
 });
