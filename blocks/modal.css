@@ -16,10 +16,10 @@
   pointer-events: none;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .modal_opened {
-  justify-content: center;
   visibility: visible;
   pointer-events: all;
   opacity: 1;
@@ -58,7 +58,7 @@
 }
 
 .modal__heading {
-  font-family: "Inter";
+  font-family: "Inter", Arial, sans-serif;
   color: black;
   font-weight: 900;
   font-size: 24px;
