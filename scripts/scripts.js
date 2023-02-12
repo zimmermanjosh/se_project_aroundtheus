@@ -56,7 +56,8 @@ const profileDescriptionInput = document.querySelector("#profile-descr-input");
 const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
 
 /**  element **/
-
+const elementEditButton = document.querySelector("#element-add-modal");
+const elementEditModal = document.querySelector("#profile-edit-modal");
 const elementTitle = document.querySelector("#element-title");
 const elementImage = document.querySelector("#element-image");
 const elementTitleInput = document.querySelector("#element-title-input");

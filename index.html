@@ -60,7 +60,7 @@
       </footer>
     </div>
     <!--/modal-->
-    <!-- Modal fix open and close 2023/02/01-->
+    <!-- Modal Profile 2023/02/01-->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button class="modal__close" id="modal-close-button"></button>
@@ -86,7 +86,33 @@
         </form>
       </div>
     </div>
-    <!-- Modal -->
+    <!-- Modal ADD URL and name  2023/02/11-->
+    <div class="modal" id="element-add-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="element-add-close"></button>
+        <p class="modal__heading">Edit Location</p>
+        <form class="modal__form" id="element-add-form">
+          <input
+            class="modal__form-input"
+            type="text"
+            name="title"
+            placeholder="Location name"
+            id="element-title-input"
+            required
+          />
+          <input
+            class="modal__form-input"
+            type="text"
+            name="url"
+            placeholder="Image Link"
+            id="element-image-input"
+            required
+          />
+          <button class="modal__button">updates</button>
+        </form>
+      </div>
+    </div>
+    <!-- template-->
     <template id="element-template">
       <li class="element">
         <img class="element__img" src="#" alt="" id="element-image" />
