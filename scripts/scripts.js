@@ -56,17 +56,18 @@ const profileDescriptionInput = document.querySelector("#profile-descr-input");
 const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
 
 /**  element **/
-const elementEditButton = document.querySelector("#element-add-modal");
-const elementEditModal = document.querySelector("#profile-edit-modal");
+const elementAddButton = document.querySelector("#element-add-button");
+const elementAddModal = document.querySelector("#element-add-modal");
 const elementTitle = document.querySelector("#element-title");
 const elementImage = document.querySelector("#element-image");
 const elementTitleInput = document.querySelector("#element-title-input");
 const elementImageInput = document.querySelector("#element-image-input");
-//const elementCloseButton = elementAddModal.querySelector("#element-add-close");
+const elementCloseButton = elementAddModal.querySelector("#element-add-close");
 
 const elementListElement = document.querySelector(".elements__list");
 const elementTemplate =
   document.querySelector("#element-template").content.firstElementChild;
+const elementAddForm = elementAddModal.querySelector("#element-add-form");
 
 const modalImage = document.querySelector("#element-modal-image");
 const modalCaption = document.querySelector("#element-modal-caption");
@@ -81,6 +82,7 @@ elements hooks for app
 =========================================================
 functions
 **/
+//Profile functions
 function closePopUp(popUp) {
   popUp.classList.remove("modal_opened");
 }
@@ -107,6 +109,30 @@ function getElementView(elementData) {
   return element;
 }
 
+//element functions
+
+function handleElementImageModal(ElementData) {
+  modalImage.src = ElementData.link;
+  modalImage.alt = ElementData.name;
+  modalCaption.textContent = ElementData.name;
+  openPopUp(ElementImageModal);
+}
+
+function handleElementAddSubmit(e) {
+  e.preventDefault();
+  elementTitle.textContent = elementTitleInput.value;
+  elementImage.src = elementImageInput.value;
+  elementImage.alt = elementImageInput.value;
+  closePopUp(elementAddModal);
+}
+
+function handleElementImageModal(elementData) {
+  modalImage.src = elementData.link;
+  modalImage.alt = elementData.name;
+  modalCaption.textContent = elementData.name;
+  openPopUp(elementImageModal);
+}
+
 /**
 =========================================================
 javascript for app
@@ -115,6 +141,8 @@ elements hooks for app
 =========================================================
 event listeners
 **/
+
+// profile edit modal
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
@@ -130,6 +158,30 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 initializeCards.forEach((elementData) => {
   const elementView = getElementView(elementData);
   renderElement(elementView, elementListElement);
+});
+
+// Element modal -- URL and IMAGEs
+
+elementAddButton.addEventListener("click", () => {
+  openPopUp(elementAddModal);
+});
+
+elementCloseButton.addEventListener("click", () => {
+  closePopUp(elementAddModal);
+});
+
+elementImageModalClose.addEventListener("click", () => {
+  closePopUp(elementImageModal);
+});
+
+elementAddForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = e.target.title.value;
+  const link = e.target.link.value;
+  const elementView = getElementView({ name, link });
+  renderElement(elementView, elementListElement);
+  closePopUp(elementAddModal);
+  elementAddForm.reset();
 });
 
 /**

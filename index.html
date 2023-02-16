@@ -43,7 +43,7 @@
           <button
             type="button"
             class="profile__add-button"
-            id="profile-add-button"
+            id="element-add-button"
           ></button>
         </section>
         <!--/elements_section-->
@@ -86,6 +86,7 @@
         </form>
       </div>
     </div>
+
     <!-- Modal ADD URL and name  2023/02/11-->
     <div class="modal" id="element-add-modal">
       <div class="modal__container">
@@ -108,10 +109,24 @@
             id="element-image-input"
             required
           />
-          <button class="modal__button">updates</button>
+          <button class="modal__button">create</button>
         </form>
       </div>
     </div>
+
+    <div class="modal" id="element-image-modal">
+      <div class="modal__container-element">
+        <img
+          class="modal__image-card"
+          id="element-modal-image"
+          src="#"
+          alt=""
+        />
+        <p class="modal__caption-element" id="element-modal-caption"></p>
+        <button class="modal__close" id="element-image-close"></button>
+      </div>
+    </div>
+
     <!-- template-->
     <template id="element-template">
       <li class="element">
