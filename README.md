@@ -1,30 +1,33 @@
-# Sprint4 : final project 
+# Sprint5 : part 4/4
 
-This project includes 
-- adding supporting logic to use 1/3 form fields
-- adding supporting logic to use 2/3 Editing your name and about me
-- adding supporting logic to 3/3. Rendering cards
+This project includes:
 
-# Project 4: Around The U.S.
+- Added: rendering of Card
+- Added: added modal popout
+- Added: new javascript / handling - data
+
+# Project 5 updated: Around The U.S.
 
 ### Overview
 
 - Intro
 - Figma
 - Images
+- javscript
+- html
+- added css
 
 **Intro**
 
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
+This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.
 
 **Figma**
 
 - [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
 
 **Images**
-here is an example :: 
+here is an example ::
 ![Alt text](images/pictures/Screenshot_overview.png "aroundthewrold")
-
 
 The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster.
 
