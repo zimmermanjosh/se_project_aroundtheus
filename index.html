@@ -43,11 +43,11 @@
           <button
             type="button"
             class="profile__add-button"
-            id="profile-add-button"
+            id="element-add-button"
           ></button>
         </section>
         <!--/elements_section-->
-        <section class="element page__section">
+        <section class="elements page__section">
           <!--/elements_list || elements from website-->
           <ul class="elements__list">
             <!--/element_object  || this is an element of element(s)-->
@@ -59,8 +59,7 @@
         <p class="footer__copyright">©2023 Around the U.S.</p>
       </footer>
     </div>
-    <!--/modal-->
-    <!-- Modal fix open and close 2023/02/01-->
+    <!-- Modal Profile 2023/02/01-->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button class="modal__close" id="modal-close-button"></button>
@@ -86,9 +85,52 @@
         </form>
       </div>
     </div>
-    <!-- Modal -->
+    <!-- Modal ADD URL and name  2023/02/11-->
+    <div class="modal" id="element-add-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="element-add-close"></button>
+        <p class="modal__heading">New Location</p>
+        <form class="modal__form" id="element-add-form">
+          <input
+            class="modal__form-input"
+            type="text"
+            name="title"
+            placeholder="Title"
+            id="element-title-input"
+            required
+          />
+          <input
+            class="modal__form-input"
+            type="text"
+            name="url"
+            placeholder="Image Link"
+            id="element-image-input"
+            required
+          />
+          <button class="modal__button">Create</button>
+        </form>
+      </div>
+    </div>
+    <div class="modal" id="element-image-modal">
+      <div class="modal__container-element">
+        <img
+          class="modal__image-element"
+          id="element-modal-image"
+          src="#"
+          alt=""
+        />
+        <p class="modal__caption-element" id="element-modal-caption"></p>
+        <button class="modal__close" id="element-image-close"></button>
+      </div>
+    </div>
+    <!-- template-->
     <template id="element-template">
       <li class="element">
+        <button
+          class="element__delete-button"
+          id="element-delete-button"
+          title="button"
+        ></button>
         <img class="element__img" src="#" alt="" id="element-image" />
         <div class="element__descr">
           <h2 class="element__text" id="element-title"></h2>

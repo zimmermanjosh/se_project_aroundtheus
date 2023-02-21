@@ -107,16 +107,16 @@
   opacity: 0.8;
 }
 
-.modal__container-card {
+.modal__container-element {
   position: relative;
 }
 
-.modal__image-card {
+.modal__image-element {
   max-width: 100%;
   max-height: 540px;
 }
 
-.modal__caption-card {
+.modal__caption-element {
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;

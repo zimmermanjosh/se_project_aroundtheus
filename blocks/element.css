@@ -52,3 +52,21 @@
   opacity: 0.5;
   cursor: pointer;
 }
+.element__like-button_active {
+  background: url(../images/icons/like-button-active.svg);
+}
+
+.element__delete-button {
+  background: transparent url(../images/icons/delete-icon.svg) center no-repeat;
+  width: 18px;
+  height: 20px;
+  cursor: pointer;
+  border: none;
+  position: relative;
+  top: 36px;
+  left: calc(100% - 33px);
+}
+
+.element__delete-button:hover {
+  opacity: 0.6;
+}
