@@ -9,32 +9,32 @@ const initializeCards = [
   {
     //object 1
     name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
   },
   {
     //object 2
     name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
+    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
   },
   {
     //object 3
     name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
   },
   {
     //object 4
     name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
   },
   {
     //object 5
     name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
+    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
   },
   {
     //object 6
     name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
 /**
@@ -69,9 +69,9 @@ const elementTemplate =
   document.querySelector("#element-template").content.firstElementChild;
 const elementAddForm = elementAddModal.querySelector("#element-add-form");
 
-const modalImage = document.querySelector("#element-image-modal");
-const modalCaption = document.querySelector("#element-caption-modal");
-const elementImageModal = document.querySelector("#element-modal-image");
+const modalImage = document.querySelector("#element-modal-image");
+const modalCaption = document.querySelector("#element-modal-caption");
+const elementImageModal = document.querySelector("#element-image-modal");
 const elementImageModalClose = document.querySelector("#element-image-close");
 
 ///////////////////////////////////////
@@ -92,7 +92,7 @@ function getElementView(elementData) {
     handleElementImageModal(elementData);
   });
 
-  imageElement.src = elementData.link;
+  imageElement.src = elementData.url;
   imageElement.alt = elementData.name;
   titleElement.textContent = elementData.name;
   return element;
