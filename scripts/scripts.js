@@ -125,13 +125,13 @@ function handleProfileEditSubmit(e) {
   closePopUp(profileEditModal);
 }
 
-function handleElementAddSubmit(e) {
+/*function handleElementAddSubmit(e) {
   e.preventDefault();
   elementTitle.textContent = elementTitleInput.value;
   elementImage.src = elementImageInput.value;
   elementImage.alt = elementImageInput.value;
   closePopUp(elementAddModal);
-}
+}*/
 
 /**
 =========================================================
@@ -178,8 +178,8 @@ elementImageModalClose.addEventListener("click", () => {
 elementAddForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const name = e.target.title.value;
-  const link = e.target.url.value;
-  const elementView = getElementView({ name, link });
+  const url = e.target.url.value;
+  const elementView = getElementView({ name, url });
   renderElement(elementView, elementList);
   closePopUp(elementAddModal);
   elementAddForm.reset();
