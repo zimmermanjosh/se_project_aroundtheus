@@ -1,12 +1,11 @@
-# Sprint5 : part 4/4
+# Sprint6 : part 4/4
 
 This project includes:
 
-- Added: rendering of Card
-- Added: added modal popout
-- Added: new javascript / handling - data
+- Form validation
+- esc key bindings for javascript
 
-# Project 5 updated: Around The U.S.
+# Project 6 updated: Around The U.S.
 
 ### Overview
 
@@ -23,7 +22,7 @@ This project is made so all the elements are displayed correctly on popular scre
 
 **Figma**
 
-- [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
+project has been updated locally.
 
 **Images**
 here is an example ::
@@ -43,3 +42,24 @@ To view this iteration of this first stage of the project: click here: https://z
 
 **Updates and Development**
 this project revision is adding a scripts_folder to the project, additionally we are adding javascript (.js) to the project.
+Project sprint 6
+Dev Updates
+
+- Step 1. Validating the "Edit Profile" Form
+- if a field of the "Edit profile" form doesn't pass the validation, a red error message should be displayed underneath it
+- Validation settings are as follows:Both fields are required.
+  - The "Name" field must contain between 2 and 40 characters.
+  - The "About" field must contain between 2 and 200 characters.
+    Use the default error messages of the browser.
+    If any field doesn't pass validation, the "Save" button should be inactive. If both fields pass validation, then they should be active. Use the colors from the design for the inactive buttons.
+    Note that after adding a new card and reopening the modal window, a user can create an empty card. We need to make it unavailable for the user to do that. When opening a modal window, if you reset the values of the input fields, make sure to disable the save button and add the corresponding class to it.
+- Step 2. Validating the "New Place" Form
+- Validation settings are as follows: Both fields are required.
+  - The "Title" field must contain between 1 and 30 characters.
+  - The "Image URL" field must contain a URL.
+  - Use the default error messages of the browser.
+  - If any field doesn't pass validation, the "Save" button should be inactive. If both fields pass validation, then it should be active. Inactive button colors are the same as for the "Edit profile" form.
+- Step 3. Closing the Popup by Clicking on the Overlay
+  - Code a feature that allows the users to close the popup by clicking on the overlay, i.e. anywhere outside the popup's borders
+- Step 4. Closing the Popup by Pressing Esc
+  - Code a feature that allows the users to close the popup by pressing the Esc key.
