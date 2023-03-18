@@ -63,25 +63,37 @@
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button class="modal__close" id="modal-close-button"></button>
-        <p class="modal__heading">Edit profile</p>
-        <form class="modal__form" id="profile-edit-form">
+        <h2 class="modal__heading">Edit profile</h2>
+        <form class="modal__form" id="profile-edit-form" name="profileForm">
+          <label for="name">name</label>
           <input
             class="modal__form-input"
             type="text"
-            name="title"
-            placeholder="Name"
+            name="name"
             id="profile-title-input"
-            required
+            minlength="2"
+            maxlength="40"
           />
+          <div class="error-message" id="name-error-message"></div>
+          <label for="description">description</label>
           <input
             class="modal__form-input"
             type="text"
             name="description"
-            placeholder="Description"
             id="profile-descr-input"
-            required
+            minlength="2"
+            maxlength="200"
           />
-          <button class="modal__button">Save</button>
+          <div class="error-message" id="about-error-message"></div>
+          <button
+            type="submit"
+            name="save"
+            id="save"
+            class="modal__button inactive"
+            disabled
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>

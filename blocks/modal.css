@@ -119,3 +119,15 @@
   line-height: 14px;
   margin: 10px 0 0;
 }
+
+.inactive {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
