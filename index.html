@@ -101,25 +101,37 @@
     <div class="modal" id="element-add-modal">
       <div class="modal__container">
         <button class="modal__close" id="element-add-close"></button>
-        <p class="modal__heading">New Location</p>
-        <form class="modal__form" id="element-add-form">
+        <h2 class="modal__heading">New Location</h2>
+        <form class="modal__form" id="element-add-form" name="elementForm">
+          <label for="title">title:</label>
+          <div class="error-message" id="title-error-message"></div>
           <input
             class="modal__form-input"
             type="text"
             name="title"
-            placeholder="Title"
             id="element-title-input"
-            required
+            minlength="1"
+            maxlength="30"
           />
+          <label for="url">url:</label>
+          <div class="error-message" id="url-error-message"></div>
           <input
             class="modal__form-input"
             type="text"
             name="url"
-            placeholder="Image Link"
             id="element-image-input"
-            required
+            minlength="2"
           />
-          <button class="modal__button">Create</button>
+          <div class="error-message" id="about-error-message"></div>
+          <button
+            type="submit"
+            name="save"
+            id="save"
+            class="modal__button inactive"
+            disabled
+          >
+            create
+          </button>
         </form>
       </div>
     </div>

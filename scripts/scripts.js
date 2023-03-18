@@ -222,6 +222,38 @@ function handleEscKey(event) {
   }
 }
 
+//title element and url element validation
+
+const titleInput = document.getElementById("element-title-input");
+const urlInput = document.getElementById("element-image-input");
+const titleErrorMessage = document.getElementById("title-error-message");
+const urlErrorMessage = document.getElementById("url-error-message");
+
+function validateElementForm() {
+  if (titleInput.checkValidity() && urlInput.checkValidity()) {
+    saveBtn.classList.remove("inactive");
+    saveBtn.disabled = false;
+    titleErrorMessage.textContent = "";
+    urlErrorMessage.textContent = "";
+  } else {
+    saveBtn.classList.add("inactive");
+    saveBtn.disabled = true;
+    if (titleInput.validity.valueMissing) {
+      titleErrorMessage.textContent = "Please enter some title.";
+    } else if (titleInput.validity.tooShort || titleInput.validity.tooLong) {
+      titleErrorMessage.textContent =
+        "Name must be between 1 and 30 characters.";
+    }
+    if (urlInput.validity.valueMissing) {
+      urlErrorMessage.textContent = "Please enter a valid URL.";
+    } else if (urlInput.validity.tooShort || urlInput.validity.tooLong) {
+      urlErrorMessage.textContent = "this is need to be formatted correctly.";
+    }
+  }
+}
+
 nameInput.addEventListener("input", validateForm);
 aboutInput.addEventListener("input", validateForm);
+titleInput.addEventListener("input", validateForm);
+urlInput.addEventListener("input", validateForm);
 document.addEventListener("keydown", handleEscKey);
