@@ -125,14 +125,6 @@ function handleProfileEditSubmit(e) {
   closePopUp(profileEditModal);
 }
 
-/*function handleElementAddSubmit(e) {
-  e.preventDefault();
-  elementTitle.textContent = elementTitleInput.value;
-  elementImage.src = elementImageInput.value;
-  elementImage.alt = elementImageInput.value;
-  closePopUp(elementAddModal);
-}*/
-
 /**
 =========================================================
 javascript for app
@@ -189,3 +181,47 @@ initializeCards.forEach((elementData) => {
   const elementView = getElementView(elementData);
   renderElement(elementView, elementList);
 });
+
+//from email edit form validation -- Step 1. Validating the "Edit Profile" Form
+//const profileTitleInput = document.querySelector("#profile-title-input");
+//const profileDescriptionInput = document.querySelector("#profile-descr-input")
+
+const nameInput = document.getElementById("profile-title-input");
+const aboutInput = document.getElementById("profile-descr-input");
+const saveBtn = document.getElementById("save");
+const nameErrorMessage = document.getElementById("name-error-message");
+const aboutErrorMessage = document.getElementById("about-error-message");
+
+function validateForm() {
+  if (nameInput.checkValidity() && aboutInput.checkValidity()) {
+    saveBtn.classList.remove("inactive");
+    saveBtn.disabled = false;
+    nameErrorMessage.textContent = "";
+    aboutErrorMessage.textContent = "";
+  } else {
+    saveBtn.classList.add("inactive");
+    saveBtn.disabled = true;
+    if (nameInput.validity.valueMissing) {
+      nameErrorMessage.textContent = "Please enter your name.";
+    } else if (nameInput.validity.tooShort || nameInput.validity.tooLong) {
+      nameErrorMessage.textContent =
+        "Name must be between 2 and 40 characters.";
+    }
+    if (aboutInput.validity.valueMissing) {
+      aboutErrorMessage.textContent = "Please enter something about yourself.";
+    } else if (aboutInput.validity.tooShort || aboutInput.validity.tooLong) {
+      aboutErrorMessage.textContent =
+        "About must be between 2 and 200 characters.";
+    }
+  }
+}
+
+function handleEscKey(event) {
+  if (event.keyCode === 27) {
+    closePopUp(profileEditModal);
+  }
+}
+
+nameInput.addEventListener("input", validateForm);
+aboutInput.addEventListener("input", validateForm);
+document.addEventListener("keydown", handleEscKey);
