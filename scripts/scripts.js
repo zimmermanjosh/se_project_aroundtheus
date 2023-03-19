@@ -125,6 +125,13 @@ function handleProfileEditSubmit(e) {
   closePopUp(profileEditModal);
 }
 
+function handleEscKey(event) {
+  if (event.keyCode === 27) {
+    closePopUp(profileEditModal);
+    closePopUp(elementAddModal);
+  }
+}
+
 /**
 =========================================================
 javascript for app
@@ -188,7 +195,9 @@ initializeCards.forEach((elementData) => {
 
 const nameInput = document.getElementById("profile-title-input");
 const aboutInput = document.getElementById("profile-descr-input");
+
 const saveBtn = document.getElementById("save");
+
 const nameErrorMessage = document.getElementById("name-error-message");
 const aboutErrorMessage = document.getElementById("about-error-message");
 
@@ -216,16 +225,11 @@ function validateForm() {
   }
 }
 
-function handleEscKey(event) {
-  if (event.keyCode === 27) {
-    closePopUp(profileEditModal);
-  }
-}
-
 //title element and url element validation
 
 const titleInput = document.getElementById("element-title-input");
 const urlInput = document.getElementById("element-image-input");
+
 const titleErrorMessage = document.getElementById("title-error-message");
 const urlErrorMessage = document.getElementById("url-error-message");
 
@@ -244,16 +248,18 @@ function validateElementForm() {
       titleErrorMessage.textContent =
         "Name must be between 1 and 30 characters.";
     }
-    if (urlInput.validity.valueMissing) {
+    if (urlInput.validity.value) {
       urlErrorMessage.textContent = "Please enter a valid URL.";
-    } else if (urlInput.validity.tooShort || urlInput.validity.tooLong) {
-      urlErrorMessage.textContent = "this is need to be formatted correctly.";
     }
   }
 }
 
 nameInput.addEventListener("input", validateForm);
+
 aboutInput.addEventListener("input", validateForm);
-titleInput.addEventListener("input", validateForm);
-urlInput.addEventListener("input", validateForm);
+/* TitleInput is a variable that is storing the value of the element with the id of profile-title-input. */
+titleInput.addEventListener("input", validateElementForm);
+/* UrlInput is a variable that is storing the value of the element with the id of element-image-input. */
+urlInput.addEventListener("input", validateElementForm);
+
 document.addEventListener("keydown", handleEscKey);
