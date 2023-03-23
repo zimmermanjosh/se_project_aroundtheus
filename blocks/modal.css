@@ -30,7 +30,8 @@
   border-radius: 10px;
   position: relative;
   width: 430px;
-  height: 330px;
+  /*min-width: 430px;*/
+  min-height: 330px;
 }
 
 .modal__close {

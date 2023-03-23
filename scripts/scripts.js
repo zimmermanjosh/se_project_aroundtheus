@@ -201,7 +201,8 @@ const saveBtn = document.getElementById("save");
 const nameErrorMessage = document.getElementById("name-error-message");
 const aboutErrorMessage = document.getElementById("about-error-message");
 
-function validateForm() {
+function validateForm(ev) {
+  ev.preventDefault();
   if (nameInput.checkValidity() && aboutInput.checkValidity()) {
     saveBtn.classList.remove("inactive");
     saveBtn.disabled = false;
@@ -225,41 +226,57 @@ function validateForm() {
   }
 }
 
+nameInput.addEventListener("input", validateForm);
+aboutInput.addEventListener("input", validateForm);
+
 //title element and url element validation
 
-const titleInput = document.getElementById("element-title-input");
-const urlInput = document.getElementById("element-image-input");
-
+const titleElInput = document.getElementById("element-title-input");
+const urlElInput = document.getElementById("element-image-input");
+const createBtn = document.getElementById("create");
 const titleErrorMessage = document.getElementById("title-error-message");
 const urlErrorMessage = document.getElementById("url-error-message");
 
-function validateElementForm() {
-  if (titleInput.checkValidity() && urlInput.checkValidity()) {
-    saveBtn.classList.remove("inactive");
-    saveBtn.disabled = false;
+function validateElement(ev) {
+  ev.preventDefault();
+  if (titleElInput.checkValidity() && urlElInput.checkValidity()) {
+    createBtn.classList.remove("inactive");
+    createBtn.disabled = false;
     titleErrorMessage.textContent = "";
     urlErrorMessage.textContent = "";
   } else {
-    saveBtn.classList.add("inactive");
-    saveBtn.disabled = true;
-    if (titleInput.validity.valueMissing) {
+    createBtn.classList.add("inactive");
+    createBtn.disabled = true;
+    if (titleElInput.validity.valueMissing) {
       titleErrorMessage.textContent = "Please enter some title.";
-    } else if (titleInput.validity.tooShort || titleInput.validity.tooLong) {
+    } else if (
+      titleElInput.validity.tooShort ||
+      titleElInput.validity.tooLong
+    ) {
       titleErrorMessage.textContent =
         "Name must be between 1 and 30 characters.";
     }
-    if (urlInput.validity.value) {
+    if (urlElInput.validity.value) {
       urlErrorMessage.textContent = "Please enter a valid URL.";
     }
   }
 }
-
-nameInput.addEventListener("input", validateForm);
-
-aboutInput.addEventListener("input", validateForm);
-/* TitleInput is a variable that is storing the value of the element with the id of profile-title-input. */
-titleInput.addEventListener("input", validateElementForm);
-/* UrlInput is a variable that is storing the value of the element with the id of element-image-input. */
-urlInput.addEventListener("input", validateElementForm);
-
+titleElInput.addEventListener("input", validateElement);
+urlElInput.addEventListener("input", validateElement);
 document.addEventListener("keydown", handleEscKey);
+
+document.addEventListener("click", (event) => {
+  const modal = document.querySelector(".modal_opened");
+  //if (modal && !modal.contains(event.target)) {
+  if (modal.contains(event.target)) {
+    if (profileEditModal) {
+      closePopUp(profileEditModal);
+    }
+    if (elementAddModal) {
+      closePopUp(elementAddModal);
+    }
+    if (elementImageModal) {
+      closePopUp(elementImageModal);
+    }
+  }
+});
