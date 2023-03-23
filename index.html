@@ -105,7 +105,6 @@
         <button class="modal__close" id="element-add-close"></button>
         <h2 class="modal__heading">New Location</h2>
         <form class="modal__form" id="element-add-form" name="elementForm">
-          <div class="error-message" id="title-error-message"></div>
           <label for="title">title:</label>
           <input
             class="modal__form-input"
@@ -113,10 +112,10 @@
             name="title"
             placeholder="title"
             id="element-title-input"
-            minlength="1"
+            minlength="2"
             maxlength="30"
           />
-          <div class="error-message" id="url-error-message"></div>
+          <div class="error-message" id="title-error-message"></div>
           <label for="url">url:</label>
           <input
             class="modal__form-input"
@@ -126,10 +125,11 @@
             id="element-image-input"
             minlength="2"
           />
+          <div class="error-message" id="url-error-message"></div>
           <button
             type="submit"
-            name="save"
-            id="save"
+            name="create"
+            id="create"
             class="modal__button inactive"
             disabled
           >
