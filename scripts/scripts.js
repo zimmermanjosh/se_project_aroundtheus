@@ -145,6 +145,15 @@ function handleElementImageModal(elementData) {
   openPopUp(elementImageModal);
 }
 
+//escape key
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closePopUp(profileEditModal);
+    closePopUp(elementAddModal);
+    closePopUp(elementImageModal);
+  }
+});
+
 //Event Listeners
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
