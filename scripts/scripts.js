@@ -5,8 +5,11 @@ this is my re-org to  help me apply work and school, this need to be the same
 array of pics for app
 **/
 // these are not going to be reassigned in the future remove let
+
+import FormValidator from "./formValidiator";
+
 // Import/Exports
-import validation from "./validation.js";
+FormValidator;
 
 //Initial URL Setup
 const initializeCards = [
@@ -41,7 +44,6 @@ const initializeCards = [
     url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
-//variables
 
 /**  profile **/
 const profileEditButton = document.querySelector("#profile-edit-button");
@@ -71,6 +73,15 @@ const modalImage = document.querySelector("#element-modal-image");
 const modalCaption = document.querySelector("#element-modal-caption");
 const elementImageModal = document.querySelector("#element-image-modal");
 const elementImageModalClose = document.querySelector("#element-image-close");
+
+const validationOptions = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__form-input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
 
 //Functions
 function getElementView(elementData) {
@@ -120,7 +131,7 @@ function handleProfileEditSubmit(e) {
 }
 
 function handleEscKey(event) {
-  if (event.keyCode === "esc") {
+  if (event.keyCode === ESC) {
     closePopUp(profileEditModal);
     closePopUp(elementAddModal);
     closePopUp(elementImageModal);
@@ -181,40 +192,30 @@ const saveBtn = document.getElementById("save");
 const nameErrorMessage = document.getElementById("name-error-message");
 const aboutErrorMessage = document.getElementById("about-error-message");
 
-function validateForm(ev) {
-  ev.preventDefault();
-  if (nameInput.checkValidity() && aboutInput.checkValidity()) {
-    saveBtn.classList.remove("inactive");
-    saveBtn.disabled = false;
-    nameErrorMessage.textContent = "";
-    aboutErrorMessage.textContent = "";
-  } else {
-    saveBtn.classList.add("inactive");
-    saveBtn.disabled = true;
-    if (nameInput.validity.valueMissing) {
-      nameErrorMessage.textContent = "Please enter your name.";
-    } else if (nameInput.validity.tooShort || nameInput.validity.tooLong) {
-      nameErrorMessage.textContent =
-        "Name must be between 2 and 40 characters.";
-    } else {
-      nameErrorMessage.textContent = "";
-    }
-
-    if (aboutInput.validity.valueMissing) {
-      aboutErrorMessage.textContent = "Please enter something about yourself.";
-    } else if (aboutInput.validity.tooShort || aboutInput.validity.tooLong) {
-      aboutErrorMessage.textContent =
-        "About must be between 2 and 200 characters.";
-    } else {
-      aboutErrorMessage.textContent = "";
-    }
-  }
-}
-
 nameInput.addEventListener("input", validateForm);
 aboutInput.addEventListener("input", validateForm);
 
 //title element and url element validation
+
+const processEscDown = (evt) => {
+  if (evt.which === ESC_KEYCODE) {
+    const activeModal = document.querySelector(".modal_opened");
+    closeModal(activeModal);
+  }
+};
+function closeModalOnRemoteClick(evt) {
+  if (
+    evt.target === evt.currentTarget ||
+    evt.target.classList.contains("modal__close")
+  ) {
+    closeModal(evt.target);
+  }
+}
+profileEditModal.addEventListener("mousedown", closeModalOnRemoteClick);
+
+addCardEditModal.addEventListener("mousedown", closeModalOnRemoteClick);
+
+imageModal.addEventListener("mousedown", closeModalOnRemoteClick);
 
 const titleElInput = document.getElementById("element-title-input");
 const urlElInput = document.getElementById("element-image-input");
@@ -222,33 +223,26 @@ const createBtn = document.getElementById("create");
 const titleErrorMessage = document.getElementById("title-error-message");
 const urlErrorMessage = document.getElementById("url-error-message");
 
-function validateElement(ev) {
-  ev.preventDefault();
-  if (titleElInput.checkValidity() && urlElInput.checkValidity()) {
-    createBtn.classList.remove("inactive");
-    createBtn.disabled = false;
-    titleErrorMessage.textContent = "";
-    urlErrorMessage.textContent = "";
-  } else {
-    createBtn.classList.add("inactive");
-    createBtn.disabled = true;
-    if (titleElInput.validity.valueMissing) {
-      titleErrorMessage.textContent = "Please enter some title.";
-    } else if (
-      titleElInput.validity.tooShort ||
-      titleElInput.validity.tooLong
-    ) {
-      titleErrorMessage.textContent =
-        "Name must be between 1 and 30 characters.";
-    }
-    if (urlElInput.validity.value) {
-      urlErrorMessage.textContent = "Please enter a valid URL.";
-    } else {
-      urlErrorMessage.textContent = "this is not a valid url";
-    }
-  }
-}
+profileEditForm.addEventListener("submit", handleProfileEditForm);
+profileEditButton.addEventListener("click", () => {
+  profileTitleInput.value = profileTitle.textContent;
+  profileSubheadingInput.value = profileSubheading.textContent;
+  openModal(profileEditModal);
+});
+profileModalCloseButton.addEventListener("click", () =>
+  closeModal(profileEditModal)
+);
+addCardButton.addEventListener("click", () => openModal(addCardEditModal));
 
+addCardForm.addEventListener("submit", handleAddCardForm);
+profileModalCloseButton.addEventListener("click", closeEditModalPopup);
+addCardModalCloseButton.addEventListener("click", closeAddCardModalPopup);
+profileEditForm.addEventListener("submit", handleProfileEditForm);
+imageModalCloseBtn.addEventListener("click", () => {
+  closeModal(imageModal);
+});
+
+initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
 titleElInput.addEventListener("input", validateElement);
 urlElInput.addEventListener("input", validateElement);
 document.addEventListener("keydown", handleEscKey);
