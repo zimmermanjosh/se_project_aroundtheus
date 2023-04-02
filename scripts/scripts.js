@@ -125,13 +125,21 @@ function handleProfileEditSubmit(e) {
   closePopUp(profileEditModal);
 }
 
-function handleEscKey(event) {
-  if (event.keyCode === 27) {
+/*function handleEscKey(event) {
+  if (event.key === '27') {
     closePopUp(profileEditModal);
     closePopUp(elementAddModal);
     closePopUp(elementImageModal);
   }
-}
+}*/
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closePopUp(profileEditModal);
+    closePopUp(elementAddModal);
+    closePopUp(elementImageModal);
+  }
+});
 
 /**
 =========================================================
