@@ -64,7 +64,12 @@
       <div class="modal__container">
         <button class="modal__close" id="modal-close-button"></button>
         <h2 class="modal__heading">Edit profile</h2>
-        <form class="modal__form" id="profile-edit-form" name="profileForm">
+        <form
+          class="modal__form"
+          id="profile-edit-form"
+          name="profileForm"
+          novalidate
+        >
           <label for="name"></label>
           <input
             class="modal__form-input"
@@ -74,6 +79,7 @@
             id="profile-title-input"
             minlength="2"
             maxlength="40"
+            required
           />
           <div class="error-message" id="name-error-message"></div>
           <label for="description"></label>
@@ -85,13 +91,14 @@
             id="profile-descr-input"
             minlength="2"
             maxlength="200"
+            required
           />
           <div class="error-message" id="about-error-message"></div>
           <button
             type="submit"
             name="save"
             id="save"
-            class="modal__button inactive"
+            class="modal__button"
             disabled
           >
             Save
@@ -102,9 +109,18 @@
     <!-- Modal ADD URL and name  2023/02/11-->
     <div class="modal" id="element-add-modal">
       <div class="modal__container">
-        <button class="modal__close" id="element-add-close"></button>
+        <button
+          class="modal__close"
+          id="element-add-close"
+          type="button"
+        ></button>
         <h2 class="modal__heading">New Location</h2>
-        <form class="modal__form" id="element-add-form" name="elementForm">
+        <form
+          class="modal__form"
+          id="element-add-form"
+          name="elementForm"
+          novalidate
+        >
           <label for="title"></label>
           <input
             class="modal__form-input"
@@ -112,25 +128,26 @@
             name="title"
             placeholder="title"
             id="element-title-input"
-            minlength="2"
+            minlength="1"
             maxlength="30"
+            required
           />
           <div class="error-message" id="title-error-message"></div>
           <label for="url"></label>
           <input
             class="modal__form-input"
-            type="text"
+            type="url"
             name="url"
             placeholder="url"
             id="element-image-input"
-            minlength="2"
+            required
           />
           <div class="error-message" id="url-error-message"></div>
           <button
             type="submit"
             name="create"
             id="create"
-            class="modal__button inactive"
+            class="modal__button"
             disabled
           >
             create
@@ -152,10 +169,11 @@
     </div>
     <!-- template-->
     <template id="element-template">
-      <li class="element">
+      <li class="element el__element">
         <button
           class="element__delete-button"
           id="element-delete-button"
+          type="button"
           title="button"
         ></button>
         <img class="element__img" src="#" alt="" id="element-image" />
