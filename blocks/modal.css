@@ -101,6 +101,15 @@
   cursor: pointer;
 }
 
+.modal__container_image {
+  background: none;
+  padding: 0;
+  max-width: 75vw;
+  max-height: 75vh;
+  width: auto;
+  display: flex;
+}
+
 .modal__button:hover {
   opacity: 0.8;
 }

@@ -62,7 +62,7 @@
     <!-- Modal Profile 2023/02/01-->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
-        <button class="modal__close" id="modal-close-button"></button>
+        <button class="modal__close" id="modal-profile-close-button"></button>
         <h2 class="modal__heading">Edit profile</h2>
         <form
           class="modal__form"
@@ -155,8 +155,13 @@
         </form>
       </div>
     </div>
+
     <div class="modal" id="element-image-modal">
-      <div class="modal__container-element">
+      <div class="modal__container modal__container_image">
+        <button
+          class="modal__close modal__close_image"
+          id="element-image-close"
+        ></button>
         <img
           class="modal__image-element"
           id="element-modal-image"
@@ -164,19 +169,19 @@
           alt=""
         />
         <p class="modal__caption-element" id="element-modal-caption"></p>
-        <button class="modal__close" id="element-image-close"></button>
       </div>
     </div>
     <!-- template-->
+
     <template id="element-template">
       <li class="element el__element">
+        <img class="element__img" src="" alt="" />
         <button
           class="element__delete-button"
           id="element-delete-button"
           type="button"
-          title="button"
+          aria-label="delete"
         ></button>
-        <img class="element__img" src="#" alt="" id="element-image" />
         <div class="element__descr">
           <h2 class="element__text" id="element-title"></h2>
           <button class="element__like-button" type="button"></button>

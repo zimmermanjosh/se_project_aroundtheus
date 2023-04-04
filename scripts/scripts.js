@@ -40,17 +40,19 @@ const initializeCards = [
 
 /**  profile modal **/
 const profileEditModal = document.querySelector("#profile-edit-modal");
-const profileEditButton = document.querySelector("#profile-edit-button");
-const profileEditCloseButton = document.querySelector("#modal-close-button");
+const profileEditButton = document.querySelector(".profile__edit-button");
+const profileEditCloseButton = document.querySelector(
+  "#modal-profile-close-button"
+);
 const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
-const profileTitle = document.querySelector("#profile-title");
+const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile-descr");
 const profileTitleInput = document.querySelector("#profile-title-input");
 const profileDescriptionInput = document.querySelector("#profile-descr-input");
 
 /**  element modal **/
 const elementAddModal = document.querySelector("#element-add-modal");
-const elementAddButton = document.querySelector("#element-add-button");
+const elementAddButton = document.querySelector(".profile__add-button");
 const elementCloseButton = elementAddModal.querySelector("#element-add-close");
 const elementAddForm = elementAddModal.querySelector("#element-add-form");
 const elementTitleInput = document.querySelector("#element-title-input");
@@ -65,33 +67,31 @@ const elementTemplate = document
   .content.querySelector(".el__element");
 
 const elementImageModal = document.querySelector("#element-image-modal");
-const elementImageModalClose = document.querySelector("#element-image-close");
-const modalImage = document.querySelector(".element-modal-image");
-const modalCaption = document.querySelector(".element-modal-caption");
+const elementImageModalClose = elementImageModal.querySelector(
+  "#element-image-close"
+);
+const modalImage = elementImageModal.querySelector(".modal__image-element");
+const modalCaption = elementImageModal.querySelector(".modal__caption-element");
 
 const titleElInput = document.getElementById("element-title-input");
 const urlElInput = document.getElementById("element-image-input");
-
 ///////////////////////////////////
 /* function - statements */
 ///////////////////////////////////
+const elementGallery = document.querySelector(".elements__list");
+const cardTemplate = document
+  .querySelector("#element-template")
+  .content.querySelector(".element");
 
-function renderElement(element, container) {
-  container.prepend(element);
+function renderElement(elementData) {
+  elementGallery.prepend(getElementView(elementData));
 }
 
 function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closePopUp(profileEditModal);
-}
-
-function handleElementImageModal(elementData) {
-  modalImage.src = elementData.url;
-  modalImage.alt = elementData.name;
-  modalCaption.textContent = elementData.name;
-  openPopUp(elementImageModal);
+  closeModal(profileEditModal);
 }
 
 function resetForm(form) {
@@ -100,8 +100,8 @@ function resetForm(form) {
 
 /* event Listeners */
 initializeCards.forEach((elementData) => {
-  const elementView = getElementView(elementData);
-  renderElement(elementView, elementList);
+  getElementView(elementData);
+  renderElement(elementData);
 });
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
@@ -133,6 +133,7 @@ elementCloseButton.addEventListener("click", () => {
 elementImageModalClose.addEventListener("click", () => {
   closeModal(elementImageModal);
 });
+
 elementImageModal.addEventListener("mousedown", imageOverlayClick);
 
 function handleEscKey(evt) {
@@ -156,7 +157,7 @@ function elementOverlayClick(evt) {
     evt.target.classList.contains("modal") ||
     evt.target.classList.contains("modal__close")
   ) {
-    closeModal(elementImageModal);
+    closeModal(elementAddModal);
   }
 }
 
@@ -165,7 +166,7 @@ function imageOverlayClick(evt) {
     evt.target.classList.contains("modal") ||
     evt.target.classList.contains("modal__close")
   ) {
-    closeModal(elementImage);
+    closeModal(elementImageModal);
   }
 }
 
@@ -182,13 +183,16 @@ function getElementView(elementData) {
 
   elementDeleteButton.addEventListener("click", () => element.remove());
 
-  imageElement.addEventListener("click", () => {
-    handleElementImageModal(elementData);
-  });
-
   imageElement.src = elementData.url;
   imageElement.alt = elementData.name;
   titleElement.textContent = elementData.name;
+
+  modalImage.addEventListener("click", () => {
+    modalImage.src = elementData.url;
+    modalImage.alt = elementData.name;
+    modalCaption.textContent = elementData.name;
+    openModal(elementImageModal);
+  });
   return element;
 }
 
