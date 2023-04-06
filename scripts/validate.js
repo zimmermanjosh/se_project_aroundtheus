@@ -74,7 +74,7 @@ const enableValidation = (config) => {
   });
 };
 
-const validationObjects = {
+const configurationObjects = {
   formSelector: ".modal__form",
   inputSelector: ".modal__form-input",
   submitButtonSelector: ".modal__button",
@@ -83,4 +83,4 @@ const validationObjects = {
   errorClass: "modal__error_visible",
 };
 
-enableValidation(validationObjects);
+enableValidation(configurationObjects);
