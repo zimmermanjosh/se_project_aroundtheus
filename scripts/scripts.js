@@ -214,7 +214,7 @@ function renderElement(elementData) {
 }
 
 function handleProfileEditSubmit(e) {
-  e.preventDefault();
+  //e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   closeModal(profileEditModal);
