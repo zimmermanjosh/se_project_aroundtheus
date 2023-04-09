@@ -70,7 +70,7 @@
   margin-top: 54px;
 }
 
-.modal__form-input {
+.modal__input {
   font-family: "Inter", Arial, sans-serif;
   height: 50px;
   border-top: 1px;
@@ -152,4 +152,23 @@
 
 .modal__error_visible {
   opacity: 1;
+}
+
+@media screen and (max-width: 545px) {
+  .modal__close {
+    width: 32px;
+    height: 32px;
+    right: 0;
+  }
+
+  .modal__close_image {
+    top: -35px;
+    right: -35px;
+  }
+}
+
+@media screen and (max-width: 486px) {
+  .modal__container {
+    padding: 25px 22px;
+  }
 }

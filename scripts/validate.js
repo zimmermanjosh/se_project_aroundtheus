@@ -16,7 +16,9 @@ const hideInputError = (
   { errorClass, inputErrorClass }
 ) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+  console.log(inputElement);
   inputElement.classList.remove(inputErrorClass);
+  console.log(errorElement);
   errorElement.classList.remove(errorClass);
   errorElement.textContent = " ";
 };
@@ -74,13 +76,13 @@ const enableValidation = (config) => {
   });
 };
 
-const validationObjects = {
+const configurationObjects = {
   formSelector: ".modal__form",
-  inputSelector: ".modal__form-input",
+  inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
 
-enableValidation(validationObjects);
+enableValidation(configurationObjects);

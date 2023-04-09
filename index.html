@@ -32,19 +32,11 @@
             class="profile__img"
           />
           <div class="profile__info">
-            <h1 class="profile__title" id="profile-title">Joshua Zimmerman</h1>
-            <button
-              type="button"
-              class="profile__edit-button"
-              id="profile-edit-button"
-            ></button>
-            <p class="profile__descr" id="profile-descr">Explorer, dad</p>
+            <h1 class="profile__title">Joshua Zimmerman</h1>
+            <button type="button" class="profile__edit-button"></button>
+            <p class="profile__descr">Explorer, dad</p>
           </div>
-          <button
-            type="button"
-            class="profile__add-button"
-            id="element-add-button"
-          ></button>
+          <button type="button" class="profile__add-button"></button>
         </section>
         <!--/elements_section-->
         <section class="elements page__section">
@@ -64,45 +56,28 @@
       <div class="modal__container">
         <button class="modal__close" id="modal-profile-close-button"></button>
         <h2 class="modal__heading">Edit profile</h2>
-        <form
-          class="modal__form"
-          id="profile-edit-form"
-          name="profileForm"
-          novalidate
-        >
-          <label for="name"></label>
+        <form class="modal__form" id="profile-edit-form" novalidate>
           <input
-            class="modal__form-input"
+            class="modal__input"
             type="text"
-            name="name"
             placeholder="name"
-            id="profile-title-input"
+            id="title-input"
             minlength="2"
             maxlength="40"
             required
           />
-          <div class="error-message" id="name-error-message"></div>
-          <label for="description"></label>
+          <span class="modal__error" id="title-input-error"></span>
           <input
-            class="modal__form-input"
+            class="modal__input"
             type="text"
-            name="description"
             placeholder="description"
-            id="profile-descr-input"
+            id="profile-input"
             minlength="2"
             maxlength="200"
             required
           />
-          <div class="error-message" id="about-error-message"></div>
-          <button
-            type="submit"
-            name="save"
-            id="save"
-            class="modal__button"
-            disabled
-          >
-            Save
-          </button>
+          <span class="modal__error" id="profile-input-error"></span>
+          <button type="submit" class="modal__button">Save</button>
         </form>
       </div>
     </div>
@@ -115,41 +90,28 @@
           type="button"
         ></button>
         <h2 class="modal__heading">New Location</h2>
-        <form
-          class="modal__form"
-          id="element-add-form"
-          name="elementForm"
-          novalidate
-        >
+        <form class="modal__form" id="element-add-form" novalidate>
           <label for="title"></label>
           <input
-            class="modal__form-input"
+            class="modal__input"
             type="text"
-            name="title"
             placeholder="title"
-            id="element-title-input"
+            id="element-input"
             minlength="1"
             maxlength="30"
             required
           />
-          <div class="error-message" id="title-error-message"></div>
+          <span class="modal__error" id="element-input-error"></span>
           <label for="url"></label>
           <input
-            class="modal__form-input"
+            class="modal__input"
             type="url"
-            name="url"
             placeholder="url"
-            id="element-image-input"
+            id="image-input"
             required
           />
-          <div class="error-message" id="url-error-message"></div>
-          <button
-            type="submit"
-            name="create"
-            id="create"
-            class="modal__button"
-            disabled
-          >
+          <span class="modal__error" id="image-input-error"></span>
+          <button type="submit" name="create" class="modal__button">
             create
           </button>
         </form>
