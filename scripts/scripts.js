@@ -78,6 +78,8 @@ initializeCards.forEach((elementData) => {
   renderElement(elementData);
 });
 
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+
 elementImageModal.addEventListener("mousedown", handlePopupClose);
 
 profileEditModal.addEventListener("mousedown", handlePopupClose);
