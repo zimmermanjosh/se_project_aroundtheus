@@ -34,6 +34,7 @@ const initializeCards = [
     url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
+
 ///////////////////////////////////
 /* variables - constants */
 ///////////////////////////////////
@@ -45,37 +46,31 @@ const profileEditCloseButton = document.querySelector(
   "#modal-profile-close-button"
 );
 const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
-const profileTitle = document.querySelector(".profile__title");
-const profileDescription = document.querySelector(".profile-descr");
-const profileTitleInput = document.querySelector("#profile-title-input");
-//const profileDescriptionInput = document.querySelector("#profile-descr-input");
-const profileDescriptionInput = document.querySelector("#profile-input");
 /**  element modal **/
 const elementAddModal = document.querySelector("#element-add-modal");
 const elementAddButton = document.querySelector(".profile__add-button");
 const elementCloseButton = elementAddModal.querySelector("#element-add-close");
 const elementAddForm = elementAddModal.querySelector("#element-add-form");
-const elementTitleInput = document.querySelector("#element-title-input");
-const elementImageInput = document.querySelector("#element-image-input");
-const elementImage = document.querySelector("#element-image");
-
 /*URL List*/
 const elementList = document.querySelector(".elements__list");
-/*Template*/
-const elementTemplate = document
-  .querySelector("#element-template")
-  .content.querySelector(".element");
+const elNameInput = elementAddModal.querySelector("#element-input");
+const elUrlInput = elementAddModal.querySelector("#image-input");
 
 // images and popup modal
 const elementImageModal = document.querySelector("#element-image-modal");
-const elementImageModalClose = document.querySelector("#element-image-close");
 const modalImage = document.querySelector("#element-modal-image");
 const modalCaption = document.querySelector("#element-modal-caption");
+const elementImageModalClose = document.querySelector("#element-image-close");
 
 ///////////////////////////////////
 /* function - statements */
 ///////////////////////////////////
+
 const elementGallery = document.querySelector(".elements__list");
+
+const elementTemplate = document
+  .querySelector("#element-template")
+  .content.querySelector(".el__element");
 
 /* event Listeners */
 initializeCards.forEach((elementData) => {
@@ -92,16 +87,11 @@ profileEditButton.addEventListener("click", () => {
 profileEditCloseButton.addEventListener("click", () => {
   closeModal(profileEditModal);
 });
+
 profileEditModal.addEventListener("mousedown", profileOverlayClick);
 
-elementAddForm.addEventListener("submit", (e) => {
-  const name = e.target.title.value;
-  const url = e.target.url.value;
-  const elementView = getElementView({ name, url });
-  renderElement(elementView, elementList);
-  closeModal(elementAddModal);
-  //elementAddForm.reset();
-});
+elementAddForm.addEventListener("submit", handleElementImageModal);
+
 elementAddModal.addEventListener("mousedown", elementOverlayClick);
 
 elementAddButton.addEventListener("click", () => {
@@ -153,17 +143,21 @@ function imageOverlayClick(evt) {
 }
 
 function getElementView(elementData) {
-  const element = elementTemplate.cloneNode(true);
-  const imageElement = element.querySelector(".element__img");
-  const titleElement = element.querySelector(".element__text");
-  const likeButton = element.querySelector(".element__like-button");
-  const elementDeleteButton = element.querySelector("#element-delete-button");
+  const elementCardTemp = elementTemplate.cloneNode(true);
+  const imageElement = elementCardTemp.querySelector(".element__img");
+  const titleElement = elementCardTemp.querySelector(".element__text");
+  const likeButton = elementCardTemp.querySelector(".element__like-button");
+  const elementDeleteButton = elementCardTemp.querySelector(
+    ".element__delete-button"
+  );
 
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("element__like-button_active");
-  });
 
-  elementDeleteButton.addEventListener("click", deleteElement);
+    elementDeleteButton.addEventListener("click", () =>
+      elementCardTemp.remove()
+    );
+  });
 
   imageElement.src = elementData.url;
   imageElement.alt = elementData.name;
@@ -175,14 +169,17 @@ function getElementView(elementData) {
     modalCaption.textContent = elementData.name;
     openModal(elementImageModal);
   });
-  return element;
+  return elementCardTemp;
 }
 
-function handleElementImageModal(elementData) {
-  modalImage.src = elementData.url;
-  modalImage.alt = elementData.name;
-  modalCaption.textContent = elementData.name;
-  openModal(elementImageModal);
+function handleElementImageModal(evt) {
+  evt.preventDefault();
+
+  const newData = { name: elNameInput.value, url: elUrlInput.value };
+
+  renderElement(newData);
+  closeModal(elementAddModal);
+  resetForm("element-add-form");
 }
 
 function deleteElement(e) {
@@ -205,8 +202,8 @@ function closeModal(modal) {
 }
 
 function fillProfileForm() {
-  titleInput.value = profileTitle.textContent;
-  descriptionInput.value = profileDescription.textContent;
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
 }
 
 function renderElement(elementData) {
@@ -215,9 +212,21 @@ function renderElement(elementData) {
 
 function handleProfileEditSubmit(e) {
   e.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
-  closeModal(profileEditModal);
+  const profileTitleInput = document.querySelector("#title-input");
+  const profileDescriptionInput = document.querySelector("#profile-input");
+  const profileTitle = document.querySelector(".profile__title");
+  const profileDescription = document.querySelector(".profile__descr");
+
+  if (
+    profileTitle &&
+    profileDescription &&
+    profileTitleInput &&
+    profileDescriptionInput
+  ) {
+    profileTitle.textContent = profileTitleInput.value;
+    profileDescription.textContent = profileDescriptionInput.value;
+    closeModal(profileEditModal);
+  }
 }
 
 function resetForm(form) {
