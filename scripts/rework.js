@@ -58,8 +58,8 @@ const elUrlInput = elementAddModal.querySelector("#image-input");
 
 // images and popup modal
 const elementImageModal = document.querySelector("#element-image-modal");
-const modalImage = document.querySelector(".element-modal-image");
-const modalCaption = document.querySelector(".element-modal-caption");
+const modalImage = document.querySelector("#element-modal-image");
+const modalCaption = document.querySelector("#element-modal-caption");
 const elementImageModalClose = document.querySelector("#element-image-close");
 
 ///////////////////////////////////
