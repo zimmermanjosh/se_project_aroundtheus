@@ -82,7 +82,7 @@
             required
           />
           <span class="modal__error" id="profile-input-error"></span>
-          <button type="submit" class="modal__button">Save</button>
+          <button type="submit" class="modal__button" disabled>Save</button>
         </form>
       </div>
     </div>
@@ -115,7 +115,12 @@
             required
           />
           <span class="modal__error" id="image-input-error"></span>
-          <button type="submit" name="create" class="modal__button">
+          <button
+            type="submit"
+            name="create"
+            class="modal__button modal__button_disabled modal__save-button-transparent"
+            disabled
+          >
             create
           </button>
         </form>

@@ -50,11 +50,13 @@ const profileDescriptionInput = document.querySelector("#profile-input");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__descr");
 const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
+
 /**  element modal **/
 const elementAddModal = document.querySelector("#element-add-modal");
 const elementAddButton = document.querySelector(".profile__add-button");
 const elementCloseButton = elementAddModal.querySelector("#element-add-close");
 const elementAddForm = elementAddModal.querySelector("#element-add-form");
+
 /*URL List*/
 const elementList = document.querySelector(".elements__list");
 const elNameInput = elementAddModal.querySelector("#element-input");
@@ -74,7 +76,6 @@ const elementTemplate = document
 
 /* event Listeners */
 initializeCards.forEach((elementData) => {
-  getElementView(elementData);
   renderElement(elementData);
 });
 
@@ -94,24 +95,11 @@ profileEditButton.addEventListener("click", () => {
   openModal(profileEditModal);
 });
 
-elementCloseButton.addEventListener("click", () => {
-  closeModal(elementAddModal);
-});
-
-elementImageModalClose.addEventListener("click", () => {
-  closeModal(elementImageModal);
-});
-
-profileEditCloseButton.addEventListener("click", () => {
-  closeModal(profileEditModal);
-});
-
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 elementAddForm.addEventListener("submit", handleElementImageModal);
 
 // Functions
-
 function handleEscKey(evt) {
   if (evt.key === "Escape") {
     const activeModal = document.querySelector(".modal_opened");
@@ -163,16 +151,11 @@ function handleElementImageModal(evt) {
 
   renderElement(newData);
   closeModal(elementAddModal);
-  resetForm("element-add-form");
+  evt.target.reset();
 }
 
 function deleteElement(e) {
   e.target.closest(".element").remove();
-}
-
-function openEditModal() {
-  fillProfileForm();
-  openModal(profileEditModal);
 }
 
 function openModal(modal) {
@@ -184,11 +167,6 @@ function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keyup", handleEscKey);
 }
-
-/*function fillProfileForm() {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-}*/
 
 function renderElement(elementData) {
   elementGallery.prepend(getElementView(elementData));

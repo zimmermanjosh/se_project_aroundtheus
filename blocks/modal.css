@@ -23,6 +23,11 @@
   transition-delay: 0s;
 }
 
+.modal__save-button-transparent {
+  border: 1px solid #000000;
+  border-radius: 2px;
+}
+
 .modal__container {
   background-color: #fff;
   margin: auto;
@@ -145,7 +150,7 @@
 .modal__button_disabled {
   border: 1px solid rgba(0, 0, 0, 0.2);
   color: rgba(0, 0, 0, 0.2);
-  background: #fff;
+  background: lightgray;
   pointer-events: none;
   user-select: none;
 }
