@@ -33,6 +33,16 @@ const initializeCards = [
     name: "Lago di Braies",
     url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
+  {
+    //object
+    name: "the last starfighter",
+    url: "https://images.justwatch.com/poster/11067210/s718/the-last-starfighter.%7Bformat%7D",
+  },
+  {
+    //object
+    name: "real genius",
+    url: "https://m.media-amazon.com/images/M/MV5BNTQ5MzU3ODg0OF5BMl5BanBnXkFtZTgwODM0MzQxMDE@._V1_.jpg",
+  },
 ];
 
 ///////////////////////////////////
