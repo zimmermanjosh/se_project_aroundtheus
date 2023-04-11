@@ -146,16 +146,14 @@ function getElementView(elementData) {
 
 function handleElementImageModal(evt) {
   evt.preventDefault();
-
   const newData = { name: elNameInput.value, url: elUrlInput.value };
-
   renderElement(newData);
   closeModal(elementAddModal);
   evt.target.reset();
 }
 
-function deleteElement(e) {
-  e.target.closest(".element").remove();
+function deleteElement(evt) {
+  evt.target.closest(".element").remove();
 }
 
 function openModal(modal) {
@@ -172,8 +170,8 @@ function renderElement(elementData) {
   elementGallery.prepend(getElementView(elementData));
 }
 
-function handleProfileEditSubmit(e) {
-  e.preventDefault();
+function handleProfileEditSubmit(evt) {
+  evt.preventDefault();
   if (
     profileTitle &&
     profileDescription &&
@@ -183,9 +181,6 @@ function handleProfileEditSubmit(e) {
     profileTitle.textContent = profileTitleInput.value;
     profileDescription.textContent = profileDescriptionInput.value;
     closeModal(profileEditModal);
+    evt.target.reset();
   }
-}
-
-function resetForm(form) {
-  document.getElementById(form).reset();
 }
