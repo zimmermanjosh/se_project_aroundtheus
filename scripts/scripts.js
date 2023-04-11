@@ -50,11 +50,13 @@ const profileDescriptionInput = document.querySelector("#profile-input");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__descr");
 const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
+
 /**  element modal **/
 const elementAddModal = document.querySelector("#element-add-modal");
 const elementAddButton = document.querySelector(".profile__add-button");
 const elementCloseButton = elementAddModal.querySelector("#element-add-close");
 const elementAddForm = elementAddModal.querySelector("#element-add-form");
+
 /*URL List*/
 const elementList = document.querySelector(".elements__list");
 const elNameInput = elementAddModal.querySelector("#element-input");
@@ -65,6 +67,7 @@ const elementImageModal = document.querySelector("#element-image-modal");
 const modalImage = document.querySelector("#element-modal-image");
 const modalCaption = document.querySelector("#element-modal-caption");
 const elementImageModalClose = document.querySelector("#element-image-close");
+const elSaveButton = elementImageModal.querySelector("#imageSubmitButton");
 
 //array of data element in elements
 const elementGallery = document.querySelector(".elements__list");
@@ -72,9 +75,12 @@ const elementTemplate = document
   .querySelector("#element-template")
   .content.querySelector(".el__element");
 
+const modalInputs = Array.from(
+  elementImageModal.querySelectorAll(".modal__input")
+);
+
 /* event Listeners */
 initializeCards.forEach((elementData) => {
-  getElementView(elementData);
   renderElement(elementData);
 });
 
@@ -92,18 +98,6 @@ profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   openModal(profileEditModal);
-});
-
-elementCloseButton.addEventListener("click", () => {
-  closeModal(elementAddModal);
-});
-
-elementImageModalClose.addEventListener("click", () => {
-  closeModal(elementImageModal);
-});
-
-profileEditCloseButton.addEventListener("click", () => {
-  closeModal(profileEditModal);
 });
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
@@ -160,19 +154,17 @@ function handleElementImageModal(evt) {
   evt.preventDefault();
 
   const newData = { name: elNameInput.value, url: elUrlInput.value };
-
   renderElement(newData);
   closeModal(elementAddModal);
-  resetForm("element-add-form");
+  evt.target.reset();
+
+  const createButton = elementAddForm.querySelector(".modal__button");
+  createButton.classList.add("modal__button_disabled");
+  createButton.disabled = true;
 }
 
-function deleteElement(e) {
-  e.target.closest(".element").remove();
-}
-
-function openEditModal() {
-  fillProfileForm();
-  openModal(profileEditModal);
+function deleteElement(evt) {
+  evt.target.closest(".element").remove();
 }
 
 function openModal(modal) {
@@ -185,17 +177,12 @@ function closeModal(modal) {
   document.removeEventListener("keyup", handleEscKey);
 }
 
-/*function fillProfileForm() {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-}*/
-
 function renderElement(elementData) {
   elementGallery.prepend(getElementView(elementData));
 }
 
-function handleProfileEditSubmit(e) {
-  e.preventDefault();
+function handleProfileEditSubmit(evt) {
+  evt.preventDefault();
   if (
     profileTitle &&
     profileDescription &&
@@ -205,9 +192,6 @@ function handleProfileEditSubmit(e) {
     profileTitle.textContent = profileTitleInput.value;
     profileDescription.textContent = profileDescriptionInput.value;
     closeModal(profileEditModal);
+    evt.target.reset();
   }
-}
-
-function resetForm(form) {
-  document.getElementById(form).reset();
 }
