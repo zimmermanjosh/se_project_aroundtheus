@@ -67,12 +67,17 @@ const elementImageModal = document.querySelector("#element-image-modal");
 const modalImage = document.querySelector("#element-modal-image");
 const modalCaption = document.querySelector("#element-modal-caption");
 const elementImageModalClose = document.querySelector("#element-image-close");
+const elSaveButton = elementImageModal.querySelector("#imageSubmitButton");
 
 //array of data element in elements
 const elementGallery = document.querySelector(".elements__list");
 const elementTemplate = document
   .querySelector("#element-template")
   .content.querySelector(".el__element");
+
+const modalInputs = Array.from(
+  elementImageModal.querySelectorAll(".modal__input")
+);
 
 /* event Listeners */
 initializeCards.forEach((elementData) => {
@@ -100,6 +105,7 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 elementAddForm.addEventListener("submit", handleElementImageModal);
 
 // Functions
+
 function handleEscKey(evt) {
   if (evt.key === "Escape") {
     const activeModal = document.querySelector(".modal_opened");
@@ -146,10 +152,15 @@ function getElementView(elementData) {
 
 function handleElementImageModal(evt) {
   evt.preventDefault();
+
   const newData = { name: elNameInput.value, url: elUrlInput.value };
   renderElement(newData);
   closeModal(elementAddModal);
   evt.target.reset();
+
+  const createButton = elementAddForm.querySelector(".modal__button");
+  createButton.classList.add("modal__button_disabled");
+  createButton.disabled = true;
 }
 
 function deleteElement(evt) {
