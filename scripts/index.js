@@ -1,4 +1,4 @@
-import Card from "./components/Card.js";
+import Card from "./Card.js";
 
 ///////////////////////////////////
 // initialize the app with data //
@@ -46,6 +46,17 @@ const initializeCards = [
     url: "https://m.media-amazon.com/images/M/MV5BNTQ5MzU3ODg0OF5BMl5BanBnXkFtZTgwODM0MzQxMDE@._V1_.jpg",
   },
 ];
+
+const cardData = {
+  //object 1
+  name: "Yosemite Valley",
+  url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+};
+
+const card = new Card(cardData, "#element-template");
+//console.log(card);
+
+card.getView();
 
 ///////////////////////////////////
 /* variables - constants */
@@ -138,16 +149,18 @@ function getElementView(elementData) {
   const elementCardTemp = elementTemplate.cloneNode(true);
   const imageElement = elementCardTemp.querySelector(".element__img");
   const titleElement = elementCardTemp.querySelector(".element__text");
-  const likeButton = elementCardTemp.querySelector(".element__like-button");
-  const elementDeleteButton = elementCardTemp.querySelector(
-    ".element__delete-button"
-  );
+  //const likeButton = elementCardTemp.querySelector(".element__like-button");
+  //const elementDeleteButton = elementCardTemp.querySelector(
+  //".element__delete-button"
+  //);
 
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("element__like-button_active");
-  });
+  /*const handleLikeIcon = (evt) => {
+    evt.target.classList.toggle("element__like-button_active");
+  };
 
-  elementDeleteButton.addEventListener("click", () => elementCardTemp.remove());
+  const handleDeleteIcon = (evt) => {
+    evt.target.closest(".element el_element").remove();
+  };*/
 
   imageElement.src = elementData.url;
   imageElement.alt = elementData.name;

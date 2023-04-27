@@ -1,0 +1,51 @@
+export default class Card {
+  //instatntiate create a copy of structure of card to be generated
+  // card class is a card factory will have methods and properties
+  constructor({ name, url }, cardSelector) {
+    //console.log({ name, url });
+    //alert("done");
+    //console.log(this);
+    this._name = name;
+    this._url = url;
+    this._cardSelector = cardSelector;
+
+    //this.url = url;
+    //console.log(this.name);
+    //console.log(this.url);
+  }
+
+  _setEventListeners() {
+    //.element__like-button
+    const likeButton = this._elementCardTemp.querySelector(
+      "element__like-button"
+    );
+    console.log(likeButton);
+
+    //.element__delete-button
+  }
+  /* methods are in a classs methods are in a class
+  methods are in a class
+  function are out side of a class
+  function are out side of a class
+  function are out side of a class*/
+
+  /*testMethod() {
+    console.log(this.name);
+  }*/
+  //private methods
+  //_getView(){}
+
+  //public methods
+  getView() {
+    this._elementCardTemp = document
+      .querySelector(this._cardSelector)
+      .content.querySelector("element el__element")
+      .cloneNode(true);
+
+    //get the card
+    //view set event
+    this._setEventListeners();
+
+    //return the card
+  }
+}
