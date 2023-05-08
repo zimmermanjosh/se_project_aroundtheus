@@ -1,6 +1,6 @@
-import { Card } from './Card.js';
-import { FormValidator } from './FormValidator.js';
-import { openModal, closeModal, handleEscClose, handleOverlayClose } from './utils.js';
+import { Card } from 'scripts/Card.js';
+import { FormValidator } from 'components/FormValidator.js';
+import { openModal, closeModal, handleEscClose, handleOverlayClose } from 'utils/utils.js';
 
 const settings = {
   formSelector: '.form',
