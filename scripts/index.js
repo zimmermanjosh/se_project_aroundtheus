@@ -1,55 +1,79 @@
-import { Card } from 'scripts/Card.js';
-import { FormValidator } from 'components/FormValidator.js';
-import { openModal, closeModal, handleEscClose, handleOverlayClose } from 'utils/utils.js';
+import { Card } from './Card.js';
+import { FormValidator } from '../components/FormValidator.js';
+import { openModal, closeModal, handleEscClose, handleOverlayClose } from '../utils/utils.js';
 
 const settings = {
-  formSelector: '.form',
-  inputSelector: '.form__input',
-  submitButtonSelector: '.form__save-button',
-  inactiveButtonClass: 'form__save-button_inactive',
-  inputErrorClass: 'form__input_type_error',
-  errorClass: 'form__input-error_active'
+  formSelector: '.modal__form',
+  inputSelector: '.modal__input',
+  submitButtonSelector: '.modal__button',
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: 'modal__input_type_error',
+  errorClass: 'modal__error_visible'
 };
+
+/*ormSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",*/
 
 const cardsData = [
   {
-    text: 'Card 1',
-    link: 'https://picsum.photos/seed/1/200/300'
+    //object 1
+    text: "Yosemite Valley",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
   },
   {
-    text: 'Card 2',
-    link: 'https://picsum.photos/seed/2/200/300'
+    //object 2
+    text: "Lake Louise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
   },
   {
-    text: 'Card 3',
-    link: 'https://picsum.photos/seed/3/200/300'
+    //object 3
+    text: "Bald Mountains",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
   },
   {
-    text: 'Card 4',
-    link: 'https://picsum.photos/seed/4/200/300'
+    //object 4
+    text: "Latemar",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
   },
   {
-    text: 'Card 5',
-    link: 'https://picsum.photos/seed/5/200/300'
+    //object 5
+    text: "Vanoise National Park",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
   },
   {
-    text: 'Card 6',
-    link: 'https://picsum.photos/seed/6/200/300'
-  }
+    //object 6
+    text: "Lago di Braies",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+  },
+  {
+    //object
+    text: "the last starfighter",
+    link: "https://images.justwatch.com/poster/11067210/s718/the-last-starfighter.%7Bformat%7D",
+  },
+  {
+    //object
+    text: "real genius",
+    link: "https://m.media-amazon.com/images/M/MV5BNTQ5MzU3ODg0OF5BMl5BanBnXkFtZTgwODM0MzQxMDE@._V1_.jpg",
+  },
 ];
 
-const cardContainer = document.querySelector('.cards');
+const cardContainer = document.querySelector('.elements__list');
 const formElement = document.querySelector(settings.formSelector);
 const saveButton = formElement.querySelector(settings.submitButtonSelector);
 
-const cardTemplateSelector = '#card-template';
 const formValidator = new FormValidator(settings, formElement);
-
+const cardTemplateSelector = '#element-template';
 function createCard(data) {
   const card = new Card(data, cardTemplateSelector);
   const cardElement = card.createCard();
   cardContainer.prepend(cardElement);
 }
+
+
 
 function renderInitialCards() {
   cardsData.forEach(createCard);
@@ -57,8 +81,11 @@ function renderInitialCards() {
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-  const inputText = formElement.querySelector('.form__input_type_title').value;
-  const inputLink = formElement.querySelector('.form__input_type_link').value;
+  //const inputText = formElement.querySelector('.modal__input_type_text').value;
+  //const inputLink = formElement.querySelector('.modal__input_type_link').value;
+  const inputText = formElement.querySelector('.modal__image-element').value;
+  const inputLink = formElement.querySelector('.modal__caption-element').value;
+
   const newCardData = {
     text: inputText,
     link: inputLink

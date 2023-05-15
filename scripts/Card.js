@@ -3,27 +3,29 @@ export class Card {
     this._text = data.text;
     this._link = data.link;
     this._templateSelector = templateSelector;
+    this.elementTemplate = null; // Initialize the elementTemplate property
   }
 
   _getTemplate() {
-    const cardElement = document.querySelector(this._templateSelector).content.querySelector('.card').cloneNode(true);
-    return cardElement;
+    const elementTemplate = document.querySelector(this._templateSelector);
+    const clonedTemplate = elementTemplate.content.querySelector(".element").cloneNode(true);
+    return clonedTemplate;
   }
 
-  _setEventListeners(cardElement) {
-    cardElement.querySelector('.card__image').addEventListener('click', () => {
+  _setEventListeners(elementTemplate) {
+    elementTemplate.querySelector(".element__img").addEventListener('click', () => {
       this._handleCardClick();
     });
 
-    cardElement.querySelector('.card__delete-button').addEventListener('click', () => {
+    elementTemplate.querySelector('.element__delete-button').addEventListener('click', () => {
       this._handleDeleteClick();
     });
   }
 
   _handleCardClick() {
-    const imageModal = document.querySelector('.modal_type_image');
-    const modalImage = imageModal.querySelector('.modal__image');
-    const modalCaption = imageModal.querySelector('.modal__caption');
+    const imageModal = document.querySelector('.modal__container-element');
+    const modalImage = imageModal.querySelector('.modal__image-element');
+    const modalCaption = imageModal.querySelector('.modal__caption-element');
     modalImage.src = this._link;
     modalImage.alt = this._text;
     modalCaption.textContent = this._text;
@@ -31,7 +33,7 @@ export class Card {
   }
 
   _handleDeleteClick() {
-    this._cardElement.remove();
+    this.elementTemplate.remove();
   }
 
   _openModal(modal) {
@@ -61,11 +63,11 @@ export class Card {
   }
 
   createCard() {
-    this._cardElement = this._getTemplate();
-    this._setEventListeners(this._cardElement);
-    this._cardElement.querySelector('.card__image').src = this._link;
-    this._cardElement.querySelector('.card__image').alt = this._text;
-    this._cardElement.querySelector('.card__title').textContent = this._text;
-    return this._cardElement;
+    this.elementTemplate = this._getTemplate();
+    this._setEventListeners(this.elementTemplate);
+    this.elementTemplate.querySelector('.element__img').src = this._link;
+    this.elementTemplate.querySelector('.element__img').alt = this._text;
+    this.elementTemplate.querySelector('.element__descr').textContent = this._text;
+    return this.elementTemplate ;
   }
 }
