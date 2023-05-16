@@ -37,13 +37,13 @@ export class Card {
   }
 
   _openModal(modal) {
-    modal.classList.add('modal_open');
+    modal.classList.add('modal_opened');
     document.addEventListener('keydown', this._handleEscClose);
     modal.addEventListener('click', this._handleOverlayClose);
   }
 
   _closeModal(modal) {
-    modal.classList.remove('modal_open');
+    modal.classList.remove('modal_opened');
     document.removeEventListener('keydown', this._handleEscClose);
     modal.removeEventListener('click', this._handleOverlayClose);
   }
