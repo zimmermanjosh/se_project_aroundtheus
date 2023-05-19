@@ -54,9 +54,7 @@ function disableSubmitButton(submitButton, config) {
 
   buttonElement.classList.add(config.inactiveButtonClass);
   buttonElement.disabled = true;
-
 }
-
 function enableSubmitButton(submitButton, config) {
   const { inactiveButtonClass } = config;
 
