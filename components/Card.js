@@ -5,8 +5,7 @@ export default class Card {
     this._templateSelector = templateSelector;
     this._handleImageClick = handleImageClick;
   }
-
-  _setEventListeners()
+  _setEventListeners() {
     this._likeButton.addEventListeners("click", () => {
       this._handleLikeButton();
       });
@@ -16,11 +15,11 @@ export default class Card {
       });
       //
     this._imageElement.addEventListeners("click", () => {
-      this._handleImageClick({ name: elNameInput.value, url: elUrlInput.value })
-    );
+      this._handleImageClick({ name: elNameInput.value, url: elUrlInput.value }
+      )})
   }
 
-  _handleLikeButton(){
+  _handleLikeButton() {
     likeButton.classList.toggle("element__like-button_active");
   }
 
@@ -46,9 +45,4 @@ export default class Card {
     this._setEventListeners();
     return this._elementCardTemp
   }
-
-  renderElement(elementData) {
-    elementGallery.prepend(getElementView(elementData));
-  }
-
 }

@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="acd87ac8-5914-43f8-9a73-5fb2e10ef94c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/scripts/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Card.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Card.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/formValidator.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/formValidator.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +36,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "jz/sprint7__sub__cardJS__utils.js",
     "last_opened_file_path": "/Users/jozimmeman/Dev/Projects/practicum/se_project_aroundtheus/components",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -68,7 +71,8 @@
       <updated>1683562723894</updated>
       <workItem from="1683562725559" duration="6870000" />
       <workItem from="1684078017217" duration="13361000" />
-      <workItem from="1684278610859" duration="24910000" />
+      <workItem from="1684278610859" duration="26156000" />
+      <workItem from="1684944946852" duration="1779000" />
     </task>
     <servers />
   </component>

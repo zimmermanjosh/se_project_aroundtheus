@@ -90,9 +90,9 @@ const modalInputs = Array.from(
 );
 
 /* event Listeners */
-initializeCards.forEach((elementData) => {
+/*initializeCards.forEach((elementData) => {
   renderElement(elementData);
-});
+});*/
 
 elementImageModal.addEventListener("mousedown", handlePopupClose);
 
