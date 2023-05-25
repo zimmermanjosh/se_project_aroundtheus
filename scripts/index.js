@@ -1,6 +1,7 @@
 ///////////////////////////////////
 // initialize the app with data //
 ///////////////////////////////////
+import Card from '../components/Card.js'
 
 const initializeCards = [
   {
@@ -90,9 +91,9 @@ const modalInputs = Array.from(
 );
 
 /* event Listeners */
-/*initializeCards.forEach((elementData) => {
+initializeCards.forEach((elementData) => {
   renderElement(elementData);
-});*/
+});
 
 elementImageModal.addEventListener("mousedown", handlePopupClose);
 
@@ -187,9 +188,16 @@ function closeModal(modal) {
   document.removeEventListener("keyup", handleEscKey);
 }
 
-/*function renderElement(elementData) {
-  elementGallery.prepend(getElementView(elementData));
-}*/
+
+function renderElement(elementData){
+  elementGallery.prepend(createCard(elementData));
+}
+function createCard(data) {
+  //invoke instance
+  const card = new Card(data, '#element-template', () => {} );
+  // return action of instance
+  return  card.getElementView();
+}
 
 function handleProfileEditSubmit(evt) {
   evt.preventDefault();

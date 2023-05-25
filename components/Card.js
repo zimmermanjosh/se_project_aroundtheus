@@ -32,17 +32,17 @@ export default class Card {
       .querySelector(this._templateSelector)
       .content.querySelector(".el__element")
       .cloneNode(true);
-    this._imageElement = elementCardTemp.querySelector(".element__img");
-    this._titleElement = elementCardTemp.querySelector(".element__text");
-    this._likeButton = elementCardTemp.querySelector(".element__like-button");
-    this._elementDeleteButton = elementCardTemp.querySelector(
+    this._imageElement = this._elementCardTemp.querySelector(".element__img");
+    this._titleElement = this._elementCardTemp.querySelector(".element__text");
+    this._likeButton = this._elementCardTemp.querySelector(".element__like-button");
+    this._elementDeleteButton = this._elementCardTemp.querySelector(
       ".element__delete-button"
     );
     this._titleElement.textContent = this._name;
     this._imageElement.alt = this._name;
-    this._imageElement.src = this._url;
+    this._imageElement.src = this._link;
 
-    this._setEventListeners();
+    //this._setEventListeners();
     return this._elementCardTemp
   }
 }
