@@ -62,7 +62,7 @@ function enableSubmitButton(submitButton, config) {
   buttonElement.disabled = false;
 }
 
-function toggleButtonState = (inputList, buttonElement, config) {
+function toggleButtonState (inputList, buttonElement, config) {
   if (hasInvalidInput(inputList)) {
     disableSubmitButton(submitButton, config)
     //buttonElement.classList.add(config.inactiveButtonClass);
@@ -74,7 +74,7 @@ function toggleButtonState = (inputList, buttonElement, config) {
   }
 };
 
-function setEventListeners = (formElement, config){
+function setEventListeners  (formElement, config){
   const inputList = [...formElement.querySelectorAll(config.inputSelector)];
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
@@ -88,7 +88,7 @@ function setEventListeners = (formElement, config){
   });
 };
 
-const enableValidation = (config)  {
+   function enableValidation (config)  {
   const { formSelector } = config;
   const formList = [...document.querySelectorAll(config.formSelector)];
 
