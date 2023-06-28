@@ -1,8 +1,10 @@
 /***************************************************************************/
 /***************************** Initialize Data *****************************/
 /***************************************************************************/
-import Card from './components/Card.js'
+import Card from '../components/Card.js'
+import formValidator from "./components/formValidator";
 
+console.log("Initializing Data");
 const initializeCards = [
   {
     //object 1
