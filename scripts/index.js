@@ -1,6 +1,6 @@
-///////////////////////////////////
-// initialize the app with data //
-///////////////////////////////////
+/***************************************************************************/
+/***************************** Initialize Data *****************************/
+/***************************************************************************/
 import Card from '../components/Card.js'
 
 const initializeCards = [
@@ -46,9 +46,9 @@ const initializeCards = [
   },
 ];
 
-///////////////////////////////////
-/* variables - constants */
-///////////////////////////////////
+/***************************************************************************/
+/***************************** Constants****** *****************************/
+/***************************************************************************/
 
 /**  profile modal **/
 const profileEditModal = document.querySelector("#profile-edit-modal");
@@ -90,32 +90,9 @@ const modalInputs = Array.from(
   elementImageModal.querySelectorAll(".modal__input")
 );
 
-/* event Listeners */
-initializeCards.forEach((elementData) => {
-  renderElement(elementData);
-});
-
-elementImageModal.addEventListener("mousedown", handlePopupClose);
-
-profileEditModal.addEventListener("mousedown", handlePopupClose);
-
-elementAddModal.addEventListener("mousedown", handlePopupClose);
-
-elementAddButton.addEventListener("click", () => {
-  openModal(elementAddModal);
-});
-
-profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  openModal(profileEditModal);
-});
-
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-
-// elementAddForm.addEventListener("submit", handleElementImageModal);
-
-// Functions
+/***************************************************************************/
+/***************************** Functions ***********************************/
+/***************************************************************************/
 
 function handleEscKey(evt) {
   if (evt.key === "Escape") {
@@ -213,3 +190,28 @@ function handleProfileEditSubmit(evt) {
     evt.target.reset();
   }
 }
+
+/***************************************************************************/
+/***************************** event Listeners *****************************/
+/***************************************************************************/
+initializeCards.forEach((elementData) => {
+  renderElement(elementData);
+});
+
+elementImageModal.addEventListener("mousedown", handlePopupClose);
+
+profileEditModal.addEventListener("mousedown", handlePopupClose);
+
+elementAddModal.addEventListener("mousedown", handlePopupClose);
+
+elementAddButton.addEventListener("click", () => {
+  openModal(elementAddModal);
+});
+
+profileEditButton.addEventListener("click", () => {
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
+  openModal(profileEditModal);
+});
+
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
