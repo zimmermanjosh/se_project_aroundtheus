@@ -77,7 +77,8 @@ Dev Updates
 - Updated formValidator refactor to more readable format
 - cleanup code smells 
 - clean up breakup of code 
-- over hall 101
+- overhaul 101
+- OMG what am i doing .... {losing my mind... thats what}
 
 # new version updates 2023 - 04 - 23
 
