@@ -3,7 +3,7 @@
 This project includes:
 
 - Updating the project’s file structure added:
-  -- components/ - Card.js - FormValidator.js
+  -- components/ - card.js - FormValidator.js
   -- pages/ - index.js - index.css
   -- utils/ - utils.js
 - Building on previous lessons
@@ -72,6 +72,13 @@ Dev Updates
 - Step 4. Closing the Popup by Pressing Esc
   - Code a feature that allows the users to close the popup by pressing the Esc key.
 
+# new refactor updates 06 27 2023
+- Added: card.js refactor to video from 101010
+- Updated formValidator refactor to more readable format
+- cleanup code smells 
+- clean up breakup of code 
+- over hall 101
+
 # new version updates 2023 - 04 - 23
 
 ## Updating the project’s file structure
@@ -82,7 +89,7 @@ Dev Updates
 - This is what your file structure should look like after the changes:
 - "se_project_aroundtheus/
   components/
-  Card.js
+  card.js
   FormValidator.js
   pages/
   index.js
@@ -112,7 +119,7 @@ Dev Updates
   - But this time, all the functionality is already there, and your task is to organize the code.
 - The first requirement is to add the Card and FormValidator classes to the code and ensure that each of them performs one specific task. These classes should contain all the necessary code for performing their respective tasks.
 - The second requirement is to divide the JavaScript code into modules. Your project will include four scripts:
-- Card.js will contain the code of the Card class.
+- card.js will contain the code of the Card class.
 - FormValidator.js will contain the code of the FormValidator class.
 - utils.js will contain the event handlers and the function that opens/closes modal windows.
 - index.js will contain the rest of the code (you may have noticed that in some lessons we referred to this file as script.js; both index.js and script.js are common naming conventions for the main script file).

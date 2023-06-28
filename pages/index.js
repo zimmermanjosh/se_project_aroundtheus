@@ -1,8 +1,9 @@
 /***************************************************************************/
 /***************************** Initialize Data *****************************/
 /***************************************************************************/
-import Card from '../components/Card.js'
-import formValidator from "./components/formValidator";
+import Card from '../components/card.js'
+import formValidator from '../components/formValidator.js'
+console.log("formValidator", formValidator);
 
 console.log("Initializing Data");
 const initializeCards = [
@@ -47,6 +48,13 @@ const initializeCards = [
     url: "https://m.media-amazon.com/images/M/MV5BNTQ5MzU3ODg0OF5BMl5BanBnXkFtZTgwODM0MzQxMDE@._V1_.jpg",
   },
 ];
+
+const cardData ={
+  name: "Yosemite Valley",
+  url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg"
+}
+const card = new Card(cardData, "#element-template");
+card.getView();
 
 /***************************************************************************/
 /***************************** Constants****** *****************************/
@@ -112,51 +120,6 @@ function handlePopupClose(evt) {
   }
 }
 
-/*function getElementView(elementData) {
-  const elementCardTemp = elementTemplate.cloneNode(true);
-  const imageElement = elementCardTemp.querySelector(".element__img");
-  const titleElement = elementCardTemp.querySelector(".element__text");
-  const likeButton = elementCardTemp.querySelector(".element__like-button");
-  const elementDeleteButton = elementCardTemp.querySelector(
-    ".element__delete-button"
-  );
-
-  //likeButton.addEventListener("click", () => {
-  //  likeButton.classList.toggle("element__like-button_active");
-  //});
-
-  elementDeleteButton.addEventListener("click", () => elementCardTemp.remove());
-
-  imageElement.src = elementData.url;
-  imageElement.alt = elementData.name;
-  titleElement.textContent = elementData.name;
-
-  imageElement.addEventListener("click", () => {
-    modalImage.src = elementData.url;
-    modalImage.alt = elementData.name;
-    modalCaption.textContent = elementData.name;
-    openModal(elementImageModal);
-  });
-  return elementCardTemp;
-}*/
-
-/*function handleElementImageModal(evt) {
-  evt.preventDefault();
-
-  const newData = { name: elNameInput.value, url: elUrlInput.value };
-  renderElement(newData);
-  closeModal(elementAddModal);
-  evt.target.reset();
-
-  const createButton = elementAddForm.querySelector(".modal__button");
-  createButton.classList.add("modal__button_disabled");
-  createButton.disabled = true;
-}*/
-
-/*function deleteElement(evt) {
-  evt.target.closest(".element").remove();
-}*/
-
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keyup", handleEscKey);
@@ -167,8 +130,9 @@ function closeModal(modal) {
   document.removeEventListener("keyup", handleEscKey);
 }
 
-
-function renderElement(elementData){
+function renderElement(elementData, wrapper){
+  const cardElement = getElementData(elementData);
+  wrapper.prepend(cardElement);
   elementGallery.prepend(createCard(elementData));
 }
 function createCard(data) {
