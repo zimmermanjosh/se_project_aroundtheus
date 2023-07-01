@@ -1,3 +1,6 @@
+import Card from './card.js';
+import FormValidator from './formValidator.js';
+
 ///////////////////////////////////
 // initialize the app with data //
 ///////////////////////////////////
@@ -132,63 +135,10 @@ function handlePopupClose(evt) {
   }
 }
 
-function getElementView(elementData) {
-  const elementCardTemp = elementTemplate.cloneNode(true);
-  const imageElement = elementCardTemp.querySelector(".element__img");
-  const titleElement = elementCardTemp.querySelector(".element__text");
-  const likeButton = elementCardTemp.querySelector(".element__like-button");
-  const elementDeleteButton = elementCardTemp.querySelector(
-    ".element__delete-button"
-  );
-
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("element__like-button_active");
-  });
-
-  elementDeleteButton.addEventListener("click", () => elementCardTemp.remove());
-
-  imageElement.src = elementData.url;
-  imageElement.alt = elementData.name;
-  titleElement.textContent = elementData.name;
-
-  imageElement.addEventListener("click", () => {
-    modalImage.src = elementData.url;
-    modalImage.alt = elementData.name;
-    modalCaption.textContent = elementData.name;
-    openModal(elementImageModal);
-  });
-  return elementCardTemp;
-}
-
-function handleElementImageModal(evt) {
-  evt.preventDefault();
-
-  const newData = { name: elNameInput.value, url: elUrlInput.value };
-  renderElement(newData);
-  closeModal(elementAddModal);
-  evt.target.reset();
-
-  const createButton = elementAddForm.querySelector(".modal__button");
-  createButton.classList.add("modal__button_disabled");
-  createButton.disabled = true;
-}
-
-function deleteElement(evt) {
-  evt.target.closest(".element").remove();
-}
-
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keyup", handleEscKey);
-}
-
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keyup", handleEscKey);
-}
-
 function renderElement(elementData) {
-  elementGallery.prepend(getElementView(elementData));
+  const card = new Card(elementData, "#element-template");
+  const cardElement = card.generateCard();
+  elementGallery.prepend(cardElement);
 }
 
 function handleProfileEditSubmit(evt) {
@@ -205,3 +155,25 @@ function handleProfileEditSubmit(evt) {
     evt.target.reset();
   }
 }
+
+function openModal(modal) {
+  modal.classList.add("modal_opened");
+  document.addEventListener("keyup", handleEscKey);
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+  document.removeEventListener("keyup", handleEscKey);
+}
+
+// Initialize form validation
+const formValidator = new FormValidator({
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+});
+
+formValidator.enableValidation();
