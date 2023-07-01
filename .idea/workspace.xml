@@ -44,20 +44,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;jz/sprint7__sub__cardJS__utils.js&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/jozimmeman/Dev/Projects/practicum/se_project_aroundtheus/components&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "jz/sprint7__sub__cardJS__utils.js",
+    "last_opened_file_path": "/Users/jozimmeman/Dev/Projects/practicum/se_project_aroundtheus",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/components" />
@@ -87,7 +87,9 @@
       <workItem from="1684944946852" duration="1779000" />
       <workItem from="1685052335884" duration="3864000" />
       <workItem from="1685653392222" duration="10000" />
-      <workItem from="1686850421955" duration="915000" />
+      <workItem from="1686850421955" duration="5224000" />
+      <workItem from="1686866006948" duration="1461000" />
+      <workItem from="1688230533920" duration="134000" />
     </task>
     <servers />
   </component>
