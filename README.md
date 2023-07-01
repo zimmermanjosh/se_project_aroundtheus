@@ -1,4 +1,4 @@
-# Sprint7 : part 1/1
+# Sprint7 : part 2/5
 
 This project includes:
 
@@ -50,13 +50,13 @@ this is revision for sprint 7
 - This is what your file structure should look like after the changes:
 - se_project_aroundtheus/
   -- components/
-  -- Card.js
-  -- FormValidator.js
+      -- Card.js
+      -- FormValidator.js
   -- pages/
-  -- index.js
-  -- index.css
+     -- index.js
+     -- index.css
   -- utils/
-  -- utils.js ...everything else
+     -- utils.js ...everything else
 ## Creating the Card and FormValidator classes
 - Create the Card class, which creates a card with text and an image link, as per the following requirements:
 - It takes card data — text and a link to the image — and a template element selector as parameters into the constructor.
