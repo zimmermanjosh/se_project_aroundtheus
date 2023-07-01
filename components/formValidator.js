@@ -1,73 +1,71 @@
-class formValidator {
+class FormValidator {
   constructor(config, formElement) {
-    this._inputSelector = config.inputSelector;
-    this._submitButtonSelector = config.submitButtonSelector;
-    this._inactiveButtonClass = config.inactiveButtonClass;
-    this._inputErrorClass = config.inputErrorClass;
-    this._errorClass = config.errorClass;
-
+    this._config = config;
     this._formElement = formElement;
-    this._inputList = Array.from(formElement.querySelectorAll(this._inputSelector));
-    this._buttonElement = formElement.querySelector(this._submitButtonSelector);
+    this._inputList = Array.from(formElement.querySelectorAll(this._config.inputSelector));
+    this._buttonElement = formElement.querySelector(this._config.submitButtonSelector);
 
     this._setEventListeners();
   }
 
-  _showInputError(formElement, inputElement) {
-    const inputError = formElement.querySelector(`#${inputElement.id}-error`);
+  _showInputError(inputElement) {
+    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
 
-    inputElement.classList.add(this._inputErrorClass);
-    inputError.textContent = inputElement.validationMessage;
-    inputError.classList.add(this._errorClass);
+    inputElement.classList.add(this._config.inputErrorClass);
+    errorElement.textContent = inputElement.validationMessage;
+    errorElement.classList.add(this._config.errorClass);
   }
 
-  _hideInputError(formElement, inputElement) {
-    const inputError = formElement.querySelector(`#${inputElement.id}-error`);
+  _hideInputError(inputElement) {
+    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
 
-    inputElement.classList.remove(this._inputErrorClass);
-    inputError.textContent = '';
+    inputElement.classList.remove(this._config.inputErrorClass);
+    errorElement.classList.remove(this._config.errorClass);
+    errorElement.textContent = '';
   }
 
-  _checkInputValidity(formElement, inputElement) {
+  _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
-      this._showInputError(formElement, inputElement);
+      this._showInputError(inputElement);
     } else {
-      this._hideInputError(formElement, inputElement);
+      this._hideInputError(inputElement);
     }
   }
 
-  _checkFormValidity(inputList) {
-    return inputList.every(inputElement => inputElement.validity.valid);
+  _checkFormValidity() {
+    return this._inputList.every(inputElement => inputElement.validity.valid);
   }
 
-  _disableSubmitButton(submitButton) {
-    submitButton.classList.add(this._inactiveButtonClass);
-    submitButton.disabled = true;
+  _disableSubmitButton() {
+    this._buttonElement.classList.add(this._config.inactiveButtonClass);
+    this._buttonElement.disabled = true;
   }
 
-  _enableSubmitButton(submitButton) {
-    submitButton.classList.remove(this._inactiveButtonClass);
-    submitButton.disabled = false;
+  _enableSubmitButton() {
+    this._buttonElement.classList.remove(this._config.inactiveButtonClass);
+    this._buttonElement.disabled = false;
   }
 
   _toggleButtonState() {
-    const isFormValid = this._checkFormValidity(this._inputList);
+    const isFormValid = this._checkFormValidity();
 
     if (!isFormValid) {
-      this._disableSubmitButton(this._buttonElement);
+      this._disableSubmitButton();
     } else {
-      this._enableSubmitButton(this._buttonElement);
+      this._enableSubmitButton();
     }
   }
 
+  _handleFormSubmit(evt) {
+    evt.preventDefault();
+  }
+
   _setEventListeners() {
-    this._formElement.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-    });
+    this._formElement.addEventListener("submit", this._handleFormSubmit.bind(this));
 
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
-        this._checkInputValidity(this._formElement, inputElement);
+        this._checkInputValidity(inputElement);
         this._toggleButtonState();
       });
     });
@@ -80,4 +78,4 @@ class formValidator {
   }
 }
 
-export default formValidator;
+export default FormValidator;

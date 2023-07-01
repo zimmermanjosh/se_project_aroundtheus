@@ -113,7 +113,7 @@ profileEditButton.addEventListener("click", () => {
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
-elementAddForm.addEventListener("submit", handleElementImageModal);
+// elementAddForm.addEventListener("submit", handleElementImageModal);
 
 // Functions
 
@@ -161,7 +161,7 @@ function handlePopupClose(evt) {
   return elementCardTemp;
 }*/
 
-function handleElementImageModal(evt) {
+/*function handleElementImageModal(evt) {
   evt.preventDefault();
 
   const newData = { name: elNameInput.value, url: elUrlInput.value };
@@ -172,7 +172,7 @@ function handleElementImageModal(evt) {
   const createButton = elementAddForm.querySelector(".modal__button");
   createButton.classList.add("modal__button_disabled");
   createButton.disabled = true;
-}
+}*/
 
 /*function deleteElement(evt) {
   evt.target.closest(".element").remove();
