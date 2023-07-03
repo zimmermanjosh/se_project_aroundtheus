@@ -1,11 +1,12 @@
 import Card from './components/Card.js';
-import FormValidator from './components/formValidator.js';
+import FormValidator from './components/FormValidator.js';
 
 ///////////////////////////////////
 // initialize the app with data //
 ///////////////////////////////////
 
 const initializeCards = [
+
   {
     //object 1
     name: "Yosemite Valley",
