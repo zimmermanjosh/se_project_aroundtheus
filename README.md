@@ -1,7 +1,8 @@
 # Sprint7 : part 2/5
 
 This project includes:
-
+- cards.js implementation 
+- sprint 7 sub
 - Form validation
 - esc key bindings for javascript
 
