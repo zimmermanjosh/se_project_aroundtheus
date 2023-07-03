@@ -1,5 +1,5 @@
-import Card from './card.js';
-import FormValidator from './formValidator.js';
+import Card from './components/Card.js';
+import FormValidator from './components/formValidator.js';
 
 ///////////////////////////////////
 // initialize the app with data //
