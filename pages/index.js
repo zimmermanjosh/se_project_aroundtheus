@@ -1,5 +1,5 @@
-import Card from './components/Card.js';
-import FormValidator from './components/FormValidator.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
 
 ///////////////////////////////////
 // initialize the app with data //
@@ -167,6 +167,23 @@ function closeModal(modal) {
   document.removeEventListener("keyup", handleEscKey);
 }
 
+function handleElementImageModal(evt) {
+  evt.preventDefault();
+  const name = elNameInput.value;
+  const url = elUrlInput.value;
+
+  const elementData = {
+    name: name,
+    url: url
+  };
+
+  renderElement(elementData);
+
+  closeModal(elementAddModal);
+  evt.target.reset();
+}
+
+
 // Initialize form validation
 const formValidator = new FormValidator({
   formSelector: ".modal__form",
@@ -178,3 +195,7 @@ const formValidator = new FormValidator({
 });
 
 formValidator.enableValidation();
+
+
+//const formValidator = new FormValidator(configurationObjects, profileEditForm);
+//formValidator.enableValidation();

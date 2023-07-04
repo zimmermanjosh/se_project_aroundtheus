@@ -77,5 +77,8 @@ class FormValidator {
   }
 }
 
-const formValidator = new FormValidator(configurationObjects, profileEditForm);
-formValidator.enableValidation();
+//const formValidator = new FormValidator(configurationObjects, profileEditForm);
+//formValidator.enableValidation();
+
+
+export default FormValidator;
