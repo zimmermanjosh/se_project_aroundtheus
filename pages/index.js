@@ -1,6 +1,6 @@
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
-import {openModal, closeModal, handleEscKey, handlePopupClose} from "../utils/utils";
+import {openModal, closeModal, handleEscKey, handlePopupClose} from "../utils/utils.js";
 
 ///////////////////////////////////
 // initialize the app with data //
@@ -122,21 +122,6 @@ const editImageValidator = new FormValidator(config, elementAddModal)
 editImageValidator.enableValidation();
 
 // Functions
-/*function handleEscKey(evt) {
-  if (evt.key === "Escape") {
-    const activeModal = document.querySelector(".modal_opened");
-    closeModal(activeModal);
-  }
-}*/
-
-/*function handlePopupClose(evt) {
-  if (
-    evt.target.classList.contains("modal") ||
-    evt.target.classList.contains("modal__close")
-  ) {
-    closeModal(evt.currentTarget);
-  }
-}*/
 
 function renderElement(elementData) {
   const card = new Card(elementData, "#element-template", elementImageModal);
@@ -159,15 +144,6 @@ function handleProfileEditSubmit(evt) {
   }
 }
 
-/*function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keyup", handleEscKey);
-}
-
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keyup", handleEscKey);
-}*/
 
 function handleElementImageModal(evt) {
   evt.preventDefault();
