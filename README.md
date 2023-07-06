@@ -1,30 +1,23 @@
-# Sprint7 : part 1
+# Sprint7 : part 2/5
 
 This project includes:
-
-- Updating the project’s file structure added:
-  -- components/ - Card.js - FormValidator.js
-  -- pages/ - index.js - index.css
-  -- utils/ - utils.js
-- Building on previous lessons
-- Understanding object and implementation of 'this' to pass whole object and properties
-- code refactoring
-- Creating the Card and FormValidator classes
-- continuation of using Live Server from vsCode
+- cards.js implementation 
+- sprint 7 sub
+- Form validation
+- esc key bindings for javascript
 
 # Project 7 updated: Around The U.S.
 
 ### Overview
 
 - Intro
-- Figma - new
+- Figma
 - Images
 - javscript
 - html
 - added css
-- added javascript
-- added dynamically generated javascript
-- **Intro**
+
+**Intro**
 
 This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.
 
@@ -49,6 +42,47 @@ This project shows a usage of a shared FIGMA project ui file, containing both de
 To view this iteration of this first stage of the project: click here: https://zimmermanjosh.github.io/se_project_aroundtheus/
 
 **Updates and Development**
+
+this is revision for sprint 7
+## Updating the project's file structure
+- Since we'll be refactoring our project using OOP, we'll update the directory structure a bit. Create two new folders: /components and /utils. The first will store your class components. The latter will store some utility functions. We'll describe their contents later.
+- Then, move your index.js file to the pages directory. Make sure to update the filepath in your <script> tag accordingly.
+- The /scripts directory with validator.js can be deleted.
+- This is what your file structure should look like after the changes:
+- se_project_aroundtheus/
+  -- components/
+      -- Card.js
+      -- FormValidator.js
+  -- pages/
+     -- index.js
+     -- index.css
+  -- utils/
+     -- utils.js ...everything else
+## Creating the Card and FormValidator classes
+- Create the Card class, which creates a card with text and an image link, as per the following requirements:
+- It takes card data — text and a link to the image — and a template element selector as parameters into the constructor.
+- It has private methods for working with markup and adding event listeners.
+- It has private methods for each event handler.
+- It has one public method that returns a fully functional card element populated with data.
+## Create a Card class instance for each card.
+## Create the FormValidator class, which sets settings for validating form fields according to the following requirements:
+- Its constructor has two parameters. The first parameter is a settings object that stores selectors and form classes, and the second one takes a form element to be validated.
+- It has private methods for processing the form, which include: checking the field's validity, changing the state of the Submit button, and adding all the needed handlers.
+- It has a public method enableValidation(), which enables form validation.
+- It has a public method to either disable the state of the button or reset form validation (including the state of the submit button).
+- Create an instance of the FormValidator class for each form that should be validated.
+## Code requirements
+This project will be different from your previous projects. Before, you were required to code and implement various features yourself, for example, adding functioning buttons or making a popup appear and then disappear. But this time, all the functionality is already there, and your task is to organize the code.
+The first requirement is to add the Card and FormValidator classes to the code and ensure that each of them performs one specific task. These classes should contain all the necessary code for performing their respective tasks.
+The second requirement is to divide the JavaScript code into modules. Your project will include four scripts:
+Card.js will contain the code of the Card class.
+FormValidator.js will contain the code of the FormValidator class.
+utils.js will contain the event handlers and the function that opens/closes modal windows.
+index.js will contain the rest of the code (you may have noticed that in some lessons we referred to this file as script.js; both index.js and script.js are common naming conventions for the main script file).
+The Card and FormValidator classes should be exported from their corresponding files, and then you will need to import and implement them inside of index.js.
+Ensure that the JS files are connected to index.html as modules.
+
+## sprint 6
 this project revision is adding a scripts_folder to the project, additionally we are adding javascript (.js) to the project.
 Project sprint 6
 Dev Updates
@@ -71,50 +105,3 @@ Dev Updates
   - Code a feature that allows the users to close the popup by clicking on the overlay, i.e. anywhere outside the popup's borders
 - Step 4. Closing the Popup by Pressing Esc
   - Code a feature that allows the users to close the popup by pressing the Esc key.
-
-# new version updates 2023 - 04 - 23
-
-## Updating the project’s file structure
-
-- Since we’ll be refactoring our project using OOP, we’ll update the directory structure a bit. Create two new folders: /components and /utils. The first will store your class components. The latter will store some utility functions. We’ll describe their contents later.
-- Then, move your index.js file to the pages directory. Make sure to update the filepath in your <script> tag accordingly.
-- The /scripts directory with validator.js can be deleted.
-- This is what your file structure should look like after the changes:
-- "se_project_aroundtheus/
-  components/
-  Card.js
-  FormValidator.js
-  pages/
-  index.js
-  index.css
-  utils/
-  utils.js
-  ...everything else "
-- Creating the Card and FormValidator classes
-- Create the Card class, which creates a card with text and an image link, as per the following requirements:
-- It takes card data — text and a link to the image — and a template element selector as parameters into the constructor.
-- It has private methods for working with markup and adding event listeners.
-- It has private methods for each event handler.
-- It has one public method that returns a fully functional card element populated with data.
-- Create a Card class instance for each card.
-- Create the FormValidator class, which sets settings for validating form fields according to the following requirements:
-- Its constructor has two parameters. The first parameter is a settings object that stores selectors and form classes, and the second one takes a form element to be validated.
-- It has private methods for processing the form, which include: checking the field's validity, changing the state of the Submit button, and adding all the needed handlers.
-- It has a public method enableValidation(), which enables form validation.
-- It has a public method to either disable the state of the button or reset form validation (including the state of the submit button).
-- Create an instance of the FormValidator class for each form that should be validated.
-
-## Code requirements
-
-- This project will be different from your previous projects.
-- Before, you were required to code and implement various features yourself
-  -- for example, adding functioning buttons or making a popup appear and then disappear.
-  - But this time, all the functionality is already there, and your task is to organize the code.
-- The first requirement is to add the Card and FormValidator classes to the code and ensure that each of them performs one specific task. These classes should contain all the necessary code for performing their respective tasks.
-- The second requirement is to divide the JavaScript code into modules. Your project will include four scripts:
-- Card.js will contain the code of the Card class.
-- FormValidator.js will contain the code of the FormValidator class.
-- utils.js will contain the event handlers and the function that opens/closes modal windows.
-- index.js will contain the rest of the code (you may have noticed that in some lessons we referred to this file as script.js; both index.js and script.js are common naming conventions for the main script file).
-- The Card and FormValidator classes should be exported from their corresponding files, and then you will need to import and implement them inside of index.js.
-- Ensure that the JS files are connected to index.html as modules.
