@@ -11,6 +11,8 @@ class Card {
   }
 
   _handleLikeButton(evt) {
+
+
     // Add your logic for handling the like button click event
   }
 

@@ -47,6 +47,16 @@ const initializeCards = [
     name: "real genius",
     url: "https://m.media-amazon.com/images/M/MV5BNTQ5MzU3ODg0OF5BMl5BanBnXkFtZTgwODM0MzQxMDE@._V1_.jpg",
   },
+  {
+    //object
+    name: "secret of my success",
+    url: "https://film-authority.com/wp-content/uploads/2021/07/maxresdefault-1.jpg",
+  },
+  {
+    //object
+    name: "legend",
+    url: "https://twilightswarden.files.wordpress.com/2012/10/screenshot-lrg-07.png?w=1568",
+  }
 ];
 
 ///////////////////////////////////
