@@ -93,33 +93,21 @@ const modalInputs = Array.from(
   elementImageModal.querySelectorAll(".modal__input")
 );
 
-/* event Listeners */
-initializeCards.forEach((elementData) => {
-  renderElement(elementData);
-});
+// object configuration
+const config = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+}
 
-elementImageModal.addEventListener("mousedown", handlePopupClose);
-
-profileEditModal.addEventListener("mousedown", handlePopupClose);
-
-elementAddModal.addEventListener("mousedown", handlePopupClose);
-
-elementAddButton.addEventListener("click", () => {
-  openModal(elementAddModal);
-});
-
-profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  openModal(profileEditModal);
-});
-
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-
-elementAddForm.addEventListener("submit", handleElementImageModal);
+// new vaildation logic
+const editProfileValidator = new FormValidator(config, profileEditForm);
+editProfileValidator.enableValidation();
 
 // Functions
-
 function handleEscKey(evt) {
   if (evt.key === "Escape") {
     const activeModal = document.querySelector(".modal_opened");
@@ -183,19 +171,27 @@ function handleElementImageModal(evt) {
   evt.target.reset();
 }
 
-
-// Initialize form validation
-const formValidator = new FormValidator({
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
+/* event Listeners */
+initializeCards.forEach((elementData) => {
+  renderElement(elementData);
 });
 
-formValidator.enableValidation();
+elementImageModal.addEventListener("mousedown", handlePopupClose);
 
+profileEditModal.addEventListener("mousedown", handlePopupClose);
 
-//const formValidator = new FormValidator(configurationObjects, profileEditForm);
-//formValidator.enableValidation();
+elementAddModal.addEventListener("mousedown", handlePopupClose);
+
+elementAddButton.addEventListener("click", () => {
+  openModal(elementAddModal);
+});
+
+profileEditButton.addEventListener("click", () => {
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
+  openModal(profileEditModal);
+});
+
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+
+elementAddForm.addEventListener("submit", handleElementImageModal);
