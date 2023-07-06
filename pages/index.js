@@ -78,8 +78,8 @@ const elUrlInput = elementAddModal.querySelector("#image-input");
 
 // images and popup modal
 const elementImageModal = document.querySelector("#element-image-modal");
-const modalImage = document.querySelector("#element-modal-image");
-const modalCaption = document.querySelector("#element-modal-caption");
+//const modalImage = document.querySelector("#element-modal-image");
+//const modalCaption = document.querySelector("#element-modal-caption");
 const elementImageModalClose = document.querySelector("#element-image-close");
 const elSaveButton = elementImageModal.querySelector("#imageSubmitButton");
 
@@ -128,7 +128,7 @@ function handlePopupClose(evt) {
 }
 
 function renderElement(elementData) {
-  const card = new Card(elementData, "#element-template");
+  const card = new Card(elementData, "#element-template", elementImageModal);
   const cardElement = card.generateCard();
   elementGallery.prepend(cardElement);
 }

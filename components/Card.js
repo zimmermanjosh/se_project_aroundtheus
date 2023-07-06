@@ -1,7 +1,8 @@
 class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, elementImageModal) {
     this._data = data;
     this._templateSelector = templateSelector;
+    this._elementImageModal = elementImageModal;
   }
 
   _getTemplate() {
@@ -23,6 +24,7 @@ class Card {
     // Add your logic for handling the image click event
     const imageUrl = this._data.url;
     const imageCaption = this._data.name;
+
     const modalImage = document.querySelector('#element-modal-image');
     const modalCaption = document.querySelector('#element-modal-caption');
 
@@ -30,7 +32,8 @@ class Card {
     modalImage.alt = imageCaption;
     modalCaption.textContent = imageCaption;
 
-    const elementImageModal = document.querySelector('#element-image-modal');
+    //const elementImageModal = document.querySelector('#element-image-modal');
+    const elementImageModal = this._elementImageModal;
     elementImageModal.classList.add('modal_opened');
     document.addEventListener('keyup', this._handleEscKey);
   }
