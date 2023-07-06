@@ -9,33 +9,33 @@ const initializeCards = [
 
   {
     //object 1
-    name: "Yosemite Valley",
-    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+    name: "legend of billie jean",
+    url: "https://m.media-amazon.com/images/M/MV5BNjIwOTgzN2QtZTY2Mi00MmU1LWFjMTItN2EwZTFhYTMwZGRjXkEyXkFqcGdeQXVyODY0NzcxNw@@._V1_.jpg",
   },
   {
     //object 2
-    name: "Lake Louise",
-    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
+    name: "ski patrol",
+    url: "https://m.media-amazon.com/images/I/81A408tMCCL._AC_UF894,1000_QL80_.jpg",
   },
   {
     //object 3
-    name: "Bald Mountains",
-    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+    name: "better off dead",
+    url: "https://shatpod.com/movies/wp-content/uploads/Better-Off-Dead-Movie-Poster-1985.jpg",
   },
   {
     //object 4
-    name: "Latemar",
-    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+    name: "less then zero",
+    url: "https://upload.wikimedia.org/wikipedia/en/3/34/Less_than_zero_1987_poster.jpg",
   },
   {
     //object 5
-    name: "Vanoise National Park",
-    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
+    name: "sixteen candles",
+    url: "https://shatpod.com/movies/wp-content/uploads/rzTrRQg5ek47Yl0Vfenc69r9gOd-e1585675704809.jpg",
   },
   {
     //object 6
-    name: "Lago di Braies",
-    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+    name: "Labyrinth",
+    url: "https://m.media-amazon.com/images/M/MV5BOWI3OGEzOTUtYWY4MS00ZDgwLWFlZjgtNjJmNjcyNGM1ZDI3XkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpgv",
   },
   {
     //object
@@ -106,6 +106,9 @@ const config = {
 // new vaildation logic
 const editProfileValidator = new FormValidator(config, profileEditForm);
 editProfileValidator.enableValidation();
+
+const editImageValidator = new FormValidator(config, elementAddModal)
+editImageValidator.enableValidation();
 
 // Functions
 function handleEscKey(evt) {
