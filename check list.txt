@@ -1,4 +1,8 @@
 4th submission
 -- check utils.js updated and fixed
 -- index.html updated adde modal__button_disabled class (line 85,121)
--- Card.js 404 -- testing -- fixed in parrt III - Submission4
+-- index.js -- Card.js 404 -- testing -- fixed in parrt III - Submission4
+-- index.js -- fixed comments to add constants.js - new import and export
+-- line 152<now 62> after refactor -- delete
+-- profile create button retrigger -- fixed
+

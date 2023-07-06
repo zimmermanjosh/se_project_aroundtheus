@@ -53,6 +53,16 @@ const initializeCards = [
     //object
     name: "legend",
     url: "https://twilightswarden.files.wordpress.com/2012/10/screenshot-lrg-07.png?w=1568",
+  },
+  {
+    //object
+    name: "teen wolf",
+    url: "https://m.media-amazon.com/images/M/MV5BMGFmZTFhYjktMmYyZi00ZmE4LWI0NGEtMDY2MGEzMDY0YjdiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg",
+  },
+  {
+    //object
+    name: "weird science",
+    url: "https://upload.wikimedia.org/wikipedia/en/d/d6/Movie_poster_for_Weird_Science_%281985%29.jpg",
   }
 ];
 

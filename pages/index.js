@@ -44,9 +44,7 @@ const editImageValidator = new FormValidator(config, elementAddModal)
 editImageValidator.enableValidation();
 
 
-
 // Functions
-
 function renderElement(elementData) {
   const card = new Card(elementData, "#element-template", elementImageModal);
   const cardElement = card.generateCard();
@@ -58,16 +56,16 @@ function handleProfileEditSubmit(evt) {
   if (
     profileTitle &&
     profileDescription &&
-    profileTitleInput &&
-    profileDescriptionInput
+    profileTitleInput
   ) {
     profileTitle.textContent = profileTitleInput.value;
     profileDescription.textContent = profileDescriptionInput.value;
     closeModal(profileEditModal);
-    evt.target.reset();
+
+    // Disable the submit button
+    profileEditForm.querySelector('.modal__button').disabled = true;
   }
 }
-
 
 function handleElementImageModal(evt) {
   evt.preventDefault();
@@ -82,7 +80,13 @@ function handleElementImageModal(evt) {
   renderElement(elementData);
 
   closeModal(elementAddModal);
+
+  // Disable the submit button
+  //const createButton = elementAddForm.querySelector('#imageSubmitButton');
+  const createButton = elementAddForm.querySelector('.modal__button');
+  createButton.disabled = true;
   evt.target.reset();
+  editImageValidator.resetValidation()
 }
 
 /* event Listeners */
