@@ -1,7 +1,6 @@
 ///////////////////////////////////
 // initialize the app with data //
 ///////////////////////////////////
-export const variables = document.querySelector(".page");
 
 const initializeCards = [
 
@@ -76,7 +75,7 @@ const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
 /**  element modal **/
 const elementAddModal = document.querySelector("#element-add-modal");
 const elementAddButton = document.querySelector(".profile__add-button");
-const elementCloseButton = elementAddModal.querySelector("#element-add-close");
+const elementCloseButton= elementAddModal.querySelector("#element-add-close");
 const elementAddForm = elementAddModal.querySelector("#element-add-form");
 
 /*URL List*/
@@ -101,19 +100,27 @@ const modalInputs = Array.from(
   elementImageModal.querySelectorAll(".modal__input")
 );
 
-// object configuration
-const config = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
+export{
+  initializeCards,
+  profileEditModal,
+  profileEditButton,
+  profileEditCloseButton,
+  profileTitleInput,
+  profileDescriptionInput,
+  profileTitle,
+  profileDescription,
+  profileEditForm,
+  elementAddModal,
+  elementAddButton,
+  elementCloseButton,
+  elementAddForm,
+  elementList,
+  elNameInput,
+  elUrlInput,
+  elementImageModal,
+  elementImageModalClose,
+  elSaveButton,
+  elementTemplate,
+  elementGallery,
+  modalInputs
 }
-
-// new vaildation logic
-const editProfileValidator = new FormValidator(config, profileEditForm);
-editProfileValidator.enableValidation();
-
-const editImageValidator = new FormValidator(config, elementAddModal)
-editImageValidator.enableValidation();

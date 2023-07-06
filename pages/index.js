@@ -1,7 +1,50 @@
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import {openModal, closeModal, handleEscKey, handlePopupClose} from "../utils/utils.js";
-import {variables} from "../constants/variables";
+import{
+  initializeCards,
+  profileEditModal,
+  profileEditButton,
+  profileEditCloseButton,
+  profileTitleInput,
+  profileDescriptionInput,
+  profileTitle,
+  profileDescription,
+  profileEditForm,
+  elementAddModal,
+  elementAddButton,
+  elementCloseButton,
+  elementAddForm,
+  elementList,
+  elNameInput,
+  elUrlInput,
+  elementImageModal,
+  elementImageModalClose,
+  elSaveButton,
+  elementTemplate,
+  elementGallery,
+  modalInputs
+}from '../constants/variables.js'
+
+// object configuration
+const config = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+}
+
+// new vaildation logic
+const editProfileValidator = new FormValidator(config, profileEditForm);
+editProfileValidator.enableValidation();
+
+const editImageValidator = new FormValidator(config, elementAddModal)
+editImageValidator.enableValidation();
+
+
+
 // Functions
 
 function renderElement(elementData) {
