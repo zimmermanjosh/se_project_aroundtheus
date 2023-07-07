@@ -42,7 +42,7 @@ class Card {
     // Add your logic for handling the delete button click event
     const cardElement = evt.target.closest('.element');
     cardElement.remove();
-    this._cardElement.remove();
+
   }
 
   _handleImageClick(evt) {
