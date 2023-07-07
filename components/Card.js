@@ -10,11 +10,30 @@ class Card {
     return cardTemplate.content.cloneNode(true);
   }
 
-  _handleLikeButton(evt) {
+  _setEventListeners(cardElement) {
+    const likeButton = cardElement.querySelector('.element__like-button');
+    const deleteButton = cardElement.querySelector('.element__delete-button');
+    const imageElement = cardElement.querySelector('.element__img');
 
 
-    // Add your logic for handling the like button click event
+    likeButton.addEventListener('click', this._handleLikeButton.bind(this));
+    deleteButton.addEventListener('click', this._handleDeleteButton.bind(this));
+    imageElement.addEventListener('click', this._handleImageClick.bind(this));
   }
+  _handleEscKey(evt) {
+    if (evt.key === 'Escape') {
+      const elementImageModal = document.querySelector('#element-image-modal');
+      elementImageModal.classList.remove('modal_opened');
+      document.removeEventListener('keyup', this._handleEscKey);
+    }
+  }
+  _handleLikeButton(evt) {
+    console.log('like button');
+    //const cardLike = evt.querySelector('.element__like-button');
+    const cardLike = evt.currentTarget;
+    cardLike.classList.toggle('element__like-button_active')
+  }
+
 
   _handleDeleteButton(evt) {
     // Add your logic for handling the delete button click event
@@ -38,24 +57,6 @@ class Card {
     const elementImageModal = this._elementImageModal;
     elementImageModal.classList.add('modal_opened');
     document.addEventListener('keyup', this._handleEscKey);
-  }
-
-  _handleEscKey(evt) {
-    if (evt.key === 'Escape') {
-      const elementImageModal = document.querySelector('#element-image-modal');
-      elementImageModal.classList.remove('modal_opened');
-      document.removeEventListener('keyup', this._handleEscKey);
-    }
-  }
-
-  _setEventListeners(cardElement) {
-    const likeButton = cardElement.querySelector('.element__like-button');
-    const deleteButton = cardElement.querySelector('.element__delete-button');
-    const imageElement = cardElement.querySelector('.element__img');
-
-    likeButton.addEventListener('click', this._handleLikeButton.bind(this));
-    deleteButton.addEventListener('click', this._handleDeleteButton.bind(this));
-    imageElement.addEventListener('click', this._handleImageClick.bind(this));
   }
 
   generateCard() {
