@@ -1,3 +1,5 @@
+import {openModal} from "../utils/utils.js";
+
 class Card {
   constructor(data, templateSelector, elementImageModal) {
     this._data = data;
@@ -23,8 +25,9 @@ class Card {
   _handleEscKey(evt) {
     if (evt.key === 'Escape') {
       const elementImageModal = document.querySelector('#element-image-modal');
-      elementImageModal.classList.remove('modal_opened');
-      document.removeEventListener('keyup', this._handleEscKey);
+      openModal(elementImageModal);
+      //elementImageModal.classList.remove('modal_opened');
+      //document.removeEventListener('keyup', this._handleEscKey);
     }
   }
   _handleLikeButton(evt) {
@@ -39,6 +42,7 @@ class Card {
     // Add your logic for handling the delete button click event
     const cardElement = evt.target.closest('.element');
     cardElement.remove();
+    this._cardElement.remove();
   }
 
   _handleImageClick(evt) {
@@ -55,8 +59,10 @@ class Card {
 
     //const elementImageModal = document.querySelector('#element-image-modal');
     const elementImageModal = this._elementImageModal;
-    elementImageModal.classList.add('modal_opened');
-    document.addEventListener('keyup', this._handleEscKey);
+
+    openModal(elementImageModal);
+    //elementImageModal.classList.add('modal_opened');
+    //document.addEventListener('keyup', this._handleEscKey);
   }
 
   generateCard() {

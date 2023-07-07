@@ -6,4 +6,7 @@
 -- line 152<now 62> after refactor -- delete
 -- profile create button retrigger -- fixed
 -- update like button
+-- garbage collecting
+-- use open modal from utils.js
+-- use no keyup function in card.js use it from utils.js
 
