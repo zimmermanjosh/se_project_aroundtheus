@@ -36,7 +36,7 @@
 
 /*element__heart-button*/
 .element__like-button {
-  background: transparent url("../images/icons/Like\ Button_disabled.svg")
+  background: transparent url("../images/icons/Like Button_disabled.svg")
     center;
   flex-shrink: 0;
   height: 18px;
