@@ -1,4 +1,4 @@
-# Sprint7 : part 2/5
+# Sprint7 : part 5/5
 
 This project includes:
 - cards.js implementation 
@@ -7,6 +7,7 @@ This project includes:
 - esc key bindings for javascript
 
 # Project 7 updated: Around The U.S.
+- sent for review #4
 
 ### Overview
 
