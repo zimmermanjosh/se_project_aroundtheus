@@ -29,7 +29,6 @@ const config = {
   errorClass: "modal__error_visible",
 }
 
-// new vaildation logic
 const editProfileValidator = new FormValidator(config, profileEditForm);
 editProfileValidator.enableValidation();
 
