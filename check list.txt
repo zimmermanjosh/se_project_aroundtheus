@@ -11,5 +11,7 @@
 -- use no keyup function in card.js use it from utils.js
 
 5th Submission
--- This method should not have any arguments, use this._cardElement
--- Please remove this method, it's not the Card class responsibility -- _handleEscapeKey
+-- card.js - This method should not have any arguments, use this._cardElement
+-- card.js - Please remove this method, it's not the Card class responsibility -- _handleEscapeKey
+-- index.js -- remove IF statement line 60
+-- index.js -- remove line 87

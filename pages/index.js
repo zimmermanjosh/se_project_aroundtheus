@@ -53,18 +53,18 @@ function renderElement(elementData) {
 
 function handleProfileEditSubmit(evt) {
   evt.preventDefault();
-  if (
+  /*if (
     profileTitle &&
     profileDescription &&
     profileTitleInput
-  ) {
+  ) {*/
     profileTitle.textContent = profileTitleInput.value;
     profileDescription.textContent = profileDescriptionInput.value;
     closeModal(profileEditModal);
 
     // Disable the submit button
     profileEditForm.querySelector('.modal__button').disabled = true;
-  }
+  //}
 }
 
 function handleElementImageModal(evt) {
@@ -84,7 +84,7 @@ function handleElementImageModal(evt) {
   // Disable the submit button
   //const createButton = elementAddForm.querySelector('#imageSubmitButton');
   const createButton = elementAddForm.querySelector('.modal__button');
-  createButton.disabled = true;
+  //createButton.disabled = true;
   evt.target.reset();
   editImageValidator.resetValidation()
 }
