@@ -12,37 +12,41 @@ class Card {
     return cardTemplate.content.cloneNode(true);
   }
 
-  _setEventListeners(cardElement) {
-    const likeButton = cardElement.querySelector('.element__like-button');
-    const deleteButton = cardElement.querySelector('.element__delete-button');
-    const imageElement = cardElement.querySelector('.element__img');
+  /*_setEventListeners() {
+    const likeButton = this._cardElement.querySelector('.element__like-button');
+    const deleteButton = this._cardElement.querySelector('.element__delete-button');
+    const imageElement = this._cardElement.querySelector('.element__img');
 
 
     likeButton.addEventListener('click', this._handleLikeButton.bind(this));
     deleteButton.addEventListener('click', this._handleDeleteButton.bind(this));
     imageElement.addEventListener('click', this._handleImageClick.bind(this));
+  }*/
+
+  _setEventListeners() {
+    this._cardElement.querySelector('.element__like-button').addEventListener('click', this._handleLikeButton.bind(this));
+    this._cardElement.querySelector('.element__delete-button').addEventListener('click', this._handleDeleteButton.bind(this));
+    this._cardElement.querySelector('.element__img').addEventListener('click', this._handleImageClick.bind(this));
   }
-  _handleEscKey(evt) {
+
+  /*_handleEscKey(evt) {
     if (evt.key === 'Escape') {
       const elementImageModal = document.querySelector('#element-image-modal');
       openModal(elementImageModal);
       //elementImageModal.classList.remove('modal_opened');
       //document.removeEventListener('keyup', this._handleEscKey);
     }
-  }
+  }*/
+
   _handleLikeButton(evt) {
-    console.log('like button');
-    //const cardLike = evt.querySelector('.element__like-button');
     const cardLike = evt.currentTarget;
     cardLike.classList.toggle('element__like-button_active')
   }
-
 
   _handleDeleteButton(evt) {
     // Add your logic for handling the delete button click event
     const cardElement = evt.target.closest('.element');
     cardElement.remove();
-
   }
 
   _handleImageClick(evt) {
@@ -66,17 +70,17 @@ class Card {
   }
 
   generateCard() {
-    const cardElement = this._getTemplate();
-    const imageElement = cardElement.querySelector('.element__img');
-    const titleElement = cardElement.querySelector('.element__text');
+    this._cardElement = this._getTemplate().querySelector('.element');
+    const imageElement = this._cardElement.querySelector('.element__img');
+    const titleElement = this._cardElement.querySelector('.element__text');
 
     imageElement.src = this._data.url;
     imageElement.alt = this._data.name;
     titleElement.textContent = this._data.name;
 
-    this._setEventListeners(cardElement);
+    this._setEventListeners();
 
-    return cardElement;
+    return this._cardElement;
   }
 }
 
