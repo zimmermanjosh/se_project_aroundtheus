@@ -1,11 +1,10 @@
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
-import {openModal, closeModal, handleEscKey, handlePopupClose} from "../utils/utils.js";
+import {openModal, closeModal, handlePopupClose} from "../utils/utils.js";
 import{
   initializeCards,
   profileEditModal,
   profileEditButton,
-  profileEditCloseButton,
   profileTitleInput,
   profileDescriptionInput,
   profileTitle,
@@ -13,17 +12,11 @@ import{
   profileEditForm,
   elementAddModal,
   elementAddButton,
-  elementCloseButton,
   elementAddForm,
-  elementList,
   elNameInput,
   elUrlInput,
   elementImageModal,
-  elementImageModalClose,
-  elSaveButton,
-  elementTemplate,
   elementGallery,
-  modalInputs
 }from '../constants/variables.js'
 
 // object configuration
@@ -53,18 +46,10 @@ function renderElement(elementData) {
 
 function handleProfileEditSubmit(evt) {
   evt.preventDefault();
-  /*if (
-    profileTitle &&
-    profileDescription &&
-    profileTitleInput
-  ) {*/
-    profileTitle.textContent = profileTitleInput.value;
-    profileDescription.textContent = profileDescriptionInput.value;
-    closeModal(profileEditModal);
-
-    // Disable the submit button
-    profileEditForm.querySelector('.modal__button').disabled = true;
-  //}
+  profileTitle.textContent = profileTitleInput.value;
+  profileDescription.textContent = profileDescriptionInput.value;
+  closeModal(profileEditModal);
+  editProfileValidator.resetValidation(); // Reset validation for the profile edit form
 }
 
 function handleElementImageModal(evt) {
@@ -82,11 +67,10 @@ function handleElementImageModal(evt) {
   closeModal(elementAddModal);
 
   // Disable the submit button
-  //const createButton = elementAddForm.querySelector('#imageSubmitButton');
   const createButton = elementAddForm.querySelector('.modal__button');
-  //createButton.disabled = true;
+  createButton.disabled = true;
   evt.target.reset();
-  editImageValidator.resetValidation()
+  editImageValidator.resetValidation();
 }
 
 /* event Listeners */
