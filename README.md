@@ -28,7 +28,7 @@ project has been updated locally.
 
 **Images**
 here is an example ::
-![Alt text](images/pictures/Screenshot_overview.png "aroundthewrold")
+![Alt text](src/images/pictures/Screenshot_overview.png "aroundthewrold")
 
 The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster.
 

@@ -36,7 +36,7 @@
 
 /*element__heart-button*/
 .element__like-button {
-  background: transparent url("../images/icons/Like Button_disabled.svg")
+  background: transparent url("src/images/icons/Like Button_disabled.svg")
     center;
   flex-shrink: 0;
   height: 18px;
@@ -53,11 +53,11 @@
   cursor: pointer;
 }
 .element__like-button_active {
-  background: url(../images/icons/like-button-active.svg);
+  background: url(src/images/icons/like-button-active.svg);
 }
 
 .element__delete-button {
-  background: transparent url(../images/icons/delete-icon.svg) center no-repeat;
+  background: transparent url(src/images/icons/delete-icon.svg) center no-repeat;
   width: 18px;
   height: 20px;
   cursor: pointer;

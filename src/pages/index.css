@@ -1,0 +1,10 @@
+/*imports*/
+@import url(src/vendor/normalize.css);
+@import url(element.css);
+@import url(elements.css);
+@import url(footer.css);
+@import url(header.css);
+@import url(page.css);
+@import url(profile.css);
+@import url(inter-web.css);
+@import url(modal.css);

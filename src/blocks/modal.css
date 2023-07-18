@@ -42,7 +42,7 @@
 .modal__close {
   width: 40px;
   height: 40px;
-  background-image: url(../images/icons/modal-close.svg);
+  background-image: url(src/images/icons/modal-close.svg);
   border: none;
   background-color: transparent;
   background-repeat: no-repeat;
