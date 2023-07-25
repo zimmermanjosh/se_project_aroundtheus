@@ -1,6 +1,8 @@
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import {openModal, closeModal, handlePopupClose} from "../utils/utils.js";
+import Section from '../utils/section.js';
+import UserInfo from '../utils/userInfo.js';
 import{
   initializeCards,
   profileEditModal,
@@ -18,6 +20,13 @@ import{
   elementImageModal,
   elementGallery,
 }from '../constants/variables.js'
+
+// Create an instance of the UserInfo class
+const userInfo = new UserInfo({
+  nameSelector: '.profile__title',
+  jobSelector: '.profile__descr',
+});
+
 
 // object configuration
 const config = {
@@ -43,14 +52,25 @@ function renderElement(elementData) {
   elementGallery.prepend(cardElement);
 }
 
+// Create an instance of the Section class
+const elementSection = new Section({ items: initializeCards, renderer: renderElement }, '.elements__list');
+
+// Render the items on the page
+elementSection.renderItems();
+
 function handleProfileEditSubmit(evt) {
   evt.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
+
+  // Get the form values
+  const name = profileTitleInput.value;
+  const job = profileDescriptionInput.value;
+
+  // Update the user info on the page
+  userInfo.setUserInfo({ name, job });
+
   closeModal(profileEditModal);
   editProfileValidator.resetValidation(); // Reset validation for the profile edit form
 }
-
 function handleElementImageModal(evt) {
   evt.preventDefault();
   const name = elNameInput.value;
@@ -77,10 +97,9 @@ initializeCards.forEach((elementData) => {
   renderElement(elementData);
 });
 
+//add event listeners
 elementImageModal.addEventListener("mousedown", handlePopupClose);
-
 profileEditModal.addEventListener("mousedown", handlePopupClose);
-
 elementAddModal.addEventListener("mousedown", handlePopupClose);
 elementAddButton.addEventListener("click", () => {
   openModal(elementAddModal);
@@ -93,5 +112,4 @@ profileEditButton.addEventListener("click", () => {
 });
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-
 elementAddForm.addEventListener("submit", handleElementImageModal);
