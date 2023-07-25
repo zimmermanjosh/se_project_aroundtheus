@@ -1,0 +1,28 @@
+CARD.js
+import {openModal} from "../utils/utils.js"; ->> This file should not contain any imports
+
+****
+**** line29 his._cardElement.querySelector('.element__img').addEventListener('click', this._handleImageClick.bind(this));
+The preview listener should be passed to the card via constructor arguments, it should open a card using PopupWithImage class methods. (You should create that class using the project description)
+
+userInfo.js
+line1 files, which contain class declarations should be named starting with an upper case letter UserInfo.js
+
+SECTION.js
+line1 Files, which contain class declarations should be named starting with an upper case letter
+
+****
+****
+line15  this._container.append(element);
+       The new cards should be added to the beginning of the container, so you should create a new method prependItem
+
+PopupFormswithCard.js
+line 1 import Popup from './popup.js';
+       Please rename this file to PopupWithForm.js since it's a popup with only one form
+rename popupWithForm
+
+Popup.js
+export default class Popup {
+All the classes should be in the components directory
+
+renamed popup
