@@ -26,3 +26,9 @@ export default class Popup {
 All the classes should be in the components directory
 
 renamed popup
+
+*****
+git commit
+git push jz/sprint8_submssion_II
+
+index.js 10 items to address

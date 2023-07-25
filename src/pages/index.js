@@ -111,5 +111,5 @@ profileEditButton.addEventListener("click", () => {
   openModal(profileEditModal);
 });
 
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+//profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 elementAddForm.addEventListener("submit", handleElementImageModal);
