@@ -1,4 +1,4 @@
-import {openModal} from "../utils/utils.js";
+//import {openModal} from "../utils/utils.js";
 
 class Card {
   constructor(data, templateSelector, elementImageModal) {
