@@ -1,8 +1,8 @@
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import {openModal, closeModal, handlePopupClose} from "../utils/utils.js";
-import Section from './section.js';
-import UserInfo from './userInfo.js';
+import Section from '../utils/section.js';
+import UserInfo from '../utils/userInfo.js';
 import{
   initializeCards,
   profileEditModal,
@@ -46,11 +46,11 @@ editImageValidator.enableValidation();
 
 
 // Functions
-/*function renderElement(elementData) {
+function renderElement(elementData) {
   const card = new Card(elementData, "#element-template", elementImageModal);
   const cardElement = card.generateCard();
   elementGallery.prepend(cardElement);
-}*/
+}
 
 // Create an instance of the Section class
 const elementSection = new Section({ items: initializeCards, renderer: renderElement }, '.elements__list');
@@ -58,13 +58,6 @@ const elementSection = new Section({ items: initializeCards, renderer: renderEle
 // Render the items on the page
 elementSection.renderItems();
 
-/*function handleProfileEditSubmit(evt) {
-  evt.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
-  closeModal(profileEditModal);
-  editProfileValidator.resetValidation(); // Reset validation for the profile edit form
-}*/
 function handleProfileEditSubmit(evt) {
   evt.preventDefault();
 
@@ -120,23 +113,3 @@ profileEditButton.addEventListener("click", () => {
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 elementAddForm.addEventListener("submit", handleElementImageModal);
-
-
-/*elementImageModal.addEventListener("mousedown", handlePopupClose);
-
-profileEditModal.addEventListener("mousedown", handlePopupClose);
-
-elementAddModal.addEventListener("mousedown", handlePopupClose);
-elementAddButton.addEventListener("click", () => {
-  openModal(elementAddModal);
-});
-
-profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  openModal(profileEditModal);
-});
-
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-
-elementAddForm.addEventListener("submit", handleElementImageModal);*/
