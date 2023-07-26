@@ -1,32 +1,10 @@
-import Card from '../components/Card.js';
-import FormValidator from '../components/FormValidator.js';
-import {openModal, closeModal, handlePopupClose} from "../utils/utils.js";
-import Section from '../utils/section.js';
-import UserInfo from '../utils/userInfo.js';
-import{
-  initializeCards,
-  profileEditModal,
-  profileEditButton,
-  profileTitleInput,
-  profileDescriptionInput,
-  profileTitle,
-  profileDescription,
-  profileEditForm,
-  elementAddModal,
-  elementAddButton,
-  elementAddForm,
-  elNameInput,
-  elUrlInput,
-  elementImageModal,
-  elementGallery,
-}from '../constants/variables.js'
+// ... (previous code)
 
 // Create an instance of the UserInfo class
 const userInfo = new UserInfo({
   nameSelector: '.profile__title',
   jobSelector: '.profile__descr',
 });
-
 
 // object configuration
 const config = {
@@ -44,12 +22,19 @@ editProfileValidator.enableValidation();
 const editImageValidator = new FormValidator(config, elementAddModal)
 editImageValidator.enableValidation();
 
+const profileEditPopup = new Popup(profileEditModal);
+
 
 // Functions
-function renderElement(elementData) {
+/*function renderElement(elementData) {
   const card = new Card(elementData, "#element-template", elementImageModal);
   const cardElement = card.generateCard();
   elementGallery.prepend(cardElement);
+}*/
+function renderElement(elementData) {
+  const card = new Card(elementData, "#element-template", elementImageModal);
+  const cardElement = card.generateCard();
+  elementSection.addItem(cardElement); // Use the addItem method of the Section class
 }
 
 // Create an instance of the Section class
@@ -58,38 +43,18 @@ const elementSection = new Section({ items: initializeCards, renderer: renderEle
 // Render the items on the page
 elementSection.renderItems();
 
-function handleProfileEditSubmit(evt) {
-  evt.preventDefault();
-
-  // Get the form values
-  const name = profileTitleInput.value;
-  const job = profileDescriptionInput.value;
-
+function handleProfileEditSubmit(name, job) {
   // Update the user info on the page
   userInfo.setUserInfo({ name, job });
 
-  closeModal(profileEditModal);
+  //closeModal(profileEditModal);
+  profileEditPopup.close();
+
   editProfileValidator.resetValidation(); // Reset validation for the profile edit form
 }
+
 function handleElementImageModal(evt) {
-  evt.preventDefault();
-  const name = elNameInput.value;
-  const url = elUrlInput.value;
-
-  const elementData = {
-    name: name,
-    url: url
-  };
-
-  renderElement(elementData);
-
-  closeModal(elementAddModal);
-
-  // Disable the submit button
-  const createButton = elementAddForm.querySelector('.modal__button');
-  createButton.disabled = true;
-  evt.target.reset();
-  editImageValidator.resetValidation();
+  // ... (previous code)
 }
 
 /* event Listeners */
@@ -108,8 +73,21 @@ elementAddButton.addEventListener("click", () => {
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  openModal(profileEditModal);
+
+  profileEditPopup.open();
+  //openModal(profileEditModal);
 });
 
-//profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+// Event listener for profile edit form submission
+profileEditForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+
+  // Get the form values
+  const name = profileTitleInput.value;
+  const job = profileDescriptionInput.value;
+
+  // Call the handleProfileEditSubmit function with the form values
+  handleProfileEditSubmit(name, job);
+});
+
 elementAddForm.addEventListener("submit", handleElementImageModal);
