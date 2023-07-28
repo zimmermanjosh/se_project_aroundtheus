@@ -54,7 +54,7 @@
   height: 24px;
   width: 24px;
   background-size: auto auto;
-  background: transparent url("src/images/icons/Edit Button.svg") center
+  background: transparent url("/src/images/icons/Edit Button.svg") center
     no-repeat;
   border: white 1px solid;
   grid-area: button;
@@ -66,7 +66,7 @@
   height: 50px;
   width: 150px;
   margin-left: auto;
-  background: transparent url("src/images/icons/Add Button.svg") center
+  background: transparent url("/src/images/icons/Add_Button.svg") center
     no-repeat;
   border: white 2px solid;
   cursor: pointer;
@@ -115,7 +115,7 @@
     margin-left: 10px;
   }
   .profile__add-button {
-    background: transparent url("../images/icons/Add Button.svg") center
+    background: transparent url("/src/images/icons/Add_Button.svg") center
       no-repeat;
     height: 50px;
     width: 150px;

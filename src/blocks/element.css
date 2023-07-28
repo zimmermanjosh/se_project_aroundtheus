@@ -53,7 +53,7 @@
   cursor: pointer;
 }
 .element__like-button_active {
-  background: url("src/images/icons/like-button-active.svg");
+  background: url("/src/images/icons/like-button-active.svg");
 }
 
 .element__delete-button {
