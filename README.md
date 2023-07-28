@@ -52,8 +52,8 @@ this is revision for sprint 7
 - This is what your file structure should look like after the changes:
 - se_project_aroundtheus/
   -- components/
-      -- Card.js
-      -- FormValidator.js
+      -- card.js
+      -- formValidator.js
   -- pages/
      -- index.js
      -- index.css
@@ -76,8 +76,8 @@ this is revision for sprint 7
 This project will be different from your previous projects. Before, you were required to code and implement various features yourself, for example, adding functioning buttons or making a popup appear and then disappear. But this time, all the functionality is already there, and your task is to organize the code.
 The first requirement is to add the Card and FormValidator classes to the code and ensure that each of them performs one specific task. These classes should contain all the necessary code for performing their respective tasks.
 The second requirement is to divide the JavaScript code into modules. Your project will include four scripts:
-Card.js will contain the code of the Card class.
-FormValidator.js will contain the code of the FormValidator class.
+card.js will contain the code of the Card class.
+formValidator.js will contain the code of the FormValidator class.
 utils.js will contain the event handlers and the function that opens/closes modal windows.
 index.js will contain the rest of the code (you may have noticed that in some lessons we referred to this file as script.js; both index.js and script.js are common naming conventions for the main script file).
 The Card and FormValidator classes should be exported from their corresponding files, and then you will need to import and implement them inside of index.js.

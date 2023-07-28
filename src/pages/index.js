@@ -1,9 +1,10 @@
-import Card from '../components/Card.js';
-import FormValidator from '../components/FormValidator.js';
-import {openModal, closeModal, handlePopupClose} from "../utils/utils.js";
-import Section from '../utils/section.js';
-import UserInfo from '../utils/userInfo.js';
-import{
+import Card from '/src/components/card.js';
+import FormValidator from '/src/components/formValidator.js';
+import { openModal, closeModal, handlePopupClose } from "/src/utils/utils.js";
+import Section from '/src/utils/section.js';
+import UserInfo from '/src/utils/userInfo.js';
+import '/src/pages/index.css';
+import {
   initializeCards,
   profileEditModal,
   profileEditButton,
@@ -19,7 +20,7 @@ import{
   elUrlInput,
   elementImageModal,
   elementGallery,
-}from '../constants/variables.js'
+} from '/src/constants/variables'
 
 // Create an instance of the UserInfo class
 const userInfo = new UserInfo({
@@ -71,6 +72,8 @@ function handleProfileEditSubmit(evt) {
   closeModal(profileEditModal);
   editProfileValidator.resetValidation(); // Reset validation for the profile edit form
 }
+
+// Function to handle form submission for adding new elements
 function handleElementImageModal(evt) {
   evt.preventDefault();
   const name = elNameInput.value;
@@ -78,17 +81,14 @@ function handleElementImageModal(evt) {
 
   const elementData = {
     name: name,
-    url: url
+    url: url,
   };
 
   renderElement(elementData);
 
   closeModal(elementAddModal);
 
-  // Disable the submit button
-  const createButton = elementAddForm.querySelector('.modal__button');
-  createButton.disabled = true;
-  evt.target.reset();
+  // Reset the form validation for the element add form
   editImageValidator.resetValidation();
 }
 

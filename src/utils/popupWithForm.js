@@ -31,3 +31,5 @@ class PopupWithForm extends Popup {
 }
 
 export default PopupWithForm;
+
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);

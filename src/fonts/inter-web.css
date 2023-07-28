@@ -21,6 +21,6 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(./inter-web/Inter-Regular.woff2) format("woff2"),
+  src: url(./inter-web/Inter-Regular.woff2) format("./inter-web/woff2"),
     url(./inter-web/Inter-Regular.woff) format("./inter-web/woff");
 }
