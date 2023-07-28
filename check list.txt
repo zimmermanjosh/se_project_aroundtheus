@@ -1,7 +1,7 @@
 4th submission
 -- check utils.js updated and fixed
 -- index.html updated added modal__button_disabled class (line 85,121)
--- index.js -- Card.js 404 -- testing -- fixed in part III - Submission4
+-- index.js -- card.js 404 -- testing -- fixed in part III - Submission4
 -- index.js -- fixed comments to add constants.js - new import and export
 -- line 152<now 62> after refactor -- delete
 -- profile create button re-trigger -- fixed
@@ -18,8 +18,8 @@
 
 6th
 fix formvaild
-import Card from '../components/Card.js';
-import FormValidator from '../components/FormValidator.js';
+import Card from '../components/card.js';
+import FormValidator from '../components/formValidator.js';
 import {openModal, closeModal, handleEscKey, handlePopupClose} from "../utils/utils.js";
 import{
   initializeCards,
