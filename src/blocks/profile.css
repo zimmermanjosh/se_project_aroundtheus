@@ -66,7 +66,7 @@
   height: 50px;
   width: 150px;
   margin-left: auto;
-  background: transparent url("../images/icons/Add\ Button.svg") center
+  background: transparent url("src/images/icons/Add Button.svg") center
     no-repeat;
   border: white 2px solid;
   cursor: pointer;
