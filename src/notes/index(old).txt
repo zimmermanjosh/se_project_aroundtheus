@@ -52,7 +52,7 @@ elementSection.renderItems();
 function renderElement(elementData) {
   const card = new Card(elementData, "#element-template", elementImageModal);
   const cardElement = card.generateCard();
-  elementSection.prependItem(cardElement); // Use the new prependItem method to add cards to the beginning of the container
+  elementGallery.prepend(cardElement);
 }
 
 function handleProfileEditSubmit(evt) {
@@ -78,6 +78,10 @@ function handleElementImageModal(evt) {
 }
 
 /* event Listeners */
+initializeCards.forEach((elementData) => {
+  renderElement(elementData);
+});
+
 elementImageModal.addEventListener("mousedown", handlePopupClose);
 profileEditModal.addEventListener("mousedown", handlePopupClose);
 elementAddModal.addEventListener("mousedown", handlePopupClose);

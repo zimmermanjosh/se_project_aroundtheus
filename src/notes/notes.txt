@@ -11,9 +11,48 @@ Card.js:44 Uncaught ReferenceError: openModal is not defined
     at Card._handleImageClick (Card.js:44:5)
 _handleImageClick @ Card.js:44
 ** Fixed Crad.js w/ new import { openModal, closeModal } from '/src/utils/utils.js';
+** added package.json update
+- run build:prof
+- run run:dev
+- run reset  ( delete reinstall package and start dev )
+
+removed scripts from html reference
+removed css reference
+fixed webpack dev
+fixed webpack build
+
+++ checklist from reviewer
+userInfo.js -> refactore pascal case
+Files, which contain class declarations should be named starting with an upper case letter
+Section.js -> refactore pascal case
+Files, which contain class declarations should be named starting with an upper case letter
 
 
 
+
+
+
++++ CHECKS AND BALANCES +++
+checks on Web app
+ webpack
+ - build npm run build:prod
+ - dev npm run run:dev
+test name / validation
+test desc / validation
+test above / validation both together
+
+test imagae modal popup
+test delete
+test fav
+
+test load images
+test url image  && name
+
+test image modal popup
+
+check console  - errors
+
+check networking tab -- errors long load times
 
 
 ++++++++++++++++ Submission II ++++++++++++++++
