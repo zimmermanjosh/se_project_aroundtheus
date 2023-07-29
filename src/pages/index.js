@@ -50,7 +50,7 @@ elementSection.renderItems();
 
 // Functions
 function renderElement(elementData) {
-  const card = new Card(elementData, "#element-template", elementImageModal);
+  const card = new Card(elementData, "#element-template", elementImageModal ,openModal)
   const cardElement = card.generateCard();
   elementSection.prependItem(cardElement); // Use the new prependItem method to add cards to the beginning of the container
 }

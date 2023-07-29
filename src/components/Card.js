@@ -1,8 +1,9 @@
-import { openModal, closeModal } from '/src/utils/utils.js';
 class Card {
-  constructor(data, templateSelector, elementImageModal) {
+  constructor(data, templateSelector, elementImageModal,openModalFunction) {
+    //constructor(data, templateSelector, elementImageModal)
     this._data = data;
     this._templateSelector = templateSelector;
+    this._openModalFunction = openModalFunction;
     this._elementImageModal = elementImageModal;
   }
 
@@ -23,7 +24,6 @@ class Card {
   }
 
   _handleDeleteButton(evt) {
-    // Add your logic for handling the delete button click event
     const cardElement = evt.target.closest('.element');
     cardElement.remove();
   }
@@ -39,9 +39,7 @@ class Card {
     modalImage.alt = imageCaption;
     modalCaption.textContent = imageCaption;
 
-    const elementImageModal = this._elementImageModal;
-
-    openModal(elementImageModal);
+    this._openModalFunction(this._elementImageModal);
   }
 
   generateCard() {

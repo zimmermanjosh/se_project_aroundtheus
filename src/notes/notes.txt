@@ -36,6 +36,9 @@ PopupWithForm.js
 Sections.js
 UserInfo.js
 
+Components 2
+fix no import on card.js line 1
+
 
 +++ CHECKS AND BALANCES +++
 checks on Web app
