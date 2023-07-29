@@ -2,6 +2,17 @@
 refactor all files.js to be Pascal case
 refactor all classes to be pascal case
 clean up code smells
+userInfo Updated to userinfo
+checked webpack dev
+checked webpack build
++++
+image modal open not working - Console
+Card.js:44 Uncaught ReferenceError: openModal is not defined
+    at Card._handleImageClick (Card.js:44:5)
+_handleImageClick @ Card.js:44
+** Fixed Crad.js w/ new import { openModal, closeModal } from '/src/utils/utils.js';
+
+
 
 
 

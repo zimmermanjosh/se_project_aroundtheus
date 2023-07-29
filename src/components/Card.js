@@ -1,4 +1,4 @@
-
+import { openModal, closeModal } from '/src/utils/utils.js';
 class Card {
   constructor(data, templateSelector, elementImageModal) {
     this._data = data;

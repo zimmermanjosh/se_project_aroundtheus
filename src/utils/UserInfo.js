@@ -17,4 +17,4 @@ class UserInfo {
   }
 }
 
-export default userInfo;
+export default UserInfo;
