@@ -1,25 +1,25 @@
 4th submission
 -- check utils.js updated and fixed
 -- index.html updated added modal__button_disabled class (line 85,121)
--- index.js -- card.js 404 -- testing -- fixed in part III - Submission4
+-- index.js -- Card.js 404 -- testing -- fixed in part III - Submission4
 -- index.js -- fixed comments to add constants.js - new import and export
 -- line 152<now 62> after refactor -- delete
 -- profile create button re-trigger -- fixed
 -- update like button
 -- garbage collecting
 -- use open modal from utils.js
--- use no keyup function in card.js use it from utils.js
+-- use no keyup function in Card.js use it from utils.js
 
 5th Submission
--- card.js - This method should not have any arguments, use this._cardElement
--- card.js - Please remove this method, it's not the Card class responsibility -- _handleEscapeKey
+-- Card.js - This method should not have any arguments, use this._cardElement
+-- Card.js - Please remove this method, it's not the Card class responsibility -- _handleEscapeKey
 -- index.js -- remove IF statement line 60
 -- index.js -- remove line 87
 
 6th
 fix formvaild
-import Card from '../components/card.js';
-import FormValidator from '../components/formValidator.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
 import {openModal, closeModal, handleEscKey, handlePopupClose} from "../utils/utils.js";
 import{
   initializeCards,

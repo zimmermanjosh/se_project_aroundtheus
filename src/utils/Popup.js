@@ -1,5 +1,5 @@
 // Import the PopupWithImage class
-import PopupWithImage from './PopupwithForm.js';
+import PopupWithImage from './PopupWithForm.js';
 
 class Card {
   constructor(data, templateSelector, elementImageModal) {
