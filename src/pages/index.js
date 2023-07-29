@@ -19,7 +19,7 @@ import {
   elNameInput,
   elUrlInput,
   elementImageModal,
-  elementGallery,
+  elementGallery, elementCloseButton,
 } from '/src/constants/variables'
 
 const userInfo = new UserInfo({
@@ -52,16 +52,12 @@ elementSection.renderItems();
 function renderElement(elementData) {
   const card = new Card(elementData, "#element-template", elementImageModal ,openModal)
   const cardElement = card.generateCard();
-  elementSection.prependItem(cardElement); // Use the new prependItem method to add cards to the beginning of the container
+  elementSection.prependItem(cardElement);
 }
-
-function handleProfileEditSubmit(evt) {
-  evt.preventDefault();
-  const name = profileTitleInput.value;
-  const job = profileDescriptionInput.value;
+function handleProfileEditSubmit(name, job) {
   userInfo.setUserInfo({ name, job });
-  closeModal(profileEditModal);
-  editProfileValidator.resetValidation(); // Reset validation for the profile edit form
+  profileEditModal.close();
+  editProfileValidator.resetValidation();
 }
 
 function handleElementImageModal(evt) {
@@ -72,7 +68,9 @@ function handleElementImageModal(evt) {
     name: name,
     url: url,
   };
-  renderElement(elementData);
+  //renderElement(elementData);
+  renderElement(name, url);
+  //elementAddModal.close();
   closeModal(elementAddModal);
   editImageValidator.resetValidation();
 }
@@ -91,5 +89,11 @@ profileEditButton.addEventListener("click", () => {
   openModal(profileEditModal);
 });
 
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+profileEditForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  const name = profileTitleInput.value;
+  const job = profileDescriptionInput.value;
+  handleProfileEditSubmit(name, job); // Pass input values to handleProfileEditSubmit function
+});
+
 elementAddForm.addEventListener("submit", handleElementImageModal);

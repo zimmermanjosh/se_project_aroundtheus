@@ -39,6 +39,18 @@ UserInfo.js
 Components 2
 fix no import on card.js line 1
 
+left to fix !!!!!
+Card.js
+line 29     this._cardElement.querySelector('.element__img').addEventListener('click', this._handleImageClick.bind(this));
+The preview listener should be passed to the card via constructor arguments, it should open a card using PopupWithImage class methods. (You should create that class using the project description)
+
+index.js -> 10 errors maybe ??
+line 52 ->   elementGallery.prepend(cardElement);
+updated
+line 61 -> function handleProfileEditSubmit(evt) {
+function function handleProfileEditSubmit(evt) {  update
+closeModal(profileEditModal); - update
+
 
 +++ CHECKS AND BALANCES +++
 checks on Web app
