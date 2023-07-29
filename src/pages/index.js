@@ -1,8 +1,8 @@
 import Card from '/src/components/Card.js';
 import FormValidator from '/src/components/FormValidator.js';
 import { openModal, closeModal, handlePopupClose } from "/src/utils/utils.js";
-import Section from '/src/utils/Section.js';
-import UserInfo from '/src/utils/UserInfo.js';
+import Section from '/src/components/Section.js';
+import UserInfo from '/src/components/UserInfo.js';
 import '/src/pages/index.css';
 import {
   initializeCards,

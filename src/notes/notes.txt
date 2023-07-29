@@ -27,9 +27,14 @@ Files, which contain class declarations should be named starting with an upper c
 Section.js -> refactore pascal case
 Files, which contain class declarations should be named starting with an upper case letter
 
+Popup.js -> refactore pascal case
+PopupWithForm.js -> refactore pascal case
 
-
-
+refactor below js files to /src/components directory
+Popup.js
+PopupWithForm.js
+Sections.js
+UserInfo.js
 
 
 +++ CHECKS AND BALANCES +++
