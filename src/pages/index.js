@@ -22,14 +22,11 @@ import {
   elementGallery,
 } from '/src/constants/variables'
 
-// Create an instance of the UserInfo class
 const userInfo = new UserInfo({
   nameSelector: '.profile__title',
   jobSelector: '.profile__descr',
 });
 
-
-// object configuration
 const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
@@ -45,6 +42,11 @@ editProfileValidator.enableValidation();
 const editImageValidator = new FormValidator(config, elementAddModal)
 editImageValidator.enableValidation();
 
+// Create an instance of the Section class
+const elementSection = new Section({ items: initializeCards, renderer: renderElement }, '.elements__list');
+
+// Render the items on the page
+elementSection.renderItems();
 
 // Functions
 function renderElement(elementData) {
@@ -53,42 +55,25 @@ function renderElement(elementData) {
   elementGallery.prepend(cardElement);
 }
 
-// Create an instance of the Section class
-const elementSection = new Section({ items: initializeCards, renderer: renderElement }, '.elements__list');
-
-// Render the items on the page
-elementSection.renderItems();
-
 function handleProfileEditSubmit(evt) {
   evt.preventDefault();
-
-  // Get the form values
   const name = profileTitleInput.value;
   const job = profileDescriptionInput.value;
-
-  // Update the user info on the page
   userInfo.setUserInfo({ name, job });
-
   closeModal(profileEditModal);
   editProfileValidator.resetValidation(); // Reset validation for the profile edit form
 }
 
-// Function to handle form submission for adding new elements
 function handleElementImageModal(evt) {
   evt.preventDefault();
   const name = elNameInput.value;
   const url = elUrlInput.value;
-
   const elementData = {
     name: name,
     url: url,
   };
-
   renderElement(elementData);
-
   closeModal(elementAddModal);
-
-  // Reset the form validation for the element add form
   editImageValidator.resetValidation();
 }
 
@@ -97,7 +82,6 @@ initializeCards.forEach((elementData) => {
   renderElement(elementData);
 });
 
-//add event listeners
 elementImageModal.addEventListener("mousedown", handlePopupClose);
 profileEditModal.addEventListener("mousedown", handlePopupClose);
 elementAddModal.addEventListener("mousedown", handlePopupClose);

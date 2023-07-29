@@ -1,3 +1,11 @@
+++++++++++++++++ Submission III ++++++++++++++++
+refactor all files.js to be Pascal case
+refactor all classes to be pascal case
+clean up code smells
+
+
+
+++++++++++++++++ Submission II ++++++++++++++++
 CARD.js
 import {openModal} from "../utils/utils.js"; ->> This file should not contain any imports
 

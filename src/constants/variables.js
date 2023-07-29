@@ -1,7 +1,3 @@
-///////////////////////////////////
-// initialize the app with data //
-///////////////////////////////////
-
 const initializeCards = [
 
   {
@@ -66,11 +62,6 @@ const initializeCards = [
   }
 ];
 
-///////////////////////////////////
-/* variables - constants */
-///////////////////////////////////
-
-/**  profile modal **/
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileEditCloseButton = document.querySelector(
@@ -82,30 +73,20 @@ const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__descr");
 const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
 
-/**  element modal **/
 const elementAddModal = document.querySelector("#element-add-modal");
 const elementAddButton = document.querySelector(".profile__add-button");
 const elementCloseButton= elementAddModal.querySelector("#element-add-close");
 const elementAddForm = elementAddModal.querySelector("#element-add-form");
-
-/*URL List*/
 const elementList = document.querySelector(".elements__list");
 const elNameInput = elementAddModal.querySelector("#element-input");
 const elUrlInput = elementAddModal.querySelector("#image-input");
-
-// images and popup modal
 const elementImageModal = document.querySelector("#element-image-modal");
-//const modalImage = document.querySelector("#element-modal-image");
-//const modalCaption = document.querySelector("#element-modal-caption");
 const elementImageModalClose = document.querySelector("#element-image-close");
 const elSaveButton = elementImageModal.querySelector("#imageSubmitButton");
-
-//array of data element in elements
 const elementGallery = document.querySelector(".elements__list");
 const elementTemplate = document
   .querySelector("#element-template")
   .content.querySelector(".el__element");
-
 const modalInputs = Array.from(
   elementImageModal.querySelectorAll(".modal__input")
 );

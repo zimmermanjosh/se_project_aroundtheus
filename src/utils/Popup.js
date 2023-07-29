@@ -1,4 +1,3 @@
-// Import the PopupWithImage class
 import PopupWithImage from './PopupWithForm.js';
 
 class Card {
@@ -32,31 +31,18 @@ class Card {
   _handleImageClick(evt) {
     const imageUrl = this._data.url;
     const imageCaption = this._data.name;
-
-    // Create an instance of the PopupWithImage class and pass the imageUrl and imageCaption
     const popupWithImage = new PopupWithImage(imageUrl, imageCaption);
     popupWithImage.open(); // Open the popup with the image and caption
-
-    // Alternatively, you can use the existing elementImageModal and openModal function:
-    // const modalImage = this._elementImageModal.querySelector('#element-modal-image');
-    // const modalCaption = this._elementImageModal.querySelector('#element-modal-caption');
-    // modalImage.src = imageUrl;
-    // modalImage.alt = imageCaption;
-    // modalCaption.textContent = imageCaption;
-    // openModal(this._elementImageModal);
   }
 
   generateCard() {
     this._cardElement = this._getTemplate().querySelector('.element');
     const imageElement = this._cardElement.querySelector('.element__img');
     const titleElement = this._cardElement.querySelector('.element__text');
-
     imageElement.src = this._data.url;
     imageElement.alt = this._data.name;
     titleElement.textContent = this._data.name;
-
     this._setEventListeners();
-
     return this._cardElement;
   }
 }
