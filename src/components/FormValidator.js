@@ -1,7 +1,3 @@
-//////////////////////////////////
-/* Form Validator */
-///////////////////////////////////
-
 class FormValidator {
   constructor(config, formElement) {
     this._formElement = formElement;
@@ -76,9 +72,5 @@ class FormValidator {
     this._toggleButtonState();
   }
 }
-
-//const formValidator = new FormValidator(configurationObjects, profileEditForm);
-//formValidator.enableValidation();
-
 
 export default FormValidator;

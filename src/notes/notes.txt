@@ -1,3 +1,81 @@
+++++++++++++++++ Submission III ++++++++++++++++
+refactor all files.js to be Pascal case
+refactor all classes to be pascal case
+clean up code smells
+userInfo Updated to userinfo
+checked webpack dev
+checked webpack build
++++
+image modal open not working - Console
+Card.js:44 Uncaught ReferenceError: openModal is not defined
+    at Card._handleImageClick (Card.js:44:5)
+_handleImageClick @ Card.js:44
+** Fixed Crad.js w/ new import { openModal, closeModal } from '/src/utils/utils.js';
+** added package.json update
+- run build:prof
+- run run:dev
+- run reset  ( delete reinstall package and start dev )
+
+removed scripts from html reference
+removed css reference
+fixed webpack dev
+fixed webpack build
+
+++ checklist from reviewer
+userInfo.js -> refactore pascal case
+Files, which contain class declarations should be named starting with an upper case letter
+Section.js -> refactore pascal case
+Files, which contain class declarations should be named starting with an upper case letter
+
+Popup.js -> refactore pascal case
+PopupWithForm.js -> refactore pascal case
+
+refactor below js files to /src/components directory
+Popup.js
+PopupWithForm.js
+Sections.js
+UserInfo.js
+
+Components 2
+fix no import on card.js line 1
+
+left to fix !!!!!
+Card.js
+line 29     this._cardElement.querySelector('.element__img').addEventListener('click', this._handleImageClick.bind(this));
+The preview listener should be passed to the card via constructor arguments, it should open a card using PopupWithImage class methods. (You should create that class using the project description)
+
+index.js -> 10 errors maybe ??
+line 52 ->   elementGallery.prepend(cardElement);
+updated
+line 61 -> function handleProfileEditSubmit(evt) {
+function function handleProfileEditSubmit(evt) {  update
+closeModal(profileEditModal); - update
+
+
++++ CHECKS AND BALANCES +++
+checks on Web app
+ webpack
+ - build npm run build:prod
+ - dev npm run run:dev
+test name / validation
+test desc / validation
+test above / validation both together
+
+test imagae modal popup
+test delete
+test fav
+
+test load images
+test url image  && name
+
+test image modal popup
+
+check console  - errors
+
+check networking tab -- errors long load times
+
+
+++++++++++++++++ Submission II ++++++++++++++++
 CARD.js
 import {openModal} from "../utils/utils.js"; ->> This file should not contain any imports
 
@@ -5,7 +83,7 @@ import {openModal} from "../utils/utils.js"; ->> This file should not contain an
 **** line29 his._cardElement.querySelector('.element__img').addEventListener('click', this._handleImageClick.bind(this));
 The preview listener should be passed to the card via constructor arguments, it should open a card using PopupWithImage class methods. (You should create that class using the project description)
 
-userInfo.js
+UserInfo.js
 line1 files, which contain class declarations should be named starting with an upper case letter UserInfo.js
 
 SECTION.js
@@ -17,7 +95,7 @@ line15  this._container.append(element);
        The new cards should be added to the beginning of the container, so you should create a new method prependItem
 
 PopupFormswithCard.js
-line 1 import Popup from './popup.js';
+line 1 import Popup from './Popup.js';
        Please rename this file to PopupWithForm.js since it's a popup with only one form
 rename popupWithForm
 

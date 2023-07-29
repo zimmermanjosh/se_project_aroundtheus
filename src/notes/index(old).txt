@@ -1,8 +1,8 @@
 import Card from '/src/components/Card.js';
 import FormValidator from '/src/components/FormValidator.js';
 import { openModal, closeModal, handlePopupClose } from "/src/utils/utils.js";
-import Section from '/src/components/Section.js';
-import UserInfo from '/src/components/UserInfo.js';
+import Section from '/src/utils/Section.js';
+import UserInfo from '/src/utils/UserInfo.js';
 import '/src/pages/index.css';
 import {
   initializeCards,
@@ -19,7 +19,7 @@ import {
   elNameInput,
   elUrlInput,
   elementImageModal,
-  elementGallery, elementCloseButton,
+  elementGallery,
 } from '/src/constants/variables'
 
 const userInfo = new UserInfo({
@@ -50,14 +50,18 @@ elementSection.renderItems();
 
 // Functions
 function renderElement(elementData) {
-  const card = new Card(elementData, "#element-template", elementImageModal ,openModal)
+  const card = new Card(elementData, "#element-template", elementImageModal);
   const cardElement = card.generateCard();
-  elementSection.prependItem(cardElement);
+  elementGallery.prepend(cardElement);
 }
-function handleProfileEditSubmit(name, job) {
+
+function handleProfileEditSubmit(evt) {
+  evt.preventDefault();
+  const name = profileTitleInput.value;
+  const job = profileDescriptionInput.value;
   userInfo.setUserInfo({ name, job });
-  profileEditModal.close();
-  editProfileValidator.resetValidation();
+  closeModal(profileEditModal);
+  editProfileValidator.resetValidation(); // Reset validation for the profile edit form
 }
 
 function handleElementImageModal(evt) {
@@ -68,14 +72,16 @@ function handleElementImageModal(evt) {
     name: name,
     url: url,
   };
-  //renderElement(elementData);
-  renderElement(name, url);
-  //elementAddModal.close();
+  renderElement(elementData);
   closeModal(elementAddModal);
   editImageValidator.resetValidation();
 }
 
 /* event Listeners */
+initializeCards.forEach((elementData) => {
+  renderElement(elementData);
+});
+
 elementImageModal.addEventListener("mousedown", handlePopupClose);
 profileEditModal.addEventListener("mousedown", handlePopupClose);
 elementAddModal.addEventListener("mousedown", handlePopupClose);
@@ -89,11 +95,5 @@ profileEditButton.addEventListener("click", () => {
   openModal(profileEditModal);
 });
 
-profileEditForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  const name = profileTitleInput.value;
-  const job = profileDescriptionInput.value;
-  handleProfileEditSubmit(name, job); // Pass input values to handleProfileEditSubmit function
-});
-
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 elementAddForm.addEventListener("submit", handleElementImageModal);
