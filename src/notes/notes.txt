@@ -1,3 +1,11 @@
+++++++++++++++++ Submission IV ++++++++++++++++
+09 issues
+
+pop.js
+This file should contain Popup class declaration
+
+
+
 ++++++++++++++++ Submission III ++++++++++++++++
 refactor all files.js to be Pascal case
 refactor all classes to be pascal case

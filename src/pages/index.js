@@ -1,9 +1,9 @@
-import Card from '/src/components/Card.js';
-import FormValidator from '/src/components/FormValidator.js';
+import Card from "/src/components/Card.js";
+import FormValidator from "/src/components/FormValidator.js";
 import { openModal, closeModal, handlePopupClose } from "/src/utils/utils.js";
-import Section from '/src/components/Section.js';
-import UserInfo from '/src/components/UserInfo.js';
-import '/src/pages/index.css';
+import Section from "/src/components/Section.js";
+import UserInfo from "/src/components/UserInfo.js";
+import "/src/pages/index.css";
 import {
   initializeCards,
   profileEditModal,
@@ -19,12 +19,13 @@ import {
   elNameInput,
   elUrlInput,
   elementImageModal,
-  elementGallery, elementCloseButton,
-} from '/src/constants/variables'
+  elementGallery,
+  elementCloseButton,
+} from "/src/constants/variables";
 
 const userInfo = new UserInfo({
-  nameSelector: '.profile__title',
-  jobSelector: '.profile__descr',
+  nameSelector: ".profile__title",
+  jobSelector: ".profile__descr",
 });
 
 const config = {
@@ -34,23 +35,31 @@ const config = {
   inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
-}
+};
 
 const editProfileValidator = new FormValidator(config, profileEditForm);
 editProfileValidator.enableValidation();
 
-const editImageValidator = new FormValidator(config, elementAddModal)
+const editImageValidator = new FormValidator(config, elementAddModal);
 editImageValidator.enableValidation();
 
 // Create an instance of the Section class
-const elementSection = new Section({ items: initializeCards, renderer: renderElement }, '.elements__list');
+const elementSection = new Section(
+  { items: initializeCards, renderer: renderElement },
+  ".elements__list",
+);
 
 // Render the items on the page
 elementSection.renderItems();
 
 // Functions
 function renderElement(elementData) {
-  const card = new Card(elementData, "#element-template", elementImageModal ,openModal)
+  const card = new Card(
+    elementData,
+    "#element-template",
+    elementImageModal,
+    openModal,
+  );
   const cardElement = card.generateCard();
   elementSection.prependItem(cardElement);
 }
@@ -68,9 +77,7 @@ function handleElementImageModal(evt) {
     name: name,
     url: url,
   };
-  //renderElement(elementData);
   renderElement(name, url);
-  //elementAddModal.close();
   closeModal(elementAddModal);
   editImageValidator.resetValidation();
 }
