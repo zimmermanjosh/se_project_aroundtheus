@@ -1,5 +1,5 @@
 class Card {
-  constructor(data, templateSelector, elementImageModal,openModalFunction) {
+  constructor(data, templateSelector, elementImageModal, openModalFunction) {
     //constructor(data, templateSelector, elementImageModal)
     this._data = data;
     this._templateSelector = templateSelector;
@@ -13,18 +13,24 @@ class Card {
   }
 
   _setEventListeners() {
-    this._cardElement.querySelector('.element__like-button').addEventListener('click', this._handleLikeButton.bind(this));
-    this._cardElement.querySelector('.element__delete-button').addEventListener('click', this._handleDeleteButton.bind(this));
-    this._cardElement.querySelector('.element__img').addEventListener('click', this._handleImageClick.bind(this));
+    this._cardElement
+      .querySelector(".element__like-button")
+      .addEventListener("click", this._handleLikeButton.bind(this));
+    this._cardElement
+      .querySelector(".element__delete-button")
+      .addEventListener("click", this._handleDeleteButton.bind(this));
+    this._cardElement
+      .querySelector(".element__img")
+      .addEventListener("click", this._handleImageClick.bind(this));
   }
 
   _handleLikeButton(evt) {
     const cardLike = evt.currentTarget;
-    cardLike.classList.toggle('element__like-button_active')
+    cardLike.classList.toggle("element__like-button_active");
   }
 
   _handleDeleteButton(evt) {
-    const cardElement = evt.target.closest('.element');
+    const cardElement = evt.target.closest(".element");
     cardElement.remove();
   }
 
@@ -32,8 +38,8 @@ class Card {
     const imageUrl = this._data.url;
     const imageCaption = this._data.name;
 
-    const modalImage = document.querySelector('#element-modal-image');
-    const modalCaption = document.querySelector('#element-modal-caption');
+    const modalImage = document.querySelector("#element-modal-image");
+    const modalCaption = document.querySelector("#element-modal-caption");
 
     modalImage.src = imageUrl;
     modalImage.alt = imageCaption;
@@ -43,9 +49,9 @@ class Card {
   }
 
   generateCard() {
-    this._cardElement = this._getTemplate().querySelector('.element');
-    const imageElement = this._cardElement.querySelector('.element__img');
-    const titleElement = this._cardElement.querySelector('.element__text');
+    this._cardElement = this._getTemplate().querySelector(".element");
+    const imageElement = this._cardElement.querySelector(".element__img");
+    const titleElement = this._cardElement.querySelector(".element__text");
 
     imageElement.src = this._data.url;
     imageElement.alt = this._data.name;

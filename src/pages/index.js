@@ -65,8 +65,7 @@ function renderElement(elementData) {
 }
 function handleProfileEditSubmit(name, job) {
   userInfo.setUserInfo({ name, job });
-  profileEditModal.close();
-  editProfileValidator.resetValidation();
+  closeModal();
 }
 
 function handleElementImageModal(evt) {
@@ -77,9 +76,9 @@ function handleElementImageModal(evt) {
     name: name,
     url: url,
   };
-  renderElement(name, url);
+  renderElement(elementData);
   closeModal(elementAddModal);
-  editImageValidator.resetValidation();
+  //editImageValidator.resetValidation();
 }
 
 /* event Listeners */

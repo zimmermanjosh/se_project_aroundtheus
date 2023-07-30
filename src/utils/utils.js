@@ -27,5 +27,3 @@ export function handlePopupClose(evt) {
     closeModal(evt.currentTarget);
   }
 }
-
-

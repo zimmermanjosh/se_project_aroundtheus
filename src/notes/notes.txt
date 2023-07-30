@@ -2,9 +2,26 @@
 09 issues
 
 pop.js
-This file should contain Popup class declaration
+This file should contain Popup class declaration -- added
+refactor added prettier - refactor all files in system directory
 
+Card.js --
+comment --You should declare the whole listener in index.js and pass it to the card via constructyor arguments
+  _handleImageClick(evt) {
+    const imageUrl = this._data.url;
+    const imageCaption = this._data.name;
 
+    const modalImage = document.querySelector('#element-modal-image');
+    const modalCaption = document.querySelector('#element-modal-caption');
+
+    modalImage.src = imageUrl;
+    modalImage.alt = imageCaption;
+    modalCaption.textContent = imageCaption;
+
+    this._openModalFunction(this._elementImageModal);
+  }
+
+index.js -- 6 items
 
 ++++++++++++++++ Submission III ++++++++++++++++
 refactor all files.js to be Pascal case
