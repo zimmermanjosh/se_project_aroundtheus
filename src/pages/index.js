@@ -53,12 +53,27 @@ const elementSection = new Section(
 elementSection.renderItems();
 
 // Functions
+function handleImageClickCallback(imageData) {
+  const imageUrl = imageData.url;
+  const imageCaption = imageData.name;
+
+  const modalImage = document.querySelector("#element-modal-image");
+  const modalCaption = document.querySelector("#element-modal-caption");
+
+  modalImage.src = imageUrl;
+  modalImage.alt = imageCaption;
+  modalCaption.textContent = imageCaption;
+
+  openModal(elementImageModal); // Assuming openModal is a function to open the image modal
+}
+
 function renderElement(elementData) {
   const card = new Card(
     elementData,
     "#element-template",
     elementImageModal,
-    openModal,
+    handleImageClickCallback,
+    //openModal,
   );
   const cardElement = card.generateCard();
   elementSection.prependItem(cardElement);
@@ -77,8 +92,8 @@ function handleElementImageModal(evt) {
     url: url,
   };
   renderElement(elementData);
-  closeModal(elementAddModal);
-  //editImageValidator.resetValidation();
+  //closeModal(elementAddModal);
+  editImageValidator.resetValidation();
 }
 
 /* event Listeners */
@@ -99,7 +114,7 @@ profileEditForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const name = profileTitleInput.value;
   const job = profileDescriptionInput.value;
-  handleProfileEditSubmit(name, job); // Pass input values to handleProfileEditSubmit function
+  handleProfileEditSubmit(name, job);
 });
 
 elementAddForm.addEventListener("submit", handleElementImageModal);

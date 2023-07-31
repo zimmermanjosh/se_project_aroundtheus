@@ -21,7 +21,10 @@ class Card {
       .addEventListener("click", this._handleDeleteButton.bind(this));
     this._cardElement
       .querySelector(".element__img")
-      .addEventListener("click", this._handleImageClick.bind(this));
+      .addEventListener("click", () => {
+        this._handleImageClick();
+      });
+    //.addEventListener("click", this._handleImageClick.bind(this));
   }
 
   _handleLikeButton(evt) {
@@ -34,7 +37,7 @@ class Card {
     cardElement.remove();
   }
 
-  _handleImageClick(evt) {
+  _handleImageClick() {
     const imageUrl = this._data.url;
     const imageCaption = this._data.name;
 
