@@ -1,50 +1,40 @@
-import PopupWithImage from './PopupWithForm.js';
-import Popup from './Popup.js';
-class Card {
-  constructor(data, templateSelector, elementImageModal) {
-    this._data = data;
-    this._templateSelector = templateSelector;
-    this._elementImageModal = elementImageModal;
+import Popup from "/src/components/Popup.js";
+import PopupWithForm from "/src/components/PopupWithForm.js";
+
+class Popup {
+  constructor(popupSelector) {
+    this._popup = document.querySelector(popupSelector);
+    this._handleEscClose = this._handleEscClose.bind(this);
   }
 
-  _getTemplate() {
-    const cardTemplate = document.querySelector(this._templateSelector);
-    return cardTemplate.content.cloneNode(true);
+  open() {
+    this._popup.classList.add("modal_open");
+    document.addEventListener("keydown", this._handleEscClose);
   }
 
-  _setEventListeners() {
-    this._cardElement.querySelector('.element__like-button').addEventListener('click', this._handleLikeButton.bind(this));
-    this._cardElement.querySelector('.element__delete-button').addEventListener('click', this._handleDeleteButton.bind(this));
-    this._cardElement.querySelector('.element__img').addEventListener('click', this._handleImageClick.bind(this));
+  close() {
+    this._popup.classList.remove("modal_open");
+    document.removeEventListener("keydown", this._handleEscClose);
   }
 
-  _handleLikeButton(evt) {
-    const cardLike = evt.currentTarget;
-    cardLike.classList.toggle('element__like-button_active');
+  _handleEscClose(evt) {
+    if (evt.key === "Escape") {
+      this.close();
+    }
   }
 
-  _handleDeleteButton(evt) {
-    const cardElement = evt.target.closest('.element');
-    cardElement.remove();
-  }
-
-  _handleImageClick(evt) {
-    const imageUrl = this._data.url;
-    const imageCaption = this._data.name;
-    const popupWithImage = new PopupWithImage(imageUrl, imageCaption);
-    popupWithImage.open(); // Open the popup with the image and caption
-  }
-
-  generateCard() {
-    this._cardElement = this._getTemplate().querySelector('.element');
-    const imageElement = this._cardElement.querySelector('.element__img');
-    const titleElement = this._cardElement.querySelector('.element__text');
-    imageElement.src = this._data.url;
-    imageElement.alt = this._data.name;
-    titleElement.textContent = this._data.name;
-    this._setEventListeners();
-    return this._cardElement;
+  setEventListeners() {
+    this._popup
+      .querySelector(".modal__close-button")
+      .addEventListener("click", () => {
+        this.close();
+      });
+    this._popup.addEventListener("mousedown", (evt) => {
+      if (evt.target === evt.currentTarget) {
+        this.close();
+      }
+    });
   }
 }
 
-export default Card;
+export default Popup;

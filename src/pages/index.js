@@ -4,6 +4,8 @@ import { openModal, closeModal, handlePopupClose } from "/src/utils/utils.js";
 import Section from "/src/components/Section.js";
 import UserInfo from "/src/components/UserInfo.js";
 import "/src/pages/index.css";
+import PopupWithForm from "/src/components/PopupWithForm.js"; // Import PopupWithForm here
+
 import {
   initializeCards,
   profileEditModal,
@@ -49,6 +51,9 @@ const elementSection = new Section(
   ".elements__list",
 );
 
+const popupSelector = ".popup"; // This should be a valid CSS selector string
+const popup = new Popup(popupSelector);
+
 // Render the items on the page
 elementSection.renderItems();
 
@@ -78,8 +83,8 @@ function renderElement(elementData) {
   const cardElement = card.generateCard();
   elementSection.prependItem(cardElement);
 }
-function handleProfileEditSubmit(name, job) {
-  userInfo.setUserInfo({ name, job });
+function handleProfileEditSubmit(data) {
+  userInfo.setUserInfo({ data });
   closeModal();
 }
 
@@ -114,7 +119,7 @@ profileEditForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const name = profileTitleInput.value;
   const job = profileDescriptionInput.value;
-  handleProfileEditSubmit(name, job);
+  handleProfileEditSubmit({ name, job });
 });
 
 elementAddForm.addEventListener("submit", handleElementImageModal);
