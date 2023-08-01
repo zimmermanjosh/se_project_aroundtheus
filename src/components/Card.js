@@ -1,3 +1,5 @@
+import PopupWithImage from "/src/components/PopupWithForm.js";
+
 class Card {
   constructor(data, templateSelector, elementImageModal, openModalFunction) {
     //constructor(data, templateSelector, elementImageModal)
@@ -37,15 +39,13 @@ class Card {
   _handleImageClick(evt) {
     const imageUrl = this._data.url;
     const imageCaption = this._data.name;
-
-    const modalImage = document.querySelector("#element-modal-image");
-    const modalCaption = document.querySelector("#element-modal-caption");
-
-    modalImage.src = imageUrl;
-    modalImage.alt = imageCaption;
-    modalCaption.textContent = imageCaption;
-
-    this._openModalFunction(this._elementImageModal);
+    const popupWithForm = new PopupWithForm(
+      {
+        modalSelector: "#element-image-modal",
+      },
+      handleImageClickCallback,
+    );
+    popupWithForm.openWithImage({ url: imageUrl, name: imageCaption });
   }
 
   generateCard() {

@@ -1,50 +1,33 @@
-import PopupWithImage from './PopupWithForm.js';
-import Popup from './Popup.js';
-class Card {
-  constructor(data, templateSelector, elementImageModal) {
-    this._data = data;
-    this._templateSelector = templateSelector;
-    this._elementImageModal = elementImageModal;
+export default class Popup {
+  constructor({ modalSelector }) {
+    this._modalElement = document.querySelector(modalSelector);
+    this._modalCloseButton = this._modalElement.querySelector(".modal__close");
   }
 
-  _getTemplate() {
-    const cardTemplate = document.querySelector(this._templateSelector);
-    return cardTemplate.content.cloneNode(true);
+  open() {
+    this._modalElement.classList.add("modal_opened");
+    document.addEventListener("keydown", this._handleEscClose);
   }
 
-  _setEventListeners() {
-    this._cardElement.querySelector('.element__like-button').addEventListener('click', this._handleLikeButton.bind(this));
-    this._cardElement.querySelector('.element__delete-button').addEventListener('click', this._handleDeleteButton.bind(this));
-    this._cardElement.querySelector('.element__img').addEventListener('click', this._handleImageClick.bind(this));
+  close() {
+    this._modalElement.classList.remove("modal_opened");
+    document.removeEventListener("keydown", this._handleEscClose);
   }
 
-  _handleLikeButton(evt) {
-    const cardLike = evt.currentTarget;
-    cardLike.classList.toggle('element__like-button_active');
-  }
+  _handleEscClose = (event) => {
+    if (event.key === "Escape") {
+      this.close();
+    }
+  };
 
-  _handleDeleteButton(evt) {
-    const cardElement = evt.target.closest('.element');
-    cardElement.remove();
-  }
-
-  _handleImageClick(evt) {
-    const imageUrl = this._data.url;
-    const imageCaption = this._data.name;
-    const popupWithImage = new PopupWithImage(imageUrl, imageCaption);
-    popupWithImage.open(); // Open the popup with the image and caption
-  }
-
-  generateCard() {
-    this._cardElement = this._getTemplate().querySelector('.element');
-    const imageElement = this._cardElement.querySelector('.element__img');
-    const titleElement = this._cardElement.querySelector('.element__text');
-    imageElement.src = this._data.url;
-    imageElement.alt = this._data.name;
-    titleElement.textContent = this._data.name;
-    this._setEventListeners();
-    return this._cardElement;
+  setEventListeners() {
+    this._modalCloseButton.addEventListener("click", () => {
+      this.close();
+    });
+    this._modalElement.addEventListener("mousedown", (evt) => {
+      if (evt.target.classList.contains("modal")) {
+        this.close();
+      }
+    });
   }
 }
-
-export default Card;
