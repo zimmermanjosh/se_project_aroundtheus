@@ -1,3 +1,14 @@
+Auto-merging src/components/Card.js
+CONFLICT (content): Merge conflict in src/components/Card.js
+Auto-merging src/components/Popup.js
+CONFLICT (content): Merge conflict in src/components/Popup.js
+Auto-merging src/components/PopupWithForm.js
+CONFLICT (content): Merge conflict in src/components/PopupWithForm.js
+Automatic merge failed; fix conflicts and then commit the result.
+
+
+
+
 ++++++++++++++++ Submission IV ++++++++++++++++
 09 issues
 
