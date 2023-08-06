@@ -75,6 +75,24 @@ function handleElementImageModal(evt) {
   editImageValidator.resetValidation();
 }
 
+function handleImageClick(imageModalElement) {
+  return function (evt) {
+    const card = evt.target.closest('.element');
+    const imageUrl = card.querySelector('.element__img').src;
+    const imageCaption = card.querySelector('.element__text').textContent;
+
+    const modalImage = imageModalElement.querySelector('#element-modal-image');
+    const modalCaption = imageModalElement.querySelector('#element-modal-caption');
+
+    modalImage.src = imageUrl;
+    modalImage.alt = imageCaption;
+    modalCaption.textContent = imageCaption;
+
+    // Open the modal
+    openModal(imageModalElement);
+  };
+}
+
 /* event Listeners */
 elementImageModal.addEventListener("mousedown", handlePopupClose);
 profileEditModal.addEventListener("mousedown", handlePopupClose);
