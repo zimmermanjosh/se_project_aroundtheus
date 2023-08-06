@@ -1,34 +1,84 @@
-export default class Popup {
-  constructor(popup) {
-    this.popup = document.querySelector(popup);
-    this.closeButton = this.popup.querySelector(".popup__close-button");
-    this._handleEscClose = this._handleEscClose.bind(this);
-  };
+export default class Popup{
+  constructor({popupSelector}){
+    this._popupElement = document.querySelector(popupSelector);
+    this._popupCloseButon = this._popupElement.querySelector(".modal__close");
+  }
 
-  open() {
-    this.popup.classList.add("popup_is-open");
-    document.addEventListener("keydown", this._handleEscClose);
-  };
-
-  close() {
-    this.popup.classList.remove("popup_is-open");
-    document.removeEventListener("keydown", this._handleEscClose);
-  };
-
-  _handleOverlayClick(event) {
-    if (event.target.classList.contains("popup_is-open")) {
-      this.close();
-    }
-  };
-
-  _handleEscClose = (event) => {
-    if (event.key === "Escape") {
+  open(){
+    this._popupElement.classList.add("modal_opened");
+    document.addEventListener("keyup", this._handleEscKey);
+  }
+  close(){
+    this._popupElement.classList.add("modal_opened");
+    document.removeEventListener("keyup", this._handleEscKey);
+  }
+  _handleEscClose = (e) => {
+    if (e.key === "Escape") {
       this.close();
     }
   };
 
   setEventListeners() {
-    this.closeButton.addEventListener("click", () => this.close());
-    this.popup.addEventListener("click", this._handleOverlayClick.bind(this));
-  };
-};
+    this._popupCloseButton.addEventListener("click", () => {
+      this.close();
+    });
+
+    this._popupElement.addEventListener("mousedown", (e) => {
+      if (e.target.classList.contains("modal")) {
+        this.close();
+      }
+    });
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*const overlay = document.querySelector(".page");
+
+export function handleEscKey(evt) {
+  if (evt.key === "Escape") {
+    const activeModal = document.querySelector(".modal_opened");
+    closeModal(activeModal);
+  }
+}
+
+export function openModal(modal) {
+  modal.classList.add("modal_opened");
+  document.addEventListener("keyup", handleEscKey);
+  overlay.addEventListener("mousedown", handlePopupClose);
+}
+
+export function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+  document.removeEventListener("keyup", handleEscKey);
+  overlay.removeEventListener("mousedown", handlePopupClose);
+}
+
+export function handlePopupClose(evt) {
+  if (
+    evt.target.classList.contains("modal") ||
+    evt.target.classList.contains("modal__close")
+  ) {
+    closeModal(evt.currentTarget);
+  }
+}*/

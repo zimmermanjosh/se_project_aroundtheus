@@ -1,3 +1,17 @@
+/*profileEditForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  const name = profileTitleInput.value;
+  const job = profileDescriptionInput.value;
+  handleProfileEditSubmit(name, job); // Pass input values to handleProfileEditSubmit function
+});*/ moved to popuWithFormClass
+
+
+
+
+
+
+
+
 ++++++++++++++++ Submission III ++++++++++++++++
 refactor all files.js to be Pascal case
 refactor all classes to be pascal case
