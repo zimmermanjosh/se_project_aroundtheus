@@ -72,10 +72,14 @@ function handleElementImageModal(evt) {
   renderElement(name, url);
   //elementAddModal.close();
   closeModal(elementAddModal);
-  editImageValidator.resetValidation();
+  //editImageValidator.resetValidation();
 }
 
-function handleImageClick(imageModalElement) {
+function handleImageClick({name, link}) {
+  imagePreviewPopUp.open({name,link});
+}
+
+/*function handleImageClick(imageModalElement) {
   return function (evt) {
     const card = evt.target.closest('.element');
     const imageUrl = card.querySelector('.element__img').src;
@@ -91,7 +95,7 @@ function handleImageClick(imageModalElement) {
     // Open the modal
     openModal(imageModalElement);
   };
-}
+}*/
 
 /* event Listeners */
 elementImageModal.addEventListener("mousedown", handlePopupClose);
