@@ -28,7 +28,7 @@ class Card {
     cardElement.remove();
   }
 
-  _handleImageClick(evt) {
+  /*_handleImageClick(evt) {
     const imageUrl = this._data.url;
     const imageCaption = this._data.name;
 
@@ -40,7 +40,7 @@ class Card {
     modalCaption.textContent = imageCaption;
 
     this._openModalFunction(this._elementImageModal);
-  }
+  }*/
 
   generateCard() {
     this._cardElement = this._getTemplate().querySelector('.element');
