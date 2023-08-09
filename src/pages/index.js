@@ -19,7 +19,6 @@ import {
   elNameInput,
   elUrlInput,
   elementImageModal,
-  elementGallery, elementCloseButton,
 } from '/src/constants/variables'
 
 const userInfo = new UserInfo({
@@ -56,7 +55,7 @@ function renderElement(elementData) {
 }
 function handleProfileEditSubmit(name, job) {
   userInfo.setUserInfo({ name, job });
-  profileEditModal.close();
+  closeModal(profileEditModal);
   editProfileValidator.resetValidation();
 }
 
