@@ -4,11 +4,11 @@ export default class Popup{
     this._popupCloseButon = this._popupElement.querySelector(".modal__close");
   }
 
-  openModal(){
+  open(){
     this._popupElement.classList.add("modal_opened");
     document.addEventListener("keyup", this._handleEscKey);
   }
-  closeModal(){
+  close(){
     this._popupElement.classList.add("modal_opened");
     document.removeEventListener("keyup", this._handleEscKey);
   }
@@ -19,7 +19,7 @@ export default class Popup{
   };
 
   setEventListeners() {
-    this._handlePopupClose.addEventListener("click", () => {
+    this._popupCloseButton.addEventListener("click", () => {
       this.close();
     });
 
