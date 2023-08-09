@@ -2,7 +2,7 @@
 
 import Card from '/src/components/Card.js';
 import FormValidator from '/src/components/FormValidator.js';
-import { open, close, handlePopupClose } from "/src/components/popup.js";
+import { openModal, closeModalModal, handlePopupClose } from "/src/components/popup.js";
 import Section from '/src/components/Section.js';
 import UserInfo from '/src/components/UserInfo.js';
 import PopupWithImage from "/src/components/PopupWithImage";
@@ -55,22 +55,16 @@ function renderElement(elementData) {
   elementSection.prependItem(cardElement);
 }
 
-/*function handleProfileEditSubmit(name, job) {
-  userInfo.setUserInfo({ name, job });
-  close(profileEditModal);
-  //profileEditModal.close();
-  //editProfileValidator.resetValidation();
-}*/
 
 function handleElementImageModal(evt) {
   evt.preventDefault();
   const name = elNameInput.value;
   const url = elUrlInput.value;
   renderElement(name, url);
-  close(evt);
+  closeModal(evt);
 }
 function handleImageClick(evt) {
-preventDefault.open(evt)
+preventDefault.openModal(evt)
 }
 
 /* event Listeners */
@@ -79,21 +73,15 @@ profileEditModal.addEventListener("mousedown", handlePopupClose);
 elementAddModal.addEventListener("mousedown", handlePopupClose)
 previewImagePopup.addEventListener();
 elementAddButton.addEventListener("click", () => {
-  //close();
-  open(elementAddModal);
+
+  openModal(elementAddModal);
 });
 
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  open(profileEditModal);
+  openModal(profileEditModal);
 });
 
-/*profileEditForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  const name = profileTitleInput.value;
-  const job = profileDescriptionInput.value;
-  handleProfileEditSubmit(name, job); // Pass input values to handleProfileEditSubmit function
-});*/
 
 elementAddForm.addEventListener("submit", handleElementImageModal);
