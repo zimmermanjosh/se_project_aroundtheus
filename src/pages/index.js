@@ -20,7 +20,6 @@ import {
   elUrlInput,
   elementImageModal,
 } from '/src/constants/variables'
-import {devServer as imagePreviewPopUp} from "../../webpack.config";
 
 const userInfo = new UserInfo({
   nameSelector: '.profile__title',
