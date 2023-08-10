@@ -67,15 +67,13 @@ function handleElementImageModal(evt) {
     name: name,
     url: url,
   };
-  //renderElement(elementData);
-  renderElement(name, url);
-  //elementAddModal.close();
+  renderElement(elementData);
   closeModal(elementAddModal);
-  //editImageValidator.resetValidation();
+
 }
 
-function handleImageClick({name, link}) {
-  imagePreviewPopUp.open({name,link});
+function handleImageClick({elementData}) {
+  imagePreviewPopUp.open({elementData});
 }
 
 /*function handleImageClick(imageModalElement) {
