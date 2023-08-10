@@ -20,6 +20,7 @@ import {
   elUrlInput,
   elementImageModal,
 } from '/src/constants/variables'
+import {devServer as imagePreviewPopUp} from "../../webpack.config";
 
 const userInfo = new UserInfo({
   nameSelector: '.profile__title',
@@ -55,8 +56,9 @@ function renderElement(elementData) {
 }
 function handleProfileEditSubmit(name, job) {
   userInfo.setUserInfo({ name, job });
-  closeModal(profileEditModal);
   editProfileValidator.resetValidation();
+  closeModal(profileEditModal);
+
 }
 
 function handleElementImageModal(evt) {
@@ -69,14 +71,9 @@ function handleElementImageModal(evt) {
   };
   renderElement(elementData);
   closeModal(elementAddModal);
-
 }
 
-function handleImageClick({elementData}) {
-  imagePreviewPopUp.open({elementData});
-}
-
-/*function handleImageClick(imageModalElement) {
+function handleImageClick(imageModalElement) {
   return function (evt) {
     const card = evt.target.closest('.element');
     const imageUrl = card.querySelector('.element__img').src;
@@ -92,7 +89,7 @@ function handleImageClick({elementData}) {
     // Open the modal
     openModal(imageModalElement);
   };
-}*/
+}
 
 /* event Listeners */
 elementImageModal.addEventListener("mousedown", handlePopupClose);
