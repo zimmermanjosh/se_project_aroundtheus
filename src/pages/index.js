@@ -18,7 +18,7 @@ import {
   elementAddForm,
   elNameInput,
   elUrlInput,
-  elementImageModal,
+  elementImageModal
 } from '/src/constants/variables'
 
 const userInfo = new UserInfo({
@@ -49,11 +49,12 @@ elementSection.renderItems();
 
 // Functions
 function renderElement(elementData) {
-  const card = new Card(elementData, "#element-template", elementImageModal ,openModal)
+  const card = new Card(elementData, "#element-template", elementImageModal , handleImageClick)
   const cardElement = card.generateCard();
   elementSection.prependItem(cardElement);
 }
 function handleProfileEditSubmit(name, job) {
+  debugger;
   userInfo.setUserInfo({ name, job });
   editProfileValidator.resetValidation();
   closeModal(profileEditModal);
@@ -61,7 +62,10 @@ function handleProfileEditSubmit(name, job) {
 }
 
 function handleElementImageModal(evt) {
+  console.log("where the hell am i ");
+  debugger;
   evt.preventDefault();
+  editImageValidator.resetValidation();
   const name = elNameInput.value;
   const url = elUrlInput.value;
   const elementData = {
@@ -73,19 +77,19 @@ function handleElementImageModal(evt) {
 }
 
 function handleImageClick(imageModalElement) {
+  debugger;
   return function (evt) {
     const card = evt.target.closest('.element');
     const imageUrl = card.querySelector('.element__img').src;
     const imageCaption = card.querySelector('.element__text').textContent;
 
-    const modalImage = imageModalElement.querySelector('#element-modal-image');
+    /*const modalImage = imageModalElement.querySelector('#element-modal-image');
     const modalCaption = imageModalElement.querySelector('#element-modal-caption');
-
     modalImage.src = imageUrl;
     modalImage.alt = imageCaption;
-    modalCaption.textContent = imageCaption;
+    modalCaption.textContent = imageCaption;*/
 
-    // Open the modal
+    //Open the modal
     openModal(imageModalElement);
   };
 }
