@@ -76,8 +76,9 @@ function handleElementImageModal(evt) {
   closeModal(elementAddModal);
 }
 
-function handleImageClick(imageModalElement) {
+function handleImageClick() {
   debugger;
+  console.log("handleImageClick",handleImageClick );
   return function (evt) {
     const card = evt.target.closest('.element');
     const imageUrl = card.querySelector('.element__img').src;
