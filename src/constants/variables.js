@@ -87,6 +87,9 @@ const elementGallery = document.querySelector(".elements__list");
 const elementTemplate = document
   .querySelector("#element-template")
   .content.querySelector(".el__element");
+
+//const modalImage = imageModalElement.querySelector('#element-modal-image');
+//const modalCaption = imageModalElement.querySelector('#element-modal-caption');
 const modalInputs = Array.from(
   elementImageModal.querySelectorAll(".modal__input")
 );
@@ -113,5 +116,5 @@ export{
   elSaveButton,
   elementTemplate,
   elementGallery,
-  modalInputs
+  modalInputs,
 }

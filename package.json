@@ -6,7 +6,7 @@
   "scripts": {
     "build:prod": "webpack --mode production",
     "run:dev": "webpack serve --mode development",
-    "reset": "rm -rf /node_modules/ && npm install && npm run dev"
+    "reset": "rm -rf /node_modules/ && npm install && npm run build:prod && npm run run:dev"
   },
   "keywords": [],
   "author": "Elise Bouer",

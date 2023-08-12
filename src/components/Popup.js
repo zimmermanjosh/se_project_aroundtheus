@@ -1,50 +1,84 @@
-import PopupWithImage from './PopupWithForm.js';
-
-class Card {
-  constructor(data, templateSelector, elementImageModal) {
-    this._data = data;
-    this._templateSelector = templateSelector;
-    this._elementImageModal = elementImageModal;
+export default class Popup{
+  constructor({popupSelector}){
+    this._popupElement = document.querySelector(popupSelector);
+    this._popupCloseButon = this._popupElement.querySelector(".modal__close");
   }
 
-  _getTemplate() {
-    const cardTemplate = document.querySelector(this._templateSelector);
-    return cardTemplate.content.cloneNode(true);
+  open(){
+    this._popupElement.classList.add("modal_opened");
+    document.addEventListener("keyup", this._handleEscKey);
   }
-
-  _setEventListeners() {
-    this._cardElement.querySelector('.element__like-button').addEventListener('click', this._handleLikeButton.bind(this));
-    this._cardElement.querySelector('.element__delete-button').addEventListener('click', this._handleDeleteButton.bind(this));
-    this._cardElement.querySelector('.element__img').addEventListener('click', this._handleImageClick.bind(this));
+  close(){
+    this._popupElement.classList.add("modal_opened");
+    document.removeEventListener("keyup", this._handleEscKey);
   }
+  _handleEscClose = (e) => {
+    if (e.key === "Escape") {
+      this.close();
+    }
+  };
 
-  _handleLikeButton(evt) {
-    const cardLike = evt.currentTarget;
-    cardLike.classList.toggle('element__like-button_active');
-  }
+  setEventListeners() {
+    this._popupCloseButton.addEventListener("click", () => {
+      this.close();
+    });
 
-  _handleDeleteButton(evt) {
-    const cardElement = evt.target.closest('.element');
-    cardElement.remove();
-  }
-
-  _handleImageClick(evt) {
-    const imageUrl = this._data.url;
-    const imageCaption = this._data.name;
-    const popupWithImage = new PopupWithImage(imageUrl, imageCaption);
-    popupWithImage.open(); // Open the popup with the image and caption
-  }
-
-  generateCard() {
-    this._cardElement = this._getTemplate().querySelector('.element');
-    const imageElement = this._cardElement.querySelector('.element__img');
-    const titleElement = this._cardElement.querySelector('.element__text');
-    imageElement.src = this._data.url;
-    imageElement.alt = this._data.name;
-    titleElement.textContent = this._data.name;
-    this._setEventListeners();
-    return this._cardElement;
+    this._popupElement.addEventListener("mousedown", (e) => {
+      if (e.target.classList.contains("modal")) {
+        this.close();
+      }
+    });
   }
 }
 
-export default Card;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*const overlay = document.querySelector(".page");
+
+export function handleEscKey(evt) {
+  if (evt.key === "Escape") {
+    const activeModal = document.querySelector(".modal_opened");
+    closeModal(activeModal);
+  }
+}
+
+export function openModal(modal) {
+  modal.classList.add("modal_opened");
+  document.addEventListener("keyup", handleEscKey);
+  overlay.addEventListener("mousedown", handlePopupClose);
+}
+
+export function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+  document.removeEventListener("keyup", handleEscKey);
+  overlay.removeEventListener("mousedown", handlePopupClose);
+}
+
+export function handlePopupClose(evt) {
+  if (
+    evt.target.classList.contains("modal") ||
+    evt.target.classList.contains("modal__close")
+  ) {
+    closeModal(evt.currentTarget);
+  }
+}*/

@@ -1,6 +1,7 @@
 import Popup from './Popup.js';
+import {profileDescriptionInput, profileEditForm, profileTitleInput} from "../constants/variables";
 
-class PopupWithForm extends Popup {
+export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super(popupSelector);
     this._handleFormSubmit = handleFormSubmit;
@@ -30,6 +31,13 @@ class PopupWithForm extends Popup {
   }
 }
 
-export default PopupWithForm;
+//export default PopupWithForm;
 
+/*
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+profileEditForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  const name = profileTitleInput.value;
+  const job = profileDescriptionInput.value;
+  handleProfileEditSubmit(name, job); // Pass input values to handleProfileEditSubmit function
+});*/
