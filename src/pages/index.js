@@ -54,18 +54,21 @@ function handleProfileEditSubmit(name,job) {
   closeModal(profileEditModal);
 }
 /*------------------------------ Event listeners------------------------------*/
+
 profileEditModal.addEventListener("mousedown", handlePopupClose);
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   openModal(profileEditModal);
 });
+
 profileEditForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const name = profileTitleInput.value;
   const job = profileDescriptionInput.value;
   handleProfileEditSubmit(name, job); // Pass input values to handleProfileEditSubmit function
 });
+
 /*------------------------------ Image Modal   ------------------------------ */
 /*------------------------------ Image Modal   ------------------------------ */
 // instantiate the FormValidator class for the add image modal
@@ -78,8 +81,9 @@ elementSection.renderItems();
 
 /*------------------------------ Functions------------------------------*/
 function renderElement(elementData) {
-  // const card = new Card(elementData, "#element-template", elementImageModal , handleImageClick)
-  const card = new Card(elementData, "#element-template", elementImageModal)
+  //const card = new Card(elementData, "#element-template", handleImageClick)
+  const card = new Card(elementData, "#element-template", elementImageModal, openModal)
+  console.log("something something !! ")
   const cardElement = card.generateCard();
   elementSection.prependItem(cardElement);
 }
@@ -106,23 +110,4 @@ elementAddButton.addEventListener("click", () => {
   openModal(elementAddModal);
 });
 
-/*function handleImageClick() {
-  debugger;
-  console.log("handleImageClick",handleImageClick );
-  return function (evt) {
-    const card = evt.target.closest('.element');
-    const imageUrl = card.querySelector('.element__img').src;
-    const imageCaption = card.querySelector('.element__text').textContent;
 
-    /*const modalImage = imageModalElement.querySelector('#element-modal-image');
-    const modalCaption = imageModalElement.querySelector('#element-modal-caption');
-    modalImage.src = imageUrl;
-    modalImage.alt = imageCaption;
-    modalCaption.textContent = imageCaption;
-
-    //Open the modal
-    openModal(imageModalElement);
-  };
-}/*
-
-/* event Listeners */
