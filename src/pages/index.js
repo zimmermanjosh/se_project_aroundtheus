@@ -82,8 +82,14 @@ elementSection.renderItems();
 /*------------------------------ Functions------------------------------*/
 function renderElement(elementData) {
   //const card = new Card(elementData, "#element-template", handleImageClick)
-  const card = new Card(elementData, "#element-template", elementImageModal, openModal)
+  /*const card = new Card(elementData, "#element-template", elementImageModal, openModal)
   console.log("something something !! ")
+  const cardElement = card.generateCard();
+  elementSection.prependItem(cardElement);*/
+  const card = new Card(elementData, "#element-template", elementImageModal, () => {
+    // Call the open method of PopupWithImage with the image URL and caption
+    popupWithImageInstance.open(elementData.url, elementData.name);
+  });
   const cardElement = card.generateCard();
   elementSection.prependItem(cardElement);
 }
