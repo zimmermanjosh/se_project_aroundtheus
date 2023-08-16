@@ -1,11 +1,17 @@
 import Popup from './Popup.js';
 import {profileDescriptionInput, profileEditForm, profileTitleInput} from "../constants/variables";
-
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super(popupSelector);
     this._handleFormSubmit = handleFormSubmit;
-    this._formElement = this._popup.querySelector('.modal__form');
+    this._popupForm = this._formElement.querySelector('.modal__form');
+    this._popupInputs = this._popupForm.querySelector(".modal__input");
+    //this._formElement = this._popup.querySelector('.modal__form');
+  }
+
+  close() {
+    super.close();
+    this._formElement.reset();
   }
 
   _getInputValues() {
@@ -22,13 +28,11 @@ export default class PopupWithForm extends Popup {
     this._formElement.addEventListener('submit', (event) => {
       event.preventDefault();
       this._handleFormSubmit(this._getInputValues());
+      this.close();
     });
   }
 
-  close() {
-    super.close();
-    this._formElement.reset();
-  }
+
 }
 
 //export default PopupWithForm;
