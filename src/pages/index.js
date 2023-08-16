@@ -34,7 +34,8 @@ function renderElement(elementData) {
 function handleProfileEditSubmit(name,job) {
   userInfo.setUserInfo({ name, job });
   editProfileValidator.resetValidation();
-  addNewCardPopup.close()
+  profileEditModalPopup.close();
+  //addNewCardPopup.close()
   //closeModal(profileEditModal);
 }
 
@@ -55,20 +56,6 @@ function handleImageClick(caption, url) {
   cardPreviewPoup.open(caption, url);
 
 }
-/*------------------------------ eventListeners ------------------------------*/
-profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  profileEditModalPopup.open();
-  //openModal(profileEditModal);
-});
-
-profileEditForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  const name = profileTitleInput.value;
-  const job = profileDescriptionInput.value;
-  handleProfileEditSubmit(name, job); // Pass input values to handleProfileEditSubmit function
-});
 
 /*------------------------------ const ------------------------------*/
 const elementSection = new Section(
@@ -112,7 +99,20 @@ editProfileValidator.enableValidation();
 const editImageValidator = new FormValidator(config, elementAddModal)
 editImageValidator.enableValidation();
 
+/*------------------------------ eventListeners ------------------------------*/
+profileEditButton.addEventListener("click", () => {
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
+  profileEditModalPopup.open();
+  //openModal(profileEditModal);
+});
 
+profileEditForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  const name = profileTitleInput.value;
+  const job = profileDescriptionInput.value;
+  handleProfileEditSubmit(name, job); // Pass input values to handleProfileEditSubmit function
+});
 
 
 
