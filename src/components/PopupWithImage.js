@@ -1,6 +1,4 @@
 import Popup from "./Popup.js";
-import { initializeCards } from "/src/constants/variables.js";
-
 export default class PopupWithImage extends Popup {
   constructor(popupSelector) {
     super(popupSelector);
