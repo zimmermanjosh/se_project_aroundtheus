@@ -3,6 +3,7 @@
 */
 import Card from '/src/components/Card.js';
 import FormValidator from '/src/components/FormValidator.js';
+import PopupWithImage from "/src/components/PopupWithImage.js";
 import { openModal, closeModal, handlePopupClose } from "/src/utils/utils.js";
 import Section from '/src/components/Section.js';
 import UserInfo from '/src/components/UserInfo.js';
@@ -23,6 +24,8 @@ import {
   elUrlInput,
   elementImageModal
 } from '/src/constants/variables'
+import Popup from "../components/Popup";
+import section from "/src/components/Section.js";
 
 /*------------------------------ Constants ------------------------------
 Constants info /datasets
@@ -79,17 +82,13 @@ editImageValidator.enableValidation();
 const elementSection = new Section({ items: initializeCards, renderer: renderElement }, '.elements__list');
 elementSection.renderItems();
 
+const popupImageInstance = new PopupWithImage('#element-image-modal');
+
 /*------------------------------ Functions------------------------------*/
+
+
 function renderElement(elementData) {
-  //const card = new Card(elementData, "#element-template", handleImageClick)
-  /*const card = new Card(elementData, "#element-template", elementImageModal, openModal)
-  console.log("something something !! ")
-  const cardElement = card.generateCard();
-  elementSection.prependItem(cardElement);*/
-  const card = new Card(elementData, "#element-template", elementImageModal, () => {
-    // Call the open method of PopupWithImage with the image URL and caption
-    popupWithImageInstance.open(elementData.url, elementData.name);
-  });
+  const card = new Card(elementData, "#element-template", elementImageModal, handleImageClick);
   const cardElement = card.generateCard();
   elementSection.prependItem(cardElement);
 }
@@ -101,10 +100,15 @@ function handleElementImageModal(evt) {
   const elementData = {
     name: name,
     url: url,
-  };
+   }
   renderElement(elementData);
   closeModal(elementAddModal);
 }
+
+function handleImageClick(imageUrl, imageCaption) {
+  popupImageInstance.open(imageUrl, imageCaption);
+}
+
 
 /*------------------------------ Event listeners------------------------------*/
 elementImageModal.addEventListener("mousedown", handlePopupClose);

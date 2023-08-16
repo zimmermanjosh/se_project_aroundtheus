@@ -1,12 +1,13 @@
 import '/src/constants/variables.js';
 import {elementImageModal} from "../constants/variables";
 class Card {
-  constructor(data, templateSelector, elementImageModal, openModalFunction) {
+  constructor(data, templateSelector, elementImageModal, handleImageClick) {
     //constructor(data, templateSelector, elementImageModal)
     this._data = data;
     this._templateSelector = templateSelector;
     this._openModalFunction = openModalFunction;
     this._elementImageModal = elementImageModal;
+
     this._handleImageClick = this._handleImageClick.bind(this);
   }
 
@@ -33,6 +34,13 @@ class Card {
 
   _handleImageClick() {
     const imageUrl = this._data.url;
+    const imageCaption = this._data.name;
+
+    this._openModalFunction(imageUrl, imageCaption);
+  }
+
+  /*_handleImageClick() {
+    const imageUrl = this._data.url;
     console.log("imageUrl", imageUrl);
     const imageCaption = this._data.name;
     console.log("imageCaption", imageCaption);
@@ -45,7 +53,7 @@ class Card {
     modalCaption.textContent = imageCaption;
     elementImageModal.classList.add("modal_opened");
     this._openModalFunction(this._elementImageModal);
-  }
+  }*/
 
   generateCard() {
     this._cardElement = this._getTemplate().querySelector('.element');
