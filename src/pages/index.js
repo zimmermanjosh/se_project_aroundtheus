@@ -49,7 +49,8 @@ function handleElementImageModal(evt) {
   renderElement(elementData);
   closeModal(elementAddModal);
 }
-function handleImageClick(url) {
+function handleImageClick(caption, url) {
+  cardPreviewPoup.open(caption, url);
 
 }
 /*------------------------------ eventListeners ------------------------------*/
