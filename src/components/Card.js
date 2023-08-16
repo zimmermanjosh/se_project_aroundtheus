@@ -1,19 +1,12 @@
 import '/src/constants/variables.js';
-import {elementImageModal} from "../constants/variables";
-class Card {
-  constructor(data, templateSelector, elementImageModal, handleImageClick) {
-    //constructor(data, templateSelector, elementImageModal)
+export default class Card {
+  constructor(data, templateSelector, handleCardClick) {
     this._data = data;
+    this._url = data.url;
+    this._name = data.name;
     this._templateSelector = templateSelector;
-    this._openModalFunction = openModalFunction;
-    this._elementImageModal = elementImageModal;
-
-    this._handleImageClick = this._handleImageClick.bind(this);
-  }
-
-  _getTemplate() {
-    const cardTemplate = document.querySelector(this._templateSelector);
-    return cardTemplate.content.cloneNode(true);
+    this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _setEventListeners() {
@@ -21,39 +14,28 @@ class Card {
     this._cardElement.querySelector('.element__delete-button').addEventListener('click', this._handleDeleteButton.bind(this));
     this._cardElement.querySelector('.element__img').addEventListener('click', this._handleImageClick);
   }
-
-  _handleLikeButton(evt) {
-    const cardLike = evt.currentTarget;
-    cardLike.classList.toggle('element__like-button_active')
+  _handleLikeButton() {
+    this._cardElement.querySelector('.element__like-button').classList.toggle('element__like-button_active')
+    //const cardLike = evt.currentTarget;
+    //cardLike.classList.toggle('element__like-button_active')
   }
+  _handleDeleteButton() {
+    //this._cardElement.querySelector('.element__delete-button').classList.toggle('element__delete')
+    this._cardElement.remove();
+    this._cardElement = null;
+    //const cardElement = evt.target.closest('.element');
 
-  _handleDeleteButton(evt) {
-    const cardElement = evt.target.closest('.element');
-    cardElement.remove();
   }
 
   _handleImageClick() {
-    const imageUrl = this._data.url;
-    const imageCaption = this._data.name;
-
-    this._openModalFunction(imageUrl, imageCaption);
+    this._handleCardClick(this._url, this._name);
   }
 
-  /*_handleImageClick() {
-    const imageUrl = this._data.url;
-    console.log("imageUrl", imageUrl);
-    const imageCaption = this._data.name;
-    console.log("imageCaption", imageCaption);
 
-    const modalImage = document.querySelector("#element-modal-image");
-    const modalCaption = document.querySelector("#element-modal-caption");
-
-    modalImage.src = imageUrl;
-    modalImage.alt = imageCaption;
-    modalCaption.textContent = imageCaption;
-    elementImageModal.classList.add("modal_opened");
-    this._openModalFunction(this._elementImageModal);
-  }*/
+  _getTemplate() {
+    const cardTemplate = document.querySelector(this._templateSelector);
+    return cardTemplate.content.cloneNode(true);
+  }
 
   generateCard() {
     this._cardElement = this._getTemplate().querySelector('.element');
@@ -69,5 +51,3 @@ class Card {
     return this._cardElement;
   }
 }
-
-export default Card;
