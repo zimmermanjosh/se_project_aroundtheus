@@ -34,7 +34,8 @@ function renderElement(elementData) {
 function handleProfileEditSubmit(name,job) {
   userInfo.setUserInfo({ name, job });
   editProfileValidator.resetValidation();
-  closeModal(profileEditModal);
+  addNewCardPopup.close()
+  //closeModal(profileEditModal);
 }
 
 function handleElementImageModal(evt) {
@@ -47,7 +48,8 @@ function handleElementImageModal(evt) {
     url: url,
   }
   renderElement(elementData);
-  closeModal(elementAddModal);
+  profileEditModalPopup.close()
+  //closeModal(elementAddModal);
 }
 function handleImageClick(caption, url) {
   cardPreviewPoup.open(caption, url);
@@ -57,7 +59,8 @@ function handleImageClick(caption, url) {
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  openModal(profileEditModal);
+  profileEditModalPopup.open();
+  //openModal(profileEditModal);
 });
 
 profileEditForm.addEventListener("submit", (evt) => {
