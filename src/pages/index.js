@@ -3,7 +3,6 @@
 */
 import Card from '/src/components/Card.js';
 import FormValidator from '/src/components/FormValidator.js';
-import PopupWithImage from "/src/components/PopupWithImage.js";
 import { openModal, closeModal, handlePopupClose } from "/src/utils/utils.js";
 import Section from '/src/components/Section.js';
 import UserInfo from '/src/components/UserInfo.js';
@@ -24,8 +23,6 @@ import {
   elUrlInput,
   elementImageModal
 } from '/src/constants/variables'
-import Popup from "../components/Popup";
-import section from "/src/components/Section.js";
 import PopupWithForm from "../components/PopupWithForm";
 
 /*------------------------------ Functions ------------------------------*/
@@ -81,7 +78,7 @@ const userInfo = new UserInfo({
   jobSelector: '.profile__descr',
 });
 
-const profileEditModal = new PopupWithForm(
+const profileEditModalPopup = new PopupWithForm(
   "#profile-edit-modal",
   handleProfileEditSubmit
 );
@@ -120,14 +117,14 @@ editImageValidator.enableValidation();
 
 
 /*------------------------------ Event listeners------------------------------*/
-profileEditModal.addEventListener("mousedown", handlePopupClose);
+/*profileEditModal.addEventListener("mousedown", handlePopupClose);
 elementImageModal.addEventListener("mousedown", handlePopupClose);
 elementAddModal.addEventListener("mousedown", handlePopupClose);
 elementAddForm.addEventListener("submit", handleElementImageModal);
 elementAddButton.addEventListener("click", () => {
   // elementAddForm.resetValidation();
   openModal(elementAddModal);
-});
+});*/
 
 
 
