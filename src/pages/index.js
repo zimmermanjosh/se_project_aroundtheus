@@ -21,13 +21,14 @@ import {
   elementAddForm,
   elNameInput,
   elUrlInput,
-  elementImageModal
-} from '/src/constants/variables'
-import PopupWithForm from "../components/PopupWithForm";
-
+  elementImageModal,
+  config
+} from '/src/constants/constants'
+import PopupWithForm from "/src/components/PopupWithForm.js";
+import PopupWithImage from "/src/components/PopupWithImage.js";
 /*------------------------------ Functions ------------------------------*/
 function renderElement(elementData) {
-  const card = new Card(elementData, "#element-template", elementImageModal, handleImageClick);
+  const card = new Card(elementData, "#element-template", handleImageClick);
   const cardElement = card.generateCard();
   elementSection.prependItem(cardElement);
 }
@@ -54,10 +55,11 @@ function handleImageClick(caption, url) {
 
 }
 /*------------------------------ eventListeners ------------------------------*/
-profileEditButton.addEventListener("click", () => {
+profileEditModal.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  openModal(profileEditModal);
+  profileEditModalPopup.open()
+  editProfileValidator.resetValidation();
 });
 
 profileEditForm.addEventListener("submit", (evt) => {
@@ -79,28 +81,19 @@ const userInfo = new UserInfo({
   jobSelector: '.profile__descr',
 });
 
+const addNewCardPopup = new PopupWithForm(
+  "#element-add-modal",
+  handleElementImageModal
+);
+
 const profileEditModalPopup = new PopupWithForm(
   "#profile-edit-modal",
   handleProfileEditSubmit
 );
 
-const addNewCardPopup = new PopupWithForm(
-  "#element-add-modal",
-  handleElementImageModal
+const cardPreviewPoup = new PopupWithImage(
+  "#element-image-modal"
 )
-
-const cardPreviewPoup = new popupWithImage(
-  "#element-image-modal",
-)
-
-const config = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-}
 
 // instantiate the FormValidator class for the profile
 const editProfileValidator = new FormValidator(config, profileEditForm);
@@ -110,22 +103,5 @@ const editImageValidator = new FormValidator(config, elementAddModal)
 editImageValidator.enableValidation();
 
 
-
-
-
-
-
-
-
-/*------------------------------ Event listeners------------------------------*/
-/*profileEditModal.addEventListener("mousedown", handlePopupClose);
-elementImageModal.addEventListener("mousedown", handlePopupClose);
-elementAddModal.addEventListener("mousedown", handlePopupClose);
-elementAddForm.addEventListener("submit", handleElementImageModal);
-elementAddButton.addEventListener("click", () => {
-  // elementAddForm.resetValidation();
-  openModal(elementAddModal);
-});*/
-
-
-
+addNewCardPopup.setEventListeners()
+profileEditModalPopup.setEventListeners();
