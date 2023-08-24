@@ -1,31 +1,36 @@
 import Popup from './Popup.js';
-import {profileDescriptionInput, profileEditForm, profileTitleInput} from "../constants/variables";
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super(popupSelector);
     this._handleFormSubmit = handleFormSubmit;
-    this._popupForm = this._formElement.querySelector(".modal__form");
+    this._popupForm = this._formElement.querySelector('.modal__form');
     this._popupInputs = this._popupForm.querySelector(".modal__input");
     //this._formElement = this._popup.querySelector('.modal__form');
   }
 
   close() {
+    this._popupForm.reset();
+    this._popupForm.removeEventListener('submit', this._submitForm);
     super.close();
-    this._formElement.reset();
   }
 
   _getInputValues() {
-    //const _inputElements = this._formElement.querySelectorAll('.modal__input');
-    const inputs = {};
-    this._popupInputs.forEach((input) => {
-      if(input.value !== "") {
-        inputs[input.name] = input.value;
-      }
-    });
-    return inputs;
+    this._formValues = {};
+    this._inputElements.forEach(
+      (input) => (this._formValues[input.name] = input.value)
+    );
+    return this._formValues;
   }
 
+  _submitForm = (event) =>  {
+    event.preventDefault();
+    const inputValues = this._getInputValues();
+    this.handleFormSubmit(inputValues);
+  };
+
   setEventListeners() {
+    console.trace(this);
+    this._popupForm.addEventListener('submit', this._submitForm);
     super.setEventListeners();
     this._formElement.addEventListener('submit', (event) => {
       event.preventDefault();
