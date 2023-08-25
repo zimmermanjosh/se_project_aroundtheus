@@ -40,46 +40,18 @@ const config = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 }
-/*------------------------------ profile  ------------------------------ */
-/*------------------------------ profile  ------------------------------ */
 
-// instantiate the FormValidator class for the profile
 const editProfileValidator = new FormValidator(config, profileEditForm);
-editProfileValidator.enableValidation();
+const editImageValidator = new FormValidator(config, elementAddModal)
+const elementSection = new Section({ items: initializeCards, renderer: renderElement }, '.elements__list');
 
 /*------------------------------ Functions------------------------------*/
+
 function handleProfileEditSubmit(name,job) {
   userInfo.setUserInfo({ name, job });
   editProfileValidator.resetValidation();
   closeModal(profileEditModal);
 }
-/*------------------------------ Event listeners------------------------------*/
-
-profileEditModal.addEventListener("mousedown", handlePopupClose);
-profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  openModal(profileEditModal);
-});
-
-profileEditForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  const name = profileTitleInput.value;
-  const job = profileDescriptionInput.value;
-  handleProfileEditSubmit(name, job); // Pass input values to handleProfileEditSubmit function
-});
-
-/*------------------------------ Image Modal   ------------------------------ */
-/*------------------------------ Image Modal   ------------------------------ */
-// instantiate the FormValidator class for the add image modal
-const editImageValidator = new FormValidator(config, elementAddModal)
-editImageValidator.enableValidation();
-
-// Create an instance of the Section class // this renders images
-const elementSection = new Section({ items: initializeCards, renderer: renderElement }, '.elements__list');
-elementSection.renderItems();
-
-/*------------------------------ Functions------------------------------*/
 function renderElement(elementData) {
   //const card = new Card(elementData, "#element-template", handleImageClick)
   const card = new Card(elementData, "#element-template", elementImageModal, openModal)
@@ -101,6 +73,26 @@ function handleElementImageModal(evt) {
 }
 
 /*------------------------------ Event listeners------------------------------*/
+
+editProfileValidator.enableValidation();
+editImageValidator.enableValidation();
+elementSection.renderItems();
+
+profileEditModal.addEventListener("mousedown", handlePopupClose);
+profileEditButton.addEventListener("click", () => {
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
+  openModal(profileEditModal);
+});
+
+profileEditForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  const name = profileTitleInput.value;
+  const job = profileDescriptionInput.value;
+  handleProfileEditSubmit(name, job); // Pass input values to handleProfileEditSubmit function
+});
+
+/*------------------------------ Event listeners------------------------------*/
 elementImageModal.addEventListener("mousedown", handlePopupClose);
 elementAddModal.addEventListener("mousedown", handlePopupClose);
 elementAddForm.addEventListener("submit", handleElementImageModal);
@@ -109,5 +101,3 @@ elementAddButton.addEventListener("click", () => {
   // elementAddForm.resetValidation();
   openModal(elementAddModal);
 });
-
-
