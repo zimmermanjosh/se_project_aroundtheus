@@ -80,6 +80,7 @@ elementSection.renderItems();
 
 profileEditModal.addEventListener("mousedown", handlePopupClose);
 profileEditButton.addEventListener("click", () => {
+  console.log("pressed profile edit");
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   openModal(profileEditModal);
@@ -87,6 +88,7 @@ profileEditButton.addEventListener("click", () => {
 
 profileEditForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
+  console.log("pressed")
   const name = profileTitleInput.value;
   const job = profileDescriptionInput.value;
   handleProfileEditSubmit(name, job); // Pass input values to handleProfileEditSubmit function
