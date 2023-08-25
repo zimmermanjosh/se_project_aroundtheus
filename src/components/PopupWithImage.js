@@ -4,6 +4,7 @@ export default class PopupWithImage extends Popup {
     super({popupSelector});
     this._previewImageTitle = this._popupElement.querySelector(".element__descr");
     this._previewImageCaption = this._popupElement.querySelector(".element__img");
+    console.log("preseed 1")
   }
 
   open(imageUrl, imageCaption) {
@@ -12,6 +13,7 @@ export default class PopupWithImage extends Popup {
     this._previewImageTitle.textContent = imageCaption;
 
     super.open();
+    console.log("preseed 1")
   }
 
   /*close() {

@@ -26,6 +26,42 @@ import {
 } from '/src/constants/constants'
 import PopupWithForm from "/src/components/PopupWithForm.js";
 import PopupWithImage from "/src/components/PopupWithImage.js";
+
+/*------------------------------ const ------------------------------*/
+const elementSection = new Section(
+  { items: initializeCards, renderer: renderElement },
+  '.elements__list');
+
+elementSection.renderItems();
+
+const userInfo = new UserInfo({
+  nameSelector: '.profile__title',
+  jobSelector: '.profile__descr',
+});
+
+const addNewCardPopup = new PopupWithForm(
+  "#element-add-modal",
+  handleElementImageModal
+);
+
+const profileEditModalPopup = new PopupWithForm(
+  "#profile-edit-modal",
+  handleProfileEditSubmit
+
+);
+
+const cardPreviewPoup = new PopupWithImage(
+  "#element-image-modal"
+)
+
+// instantiate the FormValidator class for the profile
+const editProfileValidator = new FormValidator(config, profileEditForm);
+editProfileValidator.enableValidation();
+
+const editImageValidator = new FormValidator(config, elementAddModal)
+editImageValidator.enableValidation();
+
+
 /*------------------------------ Functions ------------------------------*/
 function renderElement(elementData) {
   const card = new Card(elementData, "#element-template", handleImageClick);
@@ -68,39 +104,9 @@ profileEditForm.addEventListener("submit", (evt) => {
   handleProfileEditSubmit(name, job); // Pass input values to handleProfileEditSubmit function
 });
 
-/*------------------------------ const ------------------------------*/
-const elementSection = new Section(
-  { items: initializeCards, renderer: renderElement },
-  '.elements__list');
 
-elementSection.renderItems();
-
-const userInfo = new UserInfo({
-  nameSelector: '.profile__title',
-  jobSelector: '.profile__descr',
-});
-
-const addNewCardPopup = new PopupWithForm(
-  "#element-add-modal",
-  handleElementImageModal
-);
-
-const profileEditModalPopup = new PopupWithForm(
-  "#profile-edit-modal",
-  handleProfileEditSubmit
-);
-
-const cardPreviewPoup = new PopupWithImage(
-  "#element-image-modal"
-)
-
-// instantiate the FormValidator class for the profile
-const editProfileValidator = new FormValidator(config, profileEditForm);
-editProfileValidator.enableValidation();
-
-const editImageValidator = new FormValidator(config, elementAddModal)
-editImageValidator.enableValidation();
 
 
 addNewCardPopup.setEventListeners()
 profileEditModalPopup.setEventListeners();
+console.log(profileEditModalPopup);
