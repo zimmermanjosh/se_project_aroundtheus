@@ -2,41 +2,44 @@ import Popup from './Popup.js';
 
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
-    super(popupSelector);
+    super({popupSelector});
+    this._formElement = this._popupElement.querySelector('.modal__form');
+    this._formInputs = this._formElement.querySelectorAll('.modal__input');
     this._handleFormSubmit = handleFormSubmit;
-    this._formElement = this._popup.querySelector('.modal__form');
+  }
+
+  close() {
+    console.log("close popup w/form !!!!");
+    this._formElement.reset();
+    this._formElement.removeEventListener('submit', this._submitForm);
+    super.close()
   }
 
   _getInputValues() {
-    const inputElements = this._formElement.querySelectorAll('.modal__input');
-    const formValues = {};
-    inputElements.forEach((input) => {
-      formValues[input.name] = input.value;
+    console.log("popup w/form -- get inputs value !!!!");
+    const inputs = {};
+    console.log("Inputs value:", inputs);
+    this._formInputs.forEach((inputs) => {
+      console.log("Inputs forEach:", inputs);
+      if (inputs.value !== "") {
+        inputs[inputs.name] = inputs.value;
+        console.log("Inputs value:", inputs);
+      }
     });
-    return formValues;
+    console.log("popup w/form -- return inputs value !!!!");
+
+    return inputs;
+  }
+
+  _submitForm = (e) => {
+    e.preventDefault();
+    console.log("popup w/form -- submit e !!!!", e);
+    const inputValues = this._getInputValues();
+    this._handleFormSubmit(inputValues);
   }
 
   setEventListeners() {
     super.setEventListeners();
-    this._formElement.addEventListener('submit', (event) => {
-      event.preventDefault();
-      this._handleFormSubmit(this._getInputValues());
-    });
-  }
-
-  close() {
-    super.close();
-    this._formElement.reset();
+    this._formElement.addEventListener('submit', this._submitForm);
   }
 }
-
-//export default PopupWithForm;
-
-/*
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-profileEditForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  const name = profileTitleInput.value;
-  const job = profileDescriptionInput.value;
-  handleProfileEditSubmit(name, job); // Pass input values to handleProfileEditSubmit function
-});*/

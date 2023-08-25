@@ -63,58 +63,27 @@ const initializeCards = [
 ];
 
 const profileEditModal = document.querySelector("#profile-edit-modal");
-const profileEditButton = document.querySelector(".profile__edit-button");
-const profileEditCloseButton = document.querySelector(
-  "#modal-profile-close-button"
-);
+
 const profileTitleInput = document.querySelector("#title-input");
 const profileDescriptionInput = document.querySelector("#profile-input");
-const profileTitle = document.querySelector(".profile__title");
-const profileDescription = document.querySelector(".profile__descr");
 const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
-
 const elementAddModal = document.querySelector("#element-add-modal");
 const elementAddButton = document.querySelector(".profile__add-button");
-const elementCloseButton= elementAddModal.querySelector("#element-add-close");
 const elementAddForm = elementAddModal.querySelector("#element-add-form");
-const elementList = document.querySelector(".elements__list");
 const elNameInput = elementAddModal.querySelector("#element-input");
 const elUrlInput = elementAddModal.querySelector("#image-input");
 const elementImageModal = document.querySelector("#element-image-modal");
-const elementImageModalClose = document.querySelector("#element-image-close");
-const elSaveButton = elementImageModal.querySelector("#imageSubmitButton");
-const elementGallery = document.querySelector(".elements__list");
-const elementTemplate = document
-  .querySelector("#element-template")
-  .content.querySelector(".el__element");
 
-//const modalImage = imageModalElement.querySelector('#element-modal-image');
-//const modalCaption = imageModalElement.querySelector('#element-modal-caption');
-const modalInputs = Array.from(
-  elementImageModal.querySelectorAll(".modal__input")
-);
-
-export{
+export {
   initializeCards,
   profileEditModal,
-  profileEditButton,
-  profileEditCloseButton,
   profileTitleInput,
   profileDescriptionInput,
-  profileTitle,
-  profileDescription,
   profileEditForm,
   elementAddModal,
   elementAddButton,
-  elementCloseButton,
   elementAddForm,
-  elementList,
   elNameInput,
   elUrlInput,
-  elementImageModal,
-  elementImageModalClose,
-  elSaveButton,
-  elementTemplate,
-  elementGallery,
-  modalInputs,
+  elementImageModal
 }

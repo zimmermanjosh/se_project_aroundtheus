@@ -7,14 +7,12 @@ import { openModal, closeModal, handlePopupClose } from "/src/utils/utils.js";
 import Section from '/src/components/Section.js';
 import UserInfo from '/src/components/UserInfo.js';
 import '/src/pages/index.css';
+import PopupWithForm from '/src/components/PopupWithForm.js';
 import {
   initializeCards,
   profileEditModal,
-  profileEditButton,
   profileTitleInput,
   profileDescriptionInput,
-  profileTitle,
-  profileDescription,
   profileEditForm,
   elementAddModal,
   elementAddButton,
@@ -23,6 +21,8 @@ import {
   elUrlInput,
   elementImageModal
 } from '/src/constants/variables'
+
+
 
 /*------------------------------ Constants ------------------------------
 Constants info /datasets
@@ -45,6 +45,11 @@ const editProfileValidator = new FormValidator(config, profileEditForm);
 const editImageValidator = new FormValidator(config, elementAddModal)
 const elementSection = new Section({ items: initializeCards, renderer: renderElement }, '.elements__list');
 
+
+const profileEditPopup = new PopupWithForm(
+  "#profile-edit-modal",
+  handleFormSubmit
+);
 /*------------------------------ Functions------------------------------*/
 
 function handleProfileEditSubmit(name,job) {
@@ -52,6 +57,7 @@ function handleProfileEditSubmit(name,job) {
   editProfileValidator.resetValidation();
   closeModal(profileEditModal);
 }
+
 function renderElement(elementData) {
   //const card = new Card(elementData, "#element-template", handleImageClick)
   const card = new Card(elementData, "#element-template", elementImageModal, openModal)
@@ -59,6 +65,7 @@ function renderElement(elementData) {
   const cardElement = card.generateCard();
   elementSection.prependItem(cardElement);
 }
+
 function handleElementImageModal(evt) {
   evt.preventDefault();
   editImageValidator.resetValidation();
@@ -78,13 +85,26 @@ editProfileValidator.enableValidation();
 editImageValidator.enableValidation();
 elementSection.renderItems();
 
-profileEditModal.addEventListener("mousedown", handlePopupClose);
-profileEditButton.addEventListener("click", () => {
+//profileEdit == .profile__edit-button
+//profileEditModal.addEventListener("mousedown", handlePopupClose);
+//const profileEditButton = document.querySelector(".profile__edit-button");
+/*profileEditButton.addEventListener("click", () => {
   console.log("pressed profile edit");
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   openModal(profileEditModal);
-});
+});*/
+
+
+
+function handleFormSubmit(inputValues) {
+  console.log("handle for submit")
+  const { title, description } = inputValues;
+  userInfo.setUserInfo({ title, description });
+  profileEditPopup.close();
+}
+
+profileEditPopup.setEventListeners();
 
 profileEditForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
