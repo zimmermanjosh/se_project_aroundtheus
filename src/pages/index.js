@@ -5,12 +5,13 @@ import Card from '/src/components/Card.js';
 import FormValidator from '/src/components/FormValidator.js';
 import { openModal, closeModal, handlePopupClose } from "/src/utils/utils.js";
 import Section from '/src/components/Section.js';
-import UserInfo from '/src/components/UserInfo.js';
 import '/src/pages/index.css';
 import PopupWithForm from '/src/components/PopupWithForm.js';
+import UserInfo from '/src/components/UserInfo.js';
 import {
   initializeCards,
   profileEditModal,
+  profileEditButton,
   profileTitleInput,
   profileDescriptionInput,
   profileEditForm,
@@ -53,7 +54,7 @@ const profileEditPopup = new PopupWithForm(
 /*------------------------------ Functions------------------------------*/
 
 function handleProfileEditSubmit(name,job) {
-  userInfo.setUserInfo({ name, job });
+  UserInfo.setUserInfo({ name, job });
   editProfileValidator.resetValidation();
   closeModal(profileEditModal);
 }
@@ -88,12 +89,14 @@ elementSection.renderItems();
 //profileEdit == .profile__edit-button
 //profileEditModal.addEventListener("mousedown", handlePopupClose);
 //const profileEditButton = document.querySelector(".profile__edit-button");
-/*profileEditButton.addEventListener("click", () => {
+profileEditButton.addEventListener("click", () => {
   console.log("pressed profile edit");
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  openModal(profileEditModal);
-});*/
+  const { profileName, profileDescription } = userInfo.getUserInf0();
+  profileTitleInput.value = profileName;
+  profileDescriptionInput.value = profileDescription;
+  profileEditPopup.open();
+  //editFormValidator.resetValidation();
+});
 
 
 
