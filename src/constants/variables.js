@@ -73,6 +73,7 @@ const elementAddForm = elementAddModal.querySelector("#element-add-form");
 const elNameInput = elementAddModal.querySelector("#element-input");
 const elUrlInput = elementAddModal.querySelector("#image-input");
 const elementImageModal = document.querySelector("#element-image-modal");
+const profileAddButton = document.querySelector("#profile-add-button");
 
 const configValidation = {
   formSelector: ".modal__form",
@@ -95,5 +96,6 @@ export {
   elNameInput,
   elUrlInput,
   elementImageModal,
-  configValidation
+  configValidation,
+  profileAddButton
 }
