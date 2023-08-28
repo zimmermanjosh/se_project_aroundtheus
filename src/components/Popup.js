@@ -26,8 +26,9 @@ export default class Popup{
     this._popupElement.addEventListener("mousedown", (e) => {
       console.log("setEventListeners popup!!!!");
       if (
-        e.target.classList.add(".modal") ||
-        e.target.classList.add(".modal__close")
+        //removed '.' in front of target
+        e.target.classList.add("modal") ||
+        e.target.classList.add("modal__close")
       ){
         this.close(e.currentTarget);
       }
@@ -35,7 +36,7 @@ export default class Popup{
 
     this._popupCloseButon.addEventListener("click", (e) => {
       console.log("popup close button in popup !!!!");
-      this.close(e.currentTarget);
+      this.close();
       });
     }
   }

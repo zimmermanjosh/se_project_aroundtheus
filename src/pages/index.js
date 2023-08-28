@@ -20,7 +20,8 @@ import {
   elementAddForm,
   elNameInput,
   elUrlInput,
-  elementImageModal
+  elementImageModal,
+  configValidation
 } from '/src/constants/variables'
 
 
@@ -28,22 +29,22 @@ import {
 /*------------------------------ Constants ------------------------------
 Constants info /datasets
  */
-const userInfo = new UserInfo({
-  nameSelector: '.profile__title',
-  jobSelector: '.profile__descr',
-});
+const userInfo = new UserInfo(
+  document.querySelector(".profile__title"),
+  document.querySelector(".profile__descr")
+);
 
-const config = {
+/*const configValidation = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
-}
+}*/
 
-const editProfileValidator = new FormValidator(config, profileEditForm);
-const editImageValidator = new FormValidator(config, elementAddModal)
+const editProfileValidator = new FormValidator(configValidation, profileEditForm);
+//const editImageValidator = new FormValidator(configValidation, elementAddModal)
 const elementSection = new Section({ items: initializeCards, renderer: renderElement }, '.elements__list');
 
 
@@ -54,7 +55,7 @@ const profileEditPopup = new PopupWithForm(
 /*------------------------------ Functions------------------------------*/
 
 function handleProfileEditSubmit(name,job) {
-  UserInfo.setUserInfo({ name, job });
+  userInfo.setUserInfo({ name, job });
   editProfileValidator.resetValidation();
   closeModal(profileEditModal);
 }
@@ -67,35 +68,41 @@ function renderElement(elementData) {
   elementSection.prependItem(cardElement);
 }
 
-function handleElementImageModal(evt) {
-  evt.preventDefault();
-  editImageValidator.resetValidation();
-  const name = elNameInput.value;
-  const url = elUrlInput.value;
-  const elementData = {
-    name: name,
-    url: url,
-  };
-  renderElement(elementData);
-  closeModal(elementAddModal);
-}
+// function handleElementImageModal(evt) {
+//   evt.preventDefault();
+//   editImageValidator.resetValidation();
+//   const name = elNameInput.value;
+//   const url = elUrlInput.value;
+//   const elementData = {
+//     name: name,
+//     url: url,
+//   };
+//   renderElement(elementData);
+//   closeModal(elementAddModal);
+// }
 
 /*------------------------------ Event listeners------------------------------*/
 
-editProfileValidator.enableValidation();
-editImageValidator.enableValidation();
+//editProfileValidator.enableValidation();
+//editImageValidator.enableValidation();
+
 elementSection.renderItems();
+
+const editFormValidator = new FormValidator(
+  configValidation,
+  profileEditForm
+);
 
 //profileEdit == .profile__edit-button
 //profileEditModal.addEventListener("mousedown", handlePopupClose);
 //const profileEditButton = document.querySelector(".profile__edit-button");
 profileEditButton.addEventListener("click", () => {
   console.log("pressed profile edit");
-  const { profileName, profileDescription } = userInfo.getUserInf0();
+  const { profileName, profileDescription } = userInfo.getUserInfo();
   profileTitleInput.value = profileName;
   profileDescriptionInput.value = profileDescription;
   profileEditPopup.open();
-  //editFormValidator.resetValidation();
+  editFormValidator.resetValidation();
 });
 
 
@@ -109,20 +116,20 @@ function handleFormSubmit(inputValues) {
 
 profileEditPopup.setEventListeners();
 
-profileEditForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  console.log("pressed")
-  const name = profileTitleInput.value;
-  const job = profileDescriptionInput.value;
-  handleProfileEditSubmit(name, job); // Pass input values to handleProfileEditSubmit function
-});
+// profileEditForm.addEventListener("submit", (evt) => {
+//   evt.preventDefault();
+//   console.log("pressed")
+//   const name = profileTitleInput.value;
+//   const job = profileDescriptionInput.value;
+//   handleProfileEditSubmit(name, job); // Pass input values to handleProfileEditSubmit function
+// });
 
 /*------------------------------ Event listeners------------------------------*/
-elementImageModal.addEventListener("mousedown", handlePopupClose);
-elementAddModal.addEventListener("mousedown", handlePopupClose);
-elementAddForm.addEventListener("submit", handleElementImageModal);
+//elementImageModal.addEventListener("mousedown", handlePopupClose);
+//elementAddModal.addEventListener("mousedown", handlePopupClose);
+//elementAddForm.addEventListener("submit", handleElementImageModal);
 
-elementAddButton.addEventListener("click", () => {
-  // elementAddForm.resetValidation();
-  openModal(elementAddModal);
-});
+// elementAddButton.addEventListener("click", () => {
+//   // elementAddForm.resetValidation();
+//   openModal(elementAddModal);
+// });

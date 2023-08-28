@@ -74,6 +74,14 @@ const elNameInput = elementAddModal.querySelector("#element-input");
 const elUrlInput = elementAddModal.querySelector("#image-input");
 const elementImageModal = document.querySelector("#element-image-modal");
 
+const configValidation = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+}
 export {
   initializeCards,
   profileEditButton,
@@ -86,5 +94,6 @@ export {
   elementAddForm,
   elNameInput,
   elUrlInput,
-  elementImageModal
+  elementImageModal,
+  configValidation
 }
