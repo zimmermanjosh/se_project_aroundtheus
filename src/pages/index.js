@@ -33,7 +33,7 @@ Constants info /datasets
  */
 const section = new Section({
   items: initializeCards,
-  renderer: (cardData) => {
+  renderer:(cardData) => {
     const cardElement = renderCard(cardData);
     section.addItem(cardElement);
   }
@@ -123,18 +123,18 @@ profileEditButton.addEventListener("click", () => {
 const cardPreviewPopup = new PopupWithImage("#element-image-modal")
 
 
-function handleFormSubmit(inputValues) {
-  console.log("handle for submit")
-  const { title, description } = inputValues;
-  userInfo.setUserInfo({ title, description });
-  profileEditPopup.close();
-}
+// function handleFormSubmit(inputValues) {
+//   console.log("handle for submit")
+//   const { title, description } = inputValues;
+//   userInfo.setUserInfo({ title, description });
+//   profileEditPopup.close();
+// }
 function handleCardPreviewClick(url, name) {
   cardPreviewPopup.open(url, name);
 }
 
 function renderCard(cardData) {
-  const card = new Card(cardData, "#card-template", handleCardPreviewClick)
+  const card = new Card(cardData, "#element-template", handleCardPreviewClick)
   return card.generateCard();
   //const cardElement = card.generateCard();
   //elementSection.prependItem(cardElement);

@@ -27,8 +27,8 @@ export default class Card {
   }
 
   _handleDeleteButton() {
-    const cardElement = evt.target.closest('.element');
-    cardElement.remove();
+    this._cardElement.remove();
+    this._cardElement = null;
   }
 
   _handleImagePreviewClick() {
@@ -38,7 +38,8 @@ export default class Card {
   }
 
   _getTemplate() {
-   return document.querySelector(this._templateSelector).content.querySelector(".element el__element").cloneNode(true);
+   return document
+     .querySelector(this._templateSelector).content.querySelector(".elements__content").cloneNode(true);
     //const cardTemplate = document.querySelector(this._templateSelector);
    // return cardTemplate.content.cloneNode(true);
   }
@@ -61,8 +62,8 @@ export default class Card {
 
   generateCard() {
     this._cardElement = this._getTemplate();
-    const cardImage = this._cardElement.querySelector('.element__img');
-    const cardTitle = this._cardElement.querySelector('.element__text');
+    const cardImage = this._cardElement.querySelector(".element__img");
+    const cardTitle = this._cardElement.querySelector(".element__text");
 
     cardImage.src = this._url;
     cardImage.alt = this._name;
