@@ -68,10 +68,6 @@ const profileTitleInput = document.querySelector("#title-input");
 const profileDescriptionInput = document.querySelector("#profile-input");
 const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
 const elementAddModal = document.querySelector("#element-add-modal");
-const elementAddButton = document.querySelector(".profile__add-button");
-const elementAddForm = elementAddModal.querySelector("#element-add-form");
-const elNameInput = elementAddModal.querySelector("#element-input");
-const elUrlInput = elementAddModal.querySelector("#image-input");
 const elementImageModal = document.querySelector("#element-image-modal");
 const cardAddButton = document.querySelector("#profile-add-button");
 
@@ -93,10 +89,6 @@ export {
   profileDescriptionInput,
   profileEditForm,
   elementAddModal,
-  elementAddButton,
-  elementAddForm,
-  elNameInput,
-  elUrlInput,
   elementImageModal,
   configValidation,
   cardAddButton,

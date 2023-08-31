@@ -24,8 +24,8 @@ const section = new Section({
 section.renderItems();
 
 const userInfo = new UserInfo(
-  document.querySelector( ".profile__descr"),
   document.querySelector(".profile__title"),
+  document.querySelector( ".profile__descr"),
 )
 
 const editFormValidator = new FormValidator(configValidation, profileEditForm);
@@ -36,7 +36,7 @@ const profileEditPopup = new PopupWithForm("#profile-edit-modal", handleProfileE
 
 const addNewCardPopup = new PopupWithForm("#element-add-modal", handleNewCardSubmit);
 
-const cardPreviewPopup = new PopupWithImage( {popupSelector: "#element-image-modal" });
+const cardPreviewPopup = new PopupWithImage("#element-image-modal");
 
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
@@ -65,6 +65,7 @@ function renderCard(cardData) {
 }
 
 profileEditButton.addEventListener("click", () => {
+  debugger;
   const { profileName, profileDescription } = userInfo.getUserInfo();
   profileTitleInput.value = profileName;
   profileDescriptionInput.value = profileDescription;
