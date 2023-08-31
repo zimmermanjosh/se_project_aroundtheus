@@ -36,7 +36,7 @@ const profileEditPopup = new PopupWithForm("#profile-edit-modal", handleProfileE
 
 const addNewCardPopup = new PopupWithForm("#element-add-modal", handleNewCardSubmit);
 
-const cardPreviewPopup = new PopupWithImage("#element-image-modal");
+const cardPreviewPopup = new PopupWithImage({popupSelector: "#element-image-modal" });
 
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
