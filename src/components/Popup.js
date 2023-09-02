@@ -28,8 +28,8 @@ export default class Popup{
       console.log("setEventListeners popup!!!!");
       if (
         //removed '.' in front of target
-        e.target.classList.add("modal") ||
-        e.target.classList.add("modal__close")
+        e.target.classList.contains("modal") ||
+        e.target.classList.contains("modal__close")
       ){
         this.close(e.currentTarget);
       }
