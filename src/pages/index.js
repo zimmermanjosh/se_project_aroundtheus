@@ -42,8 +42,8 @@ addFormValidator.enableValidation();
 editFormValidator.enableValidation();
 
 function handleProfileEditSubmit(inputValues) {
-  const { title, description } = inputValues;
-  userInfo.setUserInfo( title, description );
+  const { profileName, description } = inputValues;
+  userInfo.setUserInfo( profileName, description );
   profileEditPopup.close();
 }
 
@@ -65,10 +65,10 @@ function renderCard(cardData) {
 }
 
 profileEditButton.addEventListener("click", () => {
-  debugger;
-  const { profileName, profileDescription } = userInfo.getUserInfo();
+  //debugger;
+  const { profileName, description } = userInfo.getUserInfo();
   profileTitleInput.value = profileName;
-  profileDescriptionInput.value = profileDescription;
+  profileDescriptionInput.value = description;
   profileEditPopup.open();
   //editFormValidator.resetValidation();
 });

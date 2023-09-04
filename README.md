@@ -5,6 +5,7 @@ refactor of class js files
 refactor of projects 
 webpack add 
 babel add 
+.nvmrc file added
 
 
 # Project 8 updated: Around The U.S.
