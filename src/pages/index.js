@@ -13,13 +13,18 @@ import {
   profileEditForm,
   configValidation,
   cardAddButton,
-  cardAddForm
+  cardAddForm, cardsList
 } from '/src/constants/variables';
 
 const section = new Section({
   items: initializeCards,
-  renderer: renderCard,
-});
+  renderer: (cardData) => {
+    const cardElement = renderCard(cardData);
+    section.addItem(cardElement);
+    },
+  },
+  cardsList,
+);
 
 section.renderItems();
 
@@ -60,7 +65,7 @@ function handleCardPreviewClick(url, name) {
 
 function renderCard(cardData) {
   //const card = new Card(cardData, "#element-template", handleCardPreviewClick);
-  const card = new Card(cardData, "#element-template", (url, name) => handleCardPreviewClick(url, name));
+  const card = new Card(cardData, "#element-template", handleCardPreviewClick);
   return card.generateCard();
 }
 
