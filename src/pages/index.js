@@ -41,7 +41,7 @@ const profileEditPopup = new PopupWithForm("#profile-edit-modal", handleProfileE
 
 const addNewCardPopup = new PopupWithForm("#element-add-modal", handleNewCardSubmit);
 
-const cardPreviewPopup = new PopupWithImage({popupSelector: "#element-image-modal" });
+const cardPreviewPopup = new PopupWithImage("#preview-modal");
 
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
@@ -59,8 +59,8 @@ function handleNewCardSubmit(inputValues) {
   addNewCardPopup.close();
 }
 
-function handleCardPreviewClick(url, name) {
-  cardPreviewPopup.open(url, name);
+function handleCardPreviewClick(caption, imageUrl) {
+  cardPreviewPopup.open(caption, imageUrl);
 }
 
 function renderCard(cardData) {

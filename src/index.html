@@ -8,6 +8,7 @@
     <meta name="keywords" content="parks, us" />
     <title>Around the U.S.</title>
     <link rel="icon" href="../favicon.ico" />
+    <script src="pages/index.js"></script>
   </head>
   <!--/page-->
   <body class="page">
@@ -123,23 +124,19 @@
         </form>
       </div>
     </div>
-
-    <div class="modal" id="element-image-modal">
-      <div class="modal__container-element">
-        <button class="modal__close"
-                id="element-image-close">
-        </button>
+    <!-- preview modal-->
+    <div class="modal" id="preview-modal">
+      <div class="modal__container-preview">
+        <button
+          class="modal__close"
+          id="element-image-close"
+        ></button>
         <img
-          class="modal__image-element"
-          id="element-modal-image"
-          src="#"
-          alt=""
-        />
-        <p class="modal__caption-element" id="element-modal-caption"></p>
+          class="modal__image-preview" src="#" alt=" " />
+        <p class="modal__caption"></p>
       </div>
     </div>
     <!-- template-->
-
     <template id="element-template">
       <li class="elements__content">
         <button
