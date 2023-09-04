@@ -64,8 +64,10 @@ const initializeCards = [
 
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditButton = document.querySelector("#profile-edit-button");
+
 const profileTitleInput = document.querySelector("#title-input");
 const profileDescriptionInput = document.querySelector("#profile-input");
+
 const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
 const elementAddModal = document.querySelector("#element-add-modal");
 const elementImageModal = document.querySelector("#element-image-modal");
