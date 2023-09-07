@@ -8,7 +8,6 @@
     <meta name="keywords" content="parks, us" />
     <title>Around the U.S.</title>
     <link rel="icon" href="../favicon.ico" />
-    <script src="pages/index.js"></script>
   </head>
   <!--/page-->
   <body class="page">
@@ -71,6 +70,7 @@
             minlength="2"
             maxlength="40"
             required
+            name="name"
           />
           <span class="modal__error" id="title-input-error"></span>
 
@@ -82,6 +82,7 @@
             minlength="2"
             maxlength="200"
             required
+            name="description"
           />
           <span class="modal__error" id="profile-input-error"></span>
           <button type="submit" class="modal__button modal__button_disabled" disabled>Save</button>
