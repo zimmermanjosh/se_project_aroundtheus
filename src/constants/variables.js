@@ -76,8 +76,8 @@ const cardAddButton = document.querySelector("#profile-add-button");
 //elements || cards variable
 export const cardsList = document.querySelector(".elements__list");
 
-const cardAddForm = document.querySelector(".modal__form");
-
+const cardAddForm = elementAddModal.querySelector(".modal__form");
+//const cardAddForm = document.querySelector("#element-add-form");
 const configValidation = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",

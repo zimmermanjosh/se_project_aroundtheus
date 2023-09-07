@@ -20,10 +20,10 @@ export default class PopupWithForm extends Popup {
     //console.log("Inputs value:", inputs);
     this._formInputs.forEach((input) => {
       //console.log("Inputs forEach:", inputs);
-      if (input.value !== "") {
+      //if (input.value !== "") {
         inputs[input.name] = input.value;
         //console.log("Inputs value:", inputs);
-      }
+     // }
     });
     //console.log("popup w/form -- return inputs value !!!!");
 

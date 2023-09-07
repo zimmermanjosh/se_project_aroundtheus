@@ -7,7 +7,8 @@
     <meta name="author" content="joshua b zimmerman" />
     <meta name="keywords" content="parks, us" />
     <title>Around the U.S.</title>
-    <link rel="icon" href="../favicon.ico" />
+    <link rel="icon"
+          href="./images/favicon.ico" />
   </head>
   <!--/page-->
   <body class="page">
@@ -70,7 +71,7 @@
             minlength="2"
             maxlength="40"
             required
-            name="name"
+            name="title"
           />
           <span class="modal__error" id="title-input-error"></span>
 
@@ -107,12 +108,14 @@
             id="element-input"
             minlength="1"
             maxlength="30"
+            name="title"
             required
           />
           <span class="modal__error" id="element-input-error"></span>
           <input
             class="modal__input"
             type="url"
+            name="url"
             placeholder="url"
             id="image-input"
             required
@@ -137,10 +140,12 @@
           id="element-image-close"
         ></button>
         <img
-          class="modal__image-preview" src="#" alt=" " />
+          class="modal__image-preview"
+          src="#" alt=" " />
         <p class="modal__caption"></p>
       </div>
     </div>
+
     <!-- template-->
     <template id="element-template">
       <li class="elements__content">
