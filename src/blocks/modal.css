@@ -119,16 +119,16 @@
   opacity: 0.8;
 }
 
-.modal__container-element {
+.modal__container-preview {
   position: relative;
 }
 
-.modal__image-element {
+.modal__image-preview {
   max-width: 100%;
   max-height: 540px;
 }
 
-.modal__caption-element {
+.modal__caption {
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;

@@ -1,13 +1,18 @@
 import Popup from "./Popup.js";
-import {initializeCards} from "/src/constants/variables.js"
-export default class PopupWithImage extends Popup {
-  constructor(popupSelector) {
-    super(popupSelector);
 
-    this._modalImage = this._modalImage.querySelector(".element__img");
-    this._modalCaption = this._modalCaption.querySelector(".element__descr");
-   }
-   open(){
+export default class PopupWithImage extends Popup {
+  constructor( popupSelector ) {
+    super({ popupSelector });
+    this._previewImageTitle =
+      this._popupElement.querySelector(".modal__caption");
+    this._previewImageModal =
+     this._popupElement.querySelector(".modal__image-preview");
+  }
+
+  open(caption, imageUrl) {
+    this._previewImageModal.src = imageUrl;
+    this._previewImageModal.alt = caption;
+    this._previewImageTitle.textContent = caption;
     super.open();
-  };
-};
+  }
+}

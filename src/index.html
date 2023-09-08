@@ -7,7 +7,8 @@
     <meta name="author" content="joshua b zimmerman" />
     <meta name="keywords" content="parks, us" />
     <title>Around the U.S.</title>
-    <link rel="icon" href="../favicon.ico" />
+    <link rel="icon"
+          href="./images/favicon.ico" />
   </head>
   <!--/page-->
   <body class="page">
@@ -30,10 +31,14 @@
           />
           <div class="profile__info">
             <h1 class="profile__title">Joshua Zimmerman</h1>
-            <button type="button" class="profile__edit-button"></button>
-            <p class="profile__descr">Explorer, dad</p>
+            <button type="button"
+                    class="profile__edit-button" id=
+                      "profile-edit-button">
+
+            </button>
+            <p class="profile__description">Explorer, dad</p>
           </div>
-          <button type="button" class="profile__add-button"></button>
+          <button type="button" class="profile__add-button" id="profile-add-button"></button>
         </section>
         <!--/elements_section-->
         <section class="elements page__section">
@@ -48,6 +53,7 @@
         <p class="footer__copyright">©2023 Around the U.S.</p>
       </footer>
     </div>
+
     <!-- Modal Profile 2023/02/01-->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
@@ -66,6 +72,7 @@
             minlength="2"
             maxlength="40"
             required
+            name="title"
           />
           <span class="modal__error" id="title-input-error"></span>
 
@@ -77,6 +84,7 @@
             minlength="2"
             maxlength="200"
             required
+            name="description"
           />
           <span class="modal__error" id="profile-input-error"></span>
           <button type="submit" class="modal__button modal__button_disabled" disabled>Save</button>
@@ -101,12 +109,14 @@
             id="element-input"
             minlength="1"
             maxlength="30"
+            name="title"
             required
           />
           <span class="modal__error" id="element-input-error"></span>
           <input
             class="modal__input"
             type="url"
+            name="url"
             placeholder="url"
             id="image-input"
             required
@@ -123,23 +133,23 @@
         </form>
       </div>
     </div>
-
-    <div class="modal" id="element-image-modal">
-      <div class="modal__container-element">
+    <!-- preview modal-->
+    <div class="modal" id="preview-modal">
+      <div class="modal__container-preview">
+        <button
+          class="modal__close"
+          id="element-image-close"
+        ></button>
         <img
-          class="modal__image-element"
-          id="element-modal-image"
-          src="#"
-          alt=""
-        />
-        <p class="modal__caption-element" id="element-modal-caption"></p>
-        <button class="modal__close" id="element-image-close"></button>
+          class="modal__image-preview"
+          src="#" alt=" " />
+        <p class="modal__caption"></p>
       </div>
     </div>
-    <!-- template-->
 
+    <!-- template-->
     <template id="element-template">
-      <li class="element el__element">
+      <li class="elements__content">
         <button
           class="element__delete-button"
           id="element-delete-button"

@@ -1,5 +1,5 @@
 /*elements<cards>*/
-.element {
+.elements__content {
   display: flex;
   flex-direction: column;
   list-style: none;

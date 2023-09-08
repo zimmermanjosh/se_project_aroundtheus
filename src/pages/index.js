@@ -1,113 +1,103 @@
-/*------------------------------ import statements ------------------------------
-* from other files
-*/
 import Card from '/src/components/Card.js';
 import FormValidator from '/src/components/FormValidator.js';
-import { openModal, closeModal, handlePopupClose } from "/src/utils/utils.js";
 import Section from '/src/components/Section.js';
+import PopupWithImage from '/src/components/PopupWithImage.js';
+import PopupWithForm from '/src/components/PopupWithForm.js';
 import UserInfo from '/src/components/UserInfo.js';
-import '/src/pages/index.css';
 import {
   initializeCards,
-  profileEditModal,
   profileEditButton,
   profileTitleInput,
   profileDescriptionInput,
-  profileTitle,
-  profileDescription,
   profileEditForm,
-  elementAddModal,
-  elementAddButton,
-  elementAddForm,
-  elNameInput,
-  elUrlInput,
-  elementImageModal
-} from '/src/constants/variables'
+  configValidation,
+  cardAddButton,
+  cardAddForm,
+  cardsList
+} from '/src/constants/variables';
 
-/*------------------------------ Constants ------------------------------
-Constants info /datasets
- */
-const userInfo = new UserInfo({
-  nameSelector: '.profile__title',
-  jobSelector: '.profile__descr',
-});
+import '/src/pages/index.css';
 
-const config = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
+const section = new Section({
+  items: initializeCards,
+  renderer: (cardData) => {
+    const cardElement = renderCard(cardData);
+    section.addItem(cardElement);
+    },
+  },
+  cardsList,
+);
+
+section.renderItems();
+
+const userInfo = new UserInfo(
+  document.querySelector(".profile__title"),
+  document.querySelector( ".profile__description"),
+)
+
+const editFormValidator = new FormValidator(
+  configValidation,
+  profileEditForm
+);
+
+const addFormValidator = new FormValidator(
+  configValidation,
+  cardAddForm
+);
+
+const profileEditPopup = new PopupWithForm(
+  "#profile-edit-modal",
+  handleProfileFormSubmit
+);
+
+const
+  addNewCardPopup = new PopupWithForm(
+  "#element-add-modal"
+  , handleNewCardSubmit
+);
+
+const cardPreviewPopup = new PopupWithImage("#preview-modal");
+
+function handleProfileFormSubmit(inputValues) {
+  const { title, description } = inputValues;
+  userInfo.setUserInfo( title, description );
+  profileEditPopup.close();
 }
-/*------------------------------ profile  ------------------------------ */
-/*------------------------------ profile  ------------------------------ */
 
-// instantiate the FormValidator class for the profile
-const editProfileValidator = new FormValidator(config, profileEditForm);
-editProfileValidator.enableValidation();
-
-/*------------------------------ Functions------------------------------*/
-function handleProfileEditSubmit(name,job) {
-  userInfo.setUserInfo({ name, job });
-  editProfileValidator.resetValidation();
-  closeModal(profileEditModal);
+function handleNewCardSubmit(inputValues) {
+  const { title , url } = inputValues;
+  const newElementData = renderCard({ name: title, url: url });
+  section.addItem(newElementData);
+  addNewCardPopup.close();
 }
-/*------------------------------ Event listeners------------------------------*/
 
-profileEditModal.addEventListener("mousedown", handlePopupClose);
+function handleCardPreviewClick(caption, imageUrl) {
+  cardPreviewPopup.open(caption, imageUrl);
+}
+
+function renderCard(cardData) {
+  //const card = new Card(cardData, "#element-template", handleCardPreviewClick);
+  const card = new Card(cardData, "#element-template", handleCardPreviewClick);
+  return card.generateCard();
+}
+
 profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  openModal(profileEditModal);
+  //debugger;
+  const { profileName, description } = userInfo.getUserInfo();
+  profileTitleInput.value = profileName;
+  profileDescriptionInput.value = description;
+  profileEditPopup.open();
+  editFormValidator.resetValidation();
 });
 
-profileEditForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  const name = profileTitleInput.value;
-  const job = profileDescriptionInput.value;
-  handleProfileEditSubmit(name, job); // Pass input values to handleProfileEditSubmit function
+cardAddButton.addEventListener("click", () => {
+  addNewCardPopup.open();
+  addFormValidator.resetValidation();
 });
 
-/*------------------------------ Image Modal   ------------------------------ */
-/*------------------------------ Image Modal   ------------------------------ */
-// instantiate the FormValidator class for the add image modal
-const editImageValidator = new FormValidator(config, elementAddModal)
-editImageValidator.enableValidation();
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
 
-// Create an instance of the Section class // this renders images
-const elementSection = new Section({ items: initializeCards, renderer: renderElement }, '.elements__list');
-elementSection.renderItems();
-
-/*------------------------------ Functions------------------------------*/
-function renderElement(elementData) {
-  //const card = new Card(elementData, "#element-template", handleImageClick)
-  const card = new Card(elementData, "#element-template", elementImageModal, openModal)
-  console.log("something something !! ")
-  const cardElement = card.generateCard();
-  elementSection.prependItem(cardElement);
-}
-function handleElementImageModal(evt) {
-  evt.preventDefault();
-  editImageValidator.resetValidation();
-  const name = elNameInput.value;
-  const url = elUrlInput.value;
-  const elementData = {
-    name: name,
-    url: url,
-  };
-  renderElement(elementData);
-  closeModal(elementAddModal);
-}
-
-/*------------------------------ Event listeners------------------------------*/
-elementImageModal.addEventListener("mousedown", handlePopupClose);
-elementAddModal.addEventListener("mousedown", handlePopupClose);
-elementAddForm.addEventListener("submit", handleElementImageModal);
-
-elementAddButton.addEventListener("click", () => {
-  // elementAddForm.resetValidation();
-  openModal(elementAddModal);
-});
-
-
+profileEditPopup.setEventListeners();
+cardPreviewPopup.setEventListeners();
+addNewCardPopup.setEventListeners();
