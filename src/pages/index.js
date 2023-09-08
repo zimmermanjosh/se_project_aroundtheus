@@ -58,9 +58,6 @@ const
 
 const cardPreviewPopup = new PopupWithImage("#preview-modal");
 
-addFormValidator.enableValidation();
-editFormValidator.enableValidation();
-
 function handleProfileFormSubmit(inputValues) {
   const { title, description } = inputValues;
   userInfo.setUserInfo( title, description );
