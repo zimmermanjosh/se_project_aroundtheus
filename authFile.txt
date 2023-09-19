@@ -27,7 +27,7 @@ fetch("https://around-api.en.tripleten-services.com/v1", {
     authorization: "2ac20083-7dba-4483-94f0-c00ccc6d0155"
   }
 })
-  .then(res => res.json())
+    .then(res => res.json())
   .then((result) => {
     console.log(result);
   });

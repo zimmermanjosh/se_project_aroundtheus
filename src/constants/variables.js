@@ -73,6 +73,9 @@ const elementAddModal = document.querySelector("#element-add-modal");
 const elementImageModal = document.querySelector("#element-image-modal");
 const cardAddButton = document.querySelector("#profile-add-button");
 
+const apiUrl = "https://around-api.en.tripleten-services.com/v1"
+const apiToken ="2ac20083-7dba-4483-94f0-c00ccc6d0155"
+
 //elements || cards variable
 export const cardsList = document.querySelector(".elements__list");
 
@@ -97,5 +100,7 @@ export {
   elementImageModal,
   configValidation,
   cardAddButton,
-  cardAddForm
+  cardAddForm,
+  apiUrl,
+  apiToken,
 }

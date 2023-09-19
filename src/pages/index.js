@@ -5,18 +5,35 @@ import PopupWithImage from '/src/components/PopupWithImage.js';
 import PopupWithForm from '/src/components/PopupWithForm.js';
 import UserInfo from '/src/components/UserInfo.js';
 import {
-  initializeCards,
-  profileEditButton,
-  profileTitleInput,
-  profileDescriptionInput,
-  profileEditForm,
-  configValidation,
+  apiToken,
+  apiUrl,
   cardAddButton,
   cardAddForm,
-  cardsList
+  cardsList,
+  configValidation,
+  initializeCards,
+  profileDescriptionInput,
+  profileEditButton,
+  profileEditForm,
+  profileTitleInput,
 } from '/src/constants/variables';
-
 import '/src/pages/index.css';
+import Api from "../components/Api";
+
+const api = new Api({
+  baseUrl: apiUrl,
+  headers: {
+    authorization: apiToken,
+    "Content-Type": "application/json"
+  }
+});
+
+Promise.all([api.getUserInfo()])
+  .then(res => res.json())
+  .then((result) => {
+    console.log(result);
+  })
+  .catch(console.error);
 
 const section = new Section({
   items: initializeCards,
@@ -30,10 +47,17 @@ const section = new Section({
 
 section.renderItems();
 
-const userInfo = new UserInfo(
+//edit form
+const userInfo = new UserInfo({
+  profileDescription: ".profile__description",
+  profileTitle: ".profile__title",
+  profileImage: ".profile__image",
+})
+
+/*const userInfo = new UserInfo(
   document.querySelector(".profile__title"),
   document.querySelector( ".profile__description"),
-)
+)*/
 
 const editFormValidator = new FormValidator(
   configValidation,
