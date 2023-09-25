@@ -1,5 +1,5 @@
-import '/src/constants/variables.js';
-import {elementImageModal} from "../constants/variables";
+import '/src/constants/constants.js';
+
 export default class Card {
   constructor({name, url}, templateSelector, handleCardClick) {
 

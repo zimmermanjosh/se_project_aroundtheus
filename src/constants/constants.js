@@ -89,6 +89,16 @@ const configValidation = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 }
+
+export const selectors = {
+  cardSection: ".elements__list",
+  cardTemplate: "#element-template",
+  previewModal: "#preview-modal",
+  addCardPopupSelector: "#element-add-modal",
+  profilePopupSelector: "#profile-edit-modal",
+  avatarPopupSelector: "",
+}
+
 export {
   initializeCards,
   profileEditButton,

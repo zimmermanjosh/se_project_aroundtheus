@@ -16,23 +16,26 @@ import {
   profileEditButton,
   profileEditForm,
   profileTitleInput,
-} from '/src/constants/variables';
+} from '/src/constants/constants';
 import '/src/pages/index.css';
 import Api from "../components/Api";
 
 const api = new Api({
   baseUrl: apiUrl,
-  headers: {
+  baseHeader: {
     authorization: apiToken,
     "Content-Type": "application/json"
   }
 });
 
 Promise.all([api.getUserInfo()])
-  .then(res => res.json())
-  .then((result) => {
-    console.log(result);
-  })
+  .then(([userData]) => {
+    userInfo.setUserInfo(userData);
+})
+  //.then(res => res.json())
+  //.then((result) => {
+    //console.log(result);
+ // })
   .catch(console.error);
 
 const section = new Section({
@@ -49,15 +52,11 @@ section.renderItems();
 
 //edit form
 const userInfo = new UserInfo({
-  profileDescription: ".profile__description",
-  profileTitle: ".profile__title",
-  profileImage: ".profile__image",
+  profileDescriptionSelector: ".profile__description",
+  profileNameSelector: ".profile__title",
+  profileAvatarSelector: ".profile__img",
 })
 
-/*const userInfo = new UserInfo(
-  document.querySelector(".profile__title"),
-  document.querySelector( ".profile__description"),
-)*/
 
 const editFormValidator = new FormValidator(
   configValidation,
@@ -82,11 +81,30 @@ const
 
 const cardPreviewPopup = new PopupWithImage("#preview-modal");
 
+
+
 function handleProfileFormSubmit(inputValues) {
-  const { title, description } = inputValues;
-  userInfo.setUserInfo( title, description );
-  profileEditPopup.close();
+  //profileEditPopup.renderLoading(api);
+  api
+    .updateProfileInfo(inputValues)
+  .then(() => {
+    userInfo.setUserInfo(inputValues);
+    profileEditPopup.close();
+  })
+    .catch((err) => {
+   console.log(err);
+  })
+    .finally(() => {
+      //profileEditPopup.renderLoading(false,"Save");
+    console.log("done");
+    });
 }
+
+//function handleProfileFormSubmit(inputValues) {
+//  const { title, description } = inputValues;
+//  userInfo.setUserInfo( title, description );
+//  profileEditPopup.close();
+//}
 
 function handleNewCardSubmit(inputValues) {
   const { title , url } = inputValues;
@@ -105,12 +123,15 @@ function renderCard(cardData) {
   return card.generateCard();
 }
 
-profileEditButton.addEventListener("click", () => {
-  //debugger;
-  const { profileName, description } = userInfo.getUserInfo();
-  profileTitleInput.value = profileName;
-  profileDescriptionInput.value = description;
+function handleProfileEditClick() {
+  const user = userInfo.getUserInfo();
+  profileTitleInput.value = user.name;
+  profileDescriptionInput.value = user.about;
   profileEditPopup.open();
+}
+
+profileEditButton.addEventListener("click", () => {
+  handleProfileEditClick();
   editFormValidator.resetValidation();
 });
 

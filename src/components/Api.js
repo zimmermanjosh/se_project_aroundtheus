@@ -7,10 +7,10 @@ export default class Api {
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
+      method: 'GET',
       headers: this._baseHeader
     })
-    .then(res => this._checkRequest(res))
-    .then(res => res.data);
+    .then(this._checkRequest)
   }
   _checkRequest(res) {
     if (res.ok) {
@@ -19,6 +19,19 @@ export default class Api {
     // if the server returns an error, reject the promise
     return Promise.reject(`Error: ${res.status}`);
   }
+
+  updateProfileInfo(inputValues) {
+    console.log(`!! updateProfileInfo, ${inputValues}`);
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: 'PATCH',
+      headers: this._baseHeader,
+      body: JSON.stringify({
+        name: inputValues.name,
+        about: inputValues.about,
+      }),
+    }).then(this._checkRequest);
+  }
+
 
 
 /*getInitialCards() {

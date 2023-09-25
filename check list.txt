@@ -44,7 +44,7 @@ import{
   elementTemplate,
   elementGallery,
   modalInputs
-}from '../constants/variables.js'
+}from '../constants/constants.js'
 
 // object configuration
 const config = {
