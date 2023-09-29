@@ -1,10 +1,9 @@
 import Card from '/src/components/Card.js';
 import FormValidator from '/src/components/FormValidator.js';
-import Section from '/src/components/Section.js';
 import PopupWithImage from '/src/components/PopupWithImage.js';
 import PopupWithForm from '/src/components/PopupWithForm.js';
 import UserInfo from '/src/components/UserInfo.js';
-import {
+/*import {
   apiToken,
   apiUrl,
   cardAddButton,
@@ -16,9 +15,22 @@ import {
   profileEditButton,
   profileEditForm,
   profileTitleInput,
-} from '/src/constants/constants';
+} from '/src/constants/constants';*/
 import '/src/pages/index.css';
 import Api from "../components/Api";
+import {
+  apiToken,
+  apiUrl,
+  cardAddButton,
+  cardAddForm,
+  configValidation,
+  profileDescriptionInput,
+  profileEditButton,
+  profileEditForm,
+  profileTitleInput,
+  selectors
+} from "../constants/constants";
+import Section from "../components/Section";
 
 const api = new Api({
   baseUrl: apiUrl,
@@ -28,17 +40,27 @@ const api = new Api({
   }
 });
 
-Promise.all([api.getUserInfo()])
-  .then(([userData]) => {
+const cardSelector=selectors.cardTemplate;
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, cardData]) => {
     userInfo.setUserInfo(userData);
+    userId = userData._id;
+    newCardSection = new Section(
+      {
+        items: cardData,
+        renderer: (data) => {
+        const newCard = renderCard(data);
+        newCardSection.addItem(newCard);
+          },
+      },
+      selectors.cardSection
+    );
+    newCardSection.renderItems();
 })
-  //.then(res => res.json())
-  //.then((result) => {
-    //console.log(result);
- // })
   .catch(console.error);
 
-const section = new Section({
+/*const section = new Section({
   items: initializeCards,
   renderer: (cardData) => {
     const cardElement = renderCard(cardData);
@@ -46,9 +68,9 @@ const section = new Section({
     },
   },
   cardsList,
-);
+);*/
 
-section.renderItems();
+//section.renderItems();
 
 //edit form
 const userInfo = new UserInfo({
@@ -81,8 +103,9 @@ const
 
 const cardPreviewPopup = new PopupWithImage("#preview-modal");
 
-
-
+//const for functions
+let userId;
+let newCardSection;
 function handleProfileFormSubmit(inputValues) {
   //profileEditPopup.renderLoading(api);
   api
@@ -107,20 +130,76 @@ function handleProfileFormSubmit(inputValues) {
 //}
 
 function handleNewCardSubmit(inputValues) {
-  const { title , url } = inputValues;
-  const newElementData = renderCard({ name: title, url: url });
-  section.addItem(newElementData);
-  addNewCardPopup.close();
+  addNewCardPopup.renderLoading(true);
+  api
+    .addNewCard(inputValues)
+    .then((cardData) => {
+      const newCardData = renderNewCard(cardData);
+      newCardSection.addItem(newCardData);
+      addNewCardPopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      addNewCardPopup.renderLoading(false, "Create");
+    });
+  //const { title , url } = inputValues;
+  //const newElementData = renderCard({ name: title, url: url });
+  //section.addItem(newElementData);
+  //addNewCardPopup.close();
 }
 
-function handleCardPreviewClick(caption, imageUrl) {
-  cardPreviewPopup.open(caption, imageUrl);
+//function handleCardPreviewClick(caption, imageUrl) {
+///  cardPreviewPopup.open(caption, imageUrl);
+//}
+
+function handleCardPreviewClick(cardData) {
+  cardPreviewPopup.open(cardData);
 }
 
-function renderCard(cardData) {
+/*function renderCard(cardData) {
   //const card = new Card(cardData, "#element-template", handleCardPreviewClick);
   const card = new Card(cardData, "#element-template", handleCardPreviewClick);
   return card.generateCard();
+}*/
+
+function renderCard(cardData) {
+  const card = new Card(
+    cardData.name,
+    cardData.url,
+    cardData.likes,
+    cardData._id,
+    userId,
+    cardSelector,
+    handleCardPreviewClick,
+    handleCardDeleteClick,
+    handleCardLikeClick
+  )
+  return card.generateCard();
+}
+
+
+function handleCardLikeClick(card) {
+  if (card.isLiked) {
+    api
+      .removeCardLikes(card.cardId)
+      .then((res) => {
+        card.updateLikes(res.isLiked);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  } else {
+    api
+      .addCardLikes(card.cardId)
+      .then((res) => {
+        card.updateLikes(res.isLiked);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 }
 
 function handleProfileEditClick() {

@@ -31,9 +31,38 @@ export default class Api {
       }),
     }).then(this._checkRequest);
   }
+  getInitialCards(cardId) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "GET",
+      headers: this._baseHeader,
+    }).then(this._checkRequest);
+  }
+  deleteCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._baseHeader,
+    }).then(this._checkRequest);
+  }
+  removeCardLikes(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "DELETE",
+      headers: this._baseHeader,
+    }).then(this._checkRequest);
+  }
 
-
-
+  addCardLikes(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "PUT",
+      headers: this._baseHeader,
+    }).then(this._checkRequest);
+  }
+  addNewCard(inputValues) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      headers: this._baseHeader,
+      body: JSON.stringify(inputValues),
+    }).then(this._checkRequest);
+  }
 /*getInitialCards() {
     return fetch("https://around-api.en.tripleten-services.com/v1", {
       headers: {
