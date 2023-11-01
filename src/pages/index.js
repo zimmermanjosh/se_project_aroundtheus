@@ -118,7 +118,7 @@ function handleProfileFormSubmit(inputValues) {
    console.log(err);
   })
     .finally(() => {
-      //profileEditPopup.renderLoading(false,"Save");
+      //profileEditPopup.renderLoading("Save");
     console.log("done");
     });
 }
@@ -167,15 +167,18 @@ function handleCardPreviewClick(cardData) {
 function renderCard(cardData) {
   const card = new Card(
     cardData.name,
-    cardData.url,
+    cardData.link,
+    cardData.isLiked,
     cardData.likes,
-    cardData._id,
+     cardData._id,
+    cardData.url,
     userId,
     cardSelector,
     handleCardPreviewClick,
     handleCardDeleteClick,
     handleCardLikeClick
   )
+   console.log("index.js.:card values Are:", card);
   return card.generateCard();
 }
 

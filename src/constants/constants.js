@@ -80,6 +80,7 @@ export const cardsList = document.querySelector(".elements__list");
 
 export const cardAddForm = elementAddModal.querySelector(".modal__form");
 //const cardAddForm = document.querySelector("#element-add-form");
+
 export const configValidation = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",

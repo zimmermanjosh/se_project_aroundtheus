@@ -4,6 +4,13 @@ export default class Api {
     this._baseHeader = baseHeader;
   }
 
+getInitialCards(cardId) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "GET",
+      headers: this._baseHeader,
+    }).then(this._checkRequest);
+  }
+
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
@@ -31,12 +38,7 @@ export default class Api {
       }),
     }).then(this._checkRequest);
   }
-  getInitialCards(cardId) {
-    return fetch(`${this._baseUrl}/cards`, {
-      method: "GET",
-      headers: this._baseHeader,
-    }).then(this._checkRequest);
-  }
+
   deleteCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
