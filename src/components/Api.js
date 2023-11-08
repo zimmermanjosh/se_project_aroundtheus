@@ -58,26 +58,13 @@ getInitialCards(cardId) {
       headers: this._baseHeader,
     }).then(this._checkRequest);
   }
+
   addNewCard(inputValues) {
+    console.log(`!! addNewCard, ${inputValues}`);
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._baseHeader,
       body: JSON.stringify(inputValues),
     }).then(this._checkRequest);
   }
-/*getInitialCards() {
-    return fetch("https://around-api.en.tripleten-services.com/v1", {
-      headers: {
-        authorization: "c56e30dc-2883-4270-a59e-b2f7bae969c6"
-      }
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        // if the server returns an error, reject the promise
-        return Promise.reject(`Error: ${res.status}`);
-      });
-  }*/
-
 }

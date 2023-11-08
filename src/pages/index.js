@@ -108,6 +108,7 @@ let userId;
 let newCardSection;
 function handleProfileFormSubmit(inputValues) {
   //profileEditPopup.renderLoading(api);
+  console.log("attempting to submit")
   api
     .updateProfileInfo(inputValues)
   .then(() => {
@@ -166,12 +167,12 @@ function handleCardPreviewClick(cardData) {
 
 function renderCard(cardData) {
   const card = new Card(
-    cardData.name,
-    cardData.link,
+    cardData.title,
+    cardData.url,
     cardData.isLiked,
     cardData.likes,
-     cardData._id,
-    cardData.url,
+    cardData._id,
+    //cardData.url,
     userId,
     cardSelector,
     handleCardPreviewClick,

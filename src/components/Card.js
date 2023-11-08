@@ -1,9 +1,11 @@
 import "/src/constants/constants.js";
 
+
+
+
 export default class Card {
   constructor(
-    //constructor({name, url}, templateSelector, handleCardClick)
-    name,
+    title,
     url,
     isLiked,
     likes,
@@ -14,9 +16,9 @@ export default class Card {
     handleDeleteButton,
     handleLikeButton
   ) {
-    this._name = name;
+    this._title = title;
     this._url = url;
-     this.isLiked = isLiked;
+    this.isLiked = isLiked;
     this._likes = likes;
     this.cardId = _id;
     this._userId = userId;
@@ -24,7 +26,6 @@ export default class Card {
     this._handleCardClick = handleCardClick;
     this._handleDeleteButton = handleDeleteButton;
     this._handleLikeButton = handleLikeButton;
-
   }
 
   _setEventListeners() {
@@ -91,7 +92,7 @@ export default class Card {
   }
 
   /*  _handlePreviewDisplay() {
-    this._handleCardClick(this._name, this._url);
+    this._handleCardClick(this._name, this._link);
   }*/
 
   _getTemplate() {
@@ -103,11 +104,11 @@ export default class Card {
 
   _getData() {
     return {
-      name: this._name,
-      url: this._url,
-      likes: this._likes,
-      userId: this._userId,
-      _id: this._id,
+      title: this._title,
+      url: this._url
+    //  likes: this._likes,
+    //  userId: this._userId,
+    //  _id: this._id,
     };
   }
 
@@ -115,20 +116,18 @@ export default class Card {
     this._cardElement = this._getTemplate();
 
     this._cardImage = this._cardElement.querySelector(".element__img");
+
     this._cardLikeButton = this._cardElement.querySelector(
       ".element__like-button"
     );
+
     this._cardDeleteButton = this._cardElement.querySelector(
       ".element__delete-button"
     );
 
-    //this.cardTitle = this._cardElement.querySelector(".element__text");
-    //const cardImage = this._cardElement.querySelector(".element__img");
-    //const cardTitle = this._cardElement.querySelector(".element__text");
-
-    this._cardImage.src = this._url;
-    this._cardImage.alt = this._name;
-    this._cardElement.querySelector(".element__text").textContent = this._name;
+    this._cardImage.src = this._title;
+    this._cardImage.alt = this._url;
+    this._cardElement.querySelector(".element__text").textContent = this._title;
 
     this._setEventListeners();
 

@@ -57,7 +57,7 @@
 //  {
 //    //object
 //    name: "weird science",
-//    url: "https://upload.wikimedia.org/wikipedia/en/d/d6/Movie_poster_for_Weird_Science_%281985%29.jpg",
+//    link: "https://upload.wikimedia.org/wikipedia/en/d/d6/Movie_poster_for_Weird_Science_%281985%29.jpg",
 //  }
 //];
 //
