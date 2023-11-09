@@ -11,7 +11,6 @@ getInitialCards(cardId) {
     }).then(this._checkRequest);
   }
 
-
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
@@ -19,6 +18,7 @@ getInitialCards(cardId) {
     })
     .then(this._checkRequest)
   }
+
   _checkRequest(res) {
     if (res.ok) {
       return res.json();
@@ -45,6 +45,7 @@ getInitialCards(cardId) {
       headers: this._baseHeader,
     }).then(this._checkRequest);
   }
+
   removeCardLikes(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",

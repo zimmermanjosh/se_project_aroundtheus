@@ -1,12 +1,9 @@
 import "/src/constants/constants.js";
 
-
-
-
 export default class Card {
   constructor(
-    title,
-    url,
+    name,
+    link,
     isLiked,
     likes,
     _id,
@@ -16,8 +13,8 @@ export default class Card {
     handleDeleteButton,
     handleLikeButton
   ) {
-    this._title = title;
-    this._url = url;
+    this._name = name;
+    this._link = link;
     this.isLiked = isLiked;
     this._likes = likes;
     this.cardId = _id;
@@ -104,8 +101,8 @@ export default class Card {
 
   _getData() {
     return {
-      title: this._title,
-      url: this._url
+      name: this._name,
+      link: this._link
     //  likes: this._likes,
     //  userId: this._userId,
     //  _id: this._id,
@@ -125,9 +122,9 @@ export default class Card {
       ".element__delete-button"
     );
 
-    this._cardImage.src = this._title;
-    this._cardImage.alt = this._url;
-    this._cardElement.querySelector(".element__text").textContent = this._title;
+    this._cardImage.src = this._name;
+    this._cardImage.alt = this._link;
+    this._cardElement.querySelector(".element__text").textContent = this._name;
 
     this._setEventListeners();
 

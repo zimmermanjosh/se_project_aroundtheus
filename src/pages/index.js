@@ -3,19 +3,6 @@ import FormValidator from '/src/components/FormValidator.js';
 import PopupWithImage from '/src/components/PopupWithImage.js';
 import PopupWithForm from '/src/components/PopupWithForm.js';
 import UserInfo from '/src/components/UserInfo.js';
-/*import {
-  apiToken,
-  apiUrl,
-  cardAddButton,
-  cardAddForm,
-  cardsList,
-  configValidation,
-  initializeCards,
-  profileDescriptionInput,
-  profileEditButton,
-  profileEditForm,
-  profileTitleInput,
-} from '/src/constants/constants';*/
 import '/src/pages/index.css';
 import Api from "../components/Api";
 import {
@@ -124,12 +111,6 @@ function handleProfileFormSubmit(inputValues) {
     });
 }
 
-//function handleProfileFormSubmit(inputValues) {
-//  const { title, description } = inputValues;
-//  userInfo.setUserInfo( title, description );
-//  profileEditPopup.close();
-//}
-
 function handleNewCardSubmit(inputValues) {
   addNewCardPopup.renderLoading(true);
   api
@@ -145,34 +126,19 @@ function handleNewCardSubmit(inputValues) {
     .finally(() => {
       addNewCardPopup.renderLoading(false, "Create");
     });
-  //const { title , url } = inputValues;
-  //const newElementData = renderCard({ name: title, url: url });
-  //section.addItem(newElementData);
-  //addNewCardPopup.close();
 }
-
-//function handleCardPreviewClick(caption, imageUrl) {
-///  cardPreviewPopup.open(caption, imageUrl);
-//}
 
 function handleCardPreviewClick(cardData) {
   cardPreviewPopup.open(cardData);
 }
 
-/*function renderCard(cardData) {
-  //const card = new Card(cardData, "#element-template", handleCardPreviewClick);
-  const card = new Card(cardData, "#element-template", handleCardPreviewClick);
-  return card.generateCard();
-}*/
-
 function renderCard(cardData) {
   const card = new Card(
-    cardData.title,
-    cardData.url,
+    cardData.name,
+    cardData.link,
     cardData.isLiked,
     cardData.likes,
     cardData._id,
-    //cardData.url,
     userId,
     cardSelector,
     handleCardPreviewClick,
