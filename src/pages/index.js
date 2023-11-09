@@ -47,18 +47,6 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 })
   .catch(console.error);
 
-/*const section = new Section({
-  items: initializeCards,
-  renderer: (cardData) => {
-    const cardElement = renderCard(cardData);
-    section.addItem(cardElement);
-    },
-  },
-  cardsList,
-);*/
-
-//section.renderItems();
-
 //edit form
 const userInfo = new UserInfo({
   profileDescriptionSelector: ".profile__description",
