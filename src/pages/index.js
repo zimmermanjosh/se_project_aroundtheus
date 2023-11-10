@@ -94,7 +94,7 @@ function handleProfileFormSubmit(inputValues) {
    console.log(err);
   })
     .finally(() => {
-      //profileEditPopup.renderLoading("Save");
+       profileEditPopup.renderLoading("Save");
     console.log("done");
     });
 }
@@ -130,15 +130,34 @@ function renderCard(cardData) {
     userId,
     cardSelector,
     handleCardPreviewClick,
-    handleCardDeleteClick,
-    handleCardLikeClick
+    handleDeleteClick,
+    handleLikeClick
   )
    console.log("index.js.:card values Are:", card);
   return card.generateCard();
 }
 
+function handleDeleteClick(card) {
+  deleteCardPopup.open();
+  deleteCardPopup.setSubmitAction(() => {
+    deleteCardPopup.renderLoading(true);
+    api
+      .deleteCard(card.cardId)
+      .then(() => {
+        card.handleDeleteCard();
+        deleteCardPopup.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        deleteCardPopup.renderLoading(false);
+      });
+  });
+}
 
-function handleCardLikeClick(card) {
+
+function handleLikeClick(card) {
   if (card.isLiked) {
     api
       .removeCardLikes(card.cardId)

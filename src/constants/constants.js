@@ -75,11 +75,9 @@ export const cardAddButton = document.querySelector("#profile-add-button");
 export const apiUrl = "https://around-api.en.tripleten-services.com/v1"
 export const apiToken ="2ac20083-7dba-4483-94f0-c00ccc6d0155"
 
-//elements || cards variable
 export const cardsList = document.querySelector(".elements__list");
 
 export const cardAddForm = elementAddModal.querySelector(".modal__form");
-//const cardAddForm = document.querySelector("#element-add-form");
 
 export const configValidation = {
   formSelector: ".modal__form",
@@ -98,19 +96,3 @@ export const selectors = {
   profilePopupSelector: "#profile-edit-modal",
   avatarPopupSelector: "",
 }
-
-/*export {
-  initializeCards,
-  profileEditButton,
-  profileEditModal,
-  profileTitleInput,
-  profileDescriptionInput,
-  profileEditForm,
-  elementAddModal,
-  elementImageModal,
-  configValidation,
-  cardAddButton,
-  cardAddForm,
-  apiUrl,
-  apiToken,
-}*/
