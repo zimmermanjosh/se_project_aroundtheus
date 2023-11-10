@@ -4,6 +4,7 @@ import PopupWithImage from '/src/components/PopupWithImage.js';
 import PopupWithForm from '/src/components/PopupWithForm.js';
 import UserInfo from '/src/components/UserInfo.js';
 import '/src/pages/index.css';
+import PopupWithConfirmation from '../components/PopupWithConfirmation';'src/components/PopupWithConfirmation.js';
 import Api from "../components/Api";
 import {
   apiToken,
@@ -195,6 +196,8 @@ cardAddButton.addEventListener("click", () => {
   addNewCardPopup.open();
   addFormValidator.resetValidation();
 });
+
+const deleteCardPopup = new PopupWithConfirmation("#delete-modal");
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
