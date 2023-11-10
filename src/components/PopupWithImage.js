@@ -1,6 +1,6 @@
 import Popup from "./Popup.js";
 
-export default class PopupWithImage extends Popup {
+/*export default class PopupWithImage extends Popup {
   constructor(popupSelector) {
     super({ popupSelector });
     this._previewImageTitle =
@@ -11,14 +11,14 @@ export default class PopupWithImage extends Popup {
   }
 
   open(data) {
-    this._previewImageModal.src = data.link;
-    this._previewImageModal.alt = data.name;
-    this._previewImageTitle.textContent = data.name;
+    this._previewImageModal.src = data.imageUrl;
+    this._previewImageModal.alt = data.caption;
+    this._previewImageTitle.textContent = data.caption;
     super.open();
   }
-}
+}*/
 
-/*export default class PopupWithImage extends Popup {
+export default class PopupWithImage extends Popup {
   constructor( popupSelector ) {
     super({ popupSelector });
     this._previewImageTitle =
@@ -34,10 +34,10 @@ export default class PopupWithImage extends Popup {
     super.open();
   }*/
 
-  /*open(data) {
-    this._previewImageModal.src = data.imageUrl;
-    this._previewImageModal.alt = data.caption;
-    this._previewImageTitle.textContent = data.caption;
+  open(data) {
+    this._previewImageModal.src = data.link;
+    this._previewImageModal.alt = data.name;
+    this._previewImageTitle.textContent = data.name;
     super.open();
   }
-}*/
+}

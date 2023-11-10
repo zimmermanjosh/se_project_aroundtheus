@@ -117,7 +117,7 @@ function handleNewCardSubmit(inputValues) {
     });
 }
 
-function handleCardPreviewClick(cardData) {
+function handleCardClick(cardData) {
   cardPreviewPopup.open(cardData);
 }
 
@@ -130,7 +130,7 @@ function renderCard(cardData) {
     cardData._id,
     userId,
     cardSelector,
-    handleCardPreviewClick,
+    handleCardClick,
     handleDeleteClick,
     handleLikeClick
   )
