@@ -26,12 +26,29 @@
 # **Updates and Development**
 
 # **Setup build for production and deployment - follow the below steps:**
-- install nvm 
-  - use https://tecadmin.net/install-nvm-macos-with-homebrew/ (MAC) || https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/ (WINDOWS)
-- clone the git source repository
+- 1.) install nvm on your local machine
+  
+  MAC: 
+  - https://tecadmin.net/install-nvm-macos-with-homebrew/ 
+  
+  WINDOWS:
+  
+  - https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/ (WINDOWS)
+- 2.) clone the git source repository
   - `git clone "https://github.com/zimmermanjosh/se_project_aroundtheus/tree/project9_partII" `
-- type `nvm use` - this will install and use the node version this was created in
-- to build the project and start the deployment : 
-  - `npm run clean` - this will clean the workspace directory, then reinstall node and start deployment
-  - `npm run build:prod` - this will build production 
+- 3.)  build the project and start the deployment : 
+  
+  type the following in order in your terminal:
+  - `npm install`  || `npm i` - this will install the dependencies in project
+  - `npm run reset` - this will select the corect version of node, clean the workspace directory, then reinstall node and start deployment
+  
+  note:  the below commands are shortcut commands if you need them. running `npm run reset` will automagically start the deployment
+  - `npm run start:prod` - this will build production 
   - `npm run start:dev` - this will start web and allow for live test deployment and triage.
+## scripts in package.json
+
+  npm run commands:
+
+    "start:prod": "webpack --mode production",
+    "start:dev": "webpack serve --mode development",
+    "reset": "rm -rf /node_modules/ &&  nvm use && npm install && npm run start:prod && npm run start:dev"

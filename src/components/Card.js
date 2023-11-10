@@ -122,8 +122,8 @@ export default class Card {
       ".element__delete-button"
     );
 
-    this._cardImage.src = this._name;
-    this._cardImage.alt = this._link;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
     this._cardElement.querySelector(".element__text").textContent = this._name;
 
     this._setEventListeners();
