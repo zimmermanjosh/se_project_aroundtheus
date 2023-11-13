@@ -34,10 +34,20 @@ export default class Popup{
         this.close(e.currentTarget);
       }
     })*/
+setEventListeners() {
+  // this._popupElement is the modal
+  this._popupElement.addEventListener("mousedown", (event) => {
+    // Check if the clicked element has the `modal__close` class or if the click is outside the `.modal__container`
+    if (event.target.classList.contains("modal__close") ||
+        event.target === this._popupElement) {
+      this.close();
+    }
+  });
+}
 
-    setEventListeners(){
-      this._popupElement.addEventListener("mousedown", this._closeClickOutside);
-    };
+   // setEventListeners(){
+      //this._popupElement.addEventListener("mousedown", this._closeClickOutside);
+    //};
 
     _closeClickOutside = (e) => {
     if (

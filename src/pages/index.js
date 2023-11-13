@@ -55,6 +55,20 @@ const userInfo = new UserInfo({
   profileAvatarSelector: ".profile__img",
 })
 
+api.clearAllCards()
+  .then(() => {
+    console.log('All cards have been deleted.');
+    // Here you would also want to update the UI accordingly.
+    // For example, clear the section displaying the cards:
+    //newCardSection.clearItems(); // You would need to implement this method in your Section class
+  })
+  .catch((error) => {
+    console.error('Failed to delete all cards:', error);
+    // Handle the error in the UI, perhaps showing a message to the user.
+  });
+
+
+
 
 const editFormValidator = new FormValidator(
   configValidation,
@@ -138,7 +152,7 @@ function renderCard(cardData) {
   return card.generateCard();
 }
 
-function handleDeleteClick(card) {
+/*function handleDeleteClick(card) {
   deleteCardPopup.open();
   deleteCardPopup.setSubmitAction(() => {
     deleteCardPopup.renderLoading(true);
@@ -155,7 +169,30 @@ function handleDeleteClick(card) {
         deleteCardPopup.renderLoading(false);
       });
   });
+}*/
+
+function handleDeleteClick(card) {
+  // Set the submit action for the delete confirmation
+  deleteCardPopup.setSubmitAction(() => {
+    deleteCardPopup.renderLoading(true);
+    api.deleteCard(card.cardId)
+      .then(() => {
+        card.handleDeleteCard(); // This should be a method in your Card class that removes the card from the DOM
+        deleteCardPopup.close();
+      })
+      .catch((err) => {
+        console.error(err); // Updated to use console.error for better error visibility
+      })
+      .finally(() => {
+        deleteCardPopup.renderLoading(false); // Reset the button text back to "Yes"
+      });
+  });
+
+  // Open the delete confirmation popup
+  deleteCardPopup.open();
 }
+
+
 
 
 function handleLikeClick(card) {
@@ -197,7 +234,10 @@ cardAddButton.addEventListener("click", () => {
   addFormValidator.resetValidation();
 });
 
+
 const deleteCardPopup = new PopupWithConfirmation("#delete-modal");
+// Set up the event listeners for the delete confirmation popup
+deleteCardPopup.setEventListeners();
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();

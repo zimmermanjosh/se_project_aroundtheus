@@ -1,7 +1,15 @@
+
 export default class Api {
   constructor({baseUrl, baseHeader}) {
     this._baseUrl = baseUrl;
     this._baseHeader = baseHeader;
+  }
+
+clearAllCards() {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "GET", // Assuming your API supports bulk delete with this method
+      headers: this._baseHeader,
+    }).then(this._checkRequest);
   }
 
 getInitialCards(cardId) {
@@ -39,12 +47,24 @@ getInitialCards(cardId) {
     }).then(this._checkRequest);
   }
 
-  deleteCard(cardId) {
+  /*deleteCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._baseHeader,
     }).then(this._checkRequest);
-  }
+  }*/
+
+deleteCard(cardId) {
+  console.log(`Attempting to delete card with ID: ${cardId}`); // Log to verify the card ID
+  console.log(`${this._baseUrl}/cards/${cardId}`); // Log the complete URL to verify correctness
+
+  return fetch(`${this._baseUrl}/cards/${cardId}`, {
+    method: "DELETE",
+    headers: this._baseHeader,
+  }).then(this._checkRequest);
+}
+
+
 
   removeCardLikes(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {

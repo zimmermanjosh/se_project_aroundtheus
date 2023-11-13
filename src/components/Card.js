@@ -88,6 +88,11 @@ export default class Card {
     this._cardElement = null;
   }
 
+handleDeleteCard() {
+    // Logic to remove the card element from the DOM
+    this._element.remove();
+  }
+
   /*  _handlePreviewDisplay() {
     this._handleCardClick(this._name, this._link);
   }*/
