@@ -119,7 +119,7 @@ function handleNewCardSubmit(inputValues) {
   api
     .addNewCard(inputValues)
     .then((cardData) => {
-      const newCardData = renderNewCard(cardData);
+      const newCardData = renderCard(cardData);
       newCardSection.addItem(newCardData);
       addNewCardPopup.close();
     })
@@ -191,9 +191,6 @@ function handleDeleteClick(card) {
   // Open the delete confirmation popup
   deleteCardPopup.open();
 }
-
-
-
 
 function handleLikeClick(card) {
   if (card.isLiked) {

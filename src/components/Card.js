@@ -93,9 +93,10 @@ handleDeleteCard() {
     this._element.remove();
   }
 
-  /*  _handlePreviewDisplay() {
-    this._handleCardClick(this._name, this._link);
-  }*/
+handleDeleteCard() {
+    this._cardElement.remove();
+    this._cardElement = null;
+  }
 
   _getTemplate() {
     return document
