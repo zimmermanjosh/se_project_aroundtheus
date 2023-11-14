@@ -7,7 +7,7 @@
     "start:prod": "webpack --mode production",
     "start:dev": "webpack serve --mode development",
     "reset": "rm -rf /node_modules/ && npm install && npm run start:prod && npm run start:dev",
-    "predeploy": "npm run build",
+    "predeploy": "npm run start:prod",
     "deploy": "gh-pages -d dist"
 
   },
