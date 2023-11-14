@@ -1,18 +1,17 @@
-
 export default class Api {
-  constructor({baseUrl, baseHeader}) {
+  constructor({ baseUrl, baseHeader }) {
     this._baseUrl = baseUrl;
     this._baseHeader = baseHeader;
   }
 
-clearAllCards() {
+  clearAllCards() {
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET", // Assuming your API supports bulk delete with this method
       headers: this._baseHeader,
     }).then(this._checkRequest);
   }
 
-getInitialCards(cardId) {
+  getInitialCards(cardId) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
       headers: this._baseHeader,
@@ -21,10 +20,9 @@ getInitialCards(cardId) {
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
-      method: 'GET',
-      headers: this._baseHeader
-    })
-    .then(this._checkRequest)
+      method: "GET",
+      headers: this._baseHeader,
+    }).then(this._checkRequest);
   }
 
   _checkRequest(res) {
@@ -38,7 +36,7 @@ getInitialCards(cardId) {
   updateProfileInfo(inputValues) {
     console.log(`!! updateProfileInfo, ${inputValues}`);
     return fetch(`${this._baseUrl}/users/me`, {
-      method: 'PATCH',
+      method: "PATCH",
       headers: this._baseHeader,
       body: JSON.stringify({
         name: inputValues.name,
@@ -54,17 +52,15 @@ getInitialCards(cardId) {
     }).then(this._checkRequest);
   }*/
 
-deleteCard(cardId) {
-  console.log(`Attempting to delete card with ID: ${cardId}`); // Log to verify the card ID
-  console.log(`${this._baseUrl}/cards/${cardId}`); // Log the complete URL to verify correctness
+  deleteCard(cardId) {
+    console.log(`Attempting to delete card with ID: ${cardId}`); // Log to verify the card ID
+    console.log(`${this._baseUrl}/cards/${cardId}`); // Log the complete URL to verify correctness
 
-  return fetch(`${this._baseUrl}/cards/${cardId}`, {
-    method: "DELETE",
-    headers: this._baseHeader,
-  }).then(this._checkRequest);
-}
-
-
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._baseHeader,
+    }).then(this._checkRequest);
+  }
 
   removeCardLikes(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {

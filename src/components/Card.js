@@ -88,12 +88,12 @@ export default class Card {
     this._cardElement = null;
   }
 
-handleDeleteCard() {
+  handleDeleteCard() {
     // Logic to remove the card element from the DOM
     this._element.remove();
   }
 
-handleDeleteCard() {
+  handleDeleteCard() {
     this._cardElement.remove();
     this._cardElement = null;
   }
@@ -108,10 +108,7 @@ handleDeleteCard() {
   _getData() {
     return {
       name: this._name,
-      link: this._link
-    //  likes: this._likes,
-    //  userId: this._userId,
-    //  _id: this._id,
+      link: this._link,
     };
   }
 

@@ -1,10 +1,11 @@
-import Card from '/src/components/Card.js';
-import FormValidator from '/src/components/FormValidator.js';
-import PopupWithImage from '/src/components/PopupWithImage.js';
-import PopupWithForm from '/src/components/PopupWithForm.js';
-import UserInfo from '/src/components/UserInfo.js';
-import '/src/pages/index.css';
-import PopupWithConfirmation from '../components/PopupWithConfirmation';'src/components/PopupWithConfirmation.js';
+import Card from "/src/components/Card.js";
+import FormValidator from "/src/components/FormValidator.js";
+import PopupWithImage from "/src/components/PopupWithImage.js";
+import PopupWithForm from "/src/components/PopupWithForm.js";
+import UserInfo from "/src/components/UserInfo.js";
+import "/src/pages/index.css";
+import PopupWithConfirmation from "../components/PopupWithConfirmation";
+("src/components/PopupWithConfirmation.js");
 import Api from "../components/Api";
 import {
   apiToken,
@@ -16,7 +17,7 @@ import {
   profileEditButton,
   profileEditForm,
   profileTitleInput,
-  selectors
+  selectors,
 } from "../constants/constants";
 import Section from "../components/Section";
 
@@ -24,11 +25,11 @@ const api = new Api({
   baseUrl: apiUrl,
   baseHeader: {
     authorization: apiToken,
-    "Content-Type": "application/json"
-  }
+    "Content-Type": "application/json",
+  },
 });
 
-const cardSelector=selectors.cardTemplate;
+const cardSelector = selectors.cardTemplate;
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cardData]) => {
@@ -38,14 +39,14 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
       {
         items: cardData,
         renderer: (data) => {
-        const newCard = renderCard(data);
-        newCardSection.addItem(newCard);
-          },
+          const newCard = renderCard(data);
+          newCardSection.addItem(newCard);
+        },
       },
       selectors.cardSection
     );
     newCardSection.renderItems();
-})
+  })
   .catch(console.error);
 
 //edit form
@@ -53,42 +54,29 @@ const userInfo = new UserInfo({
   profileDescriptionSelector: ".profile__description",
   profileNameSelector: ".profile__title",
   profileAvatarSelector: ".profile__img",
-})
+});
 
-api.clearAllCards()
+api
+  .clearAllCards()
   .then(() => {
-    console.log('All cards have been deleted.');
-    // Here you would also want to update the UI accordingly.
-    // For example, clear the section displaying the cards:
-    //newCardSection.clearItems(); // You would need to implement this method in your Section class
+    console.log("All cards have been deleted.");
   })
   .catch((error) => {
-    console.error('Failed to delete all cards:', error);
-    // Handle the error in the UI, perhaps showing a message to the user.
+    console.error("Failed to delete all cards:", error);
   });
 
+const editFormValidator = new FormValidator(configValidation, profileEditForm);
 
-
-
-const editFormValidator = new FormValidator(
-  configValidation,
-  profileEditForm
-);
-
-const addFormValidator = new FormValidator(
-  configValidation,
-  cardAddForm
-);
+const addFormValidator = new FormValidator(configValidation, cardAddForm);
 
 const profileEditPopup = new PopupWithForm(
   "#profile-edit-modal",
   handleProfileFormSubmit
 );
 
-const
-  addNewCardPopup = new PopupWithForm(
-  "#element-add-modal"
-  , handleNewCardSubmit
+const addNewCardPopup = new PopupWithForm(
+  "#element-add-modal",
+  handleNewCardSubmit
 );
 
 const cardPreviewPopup = new PopupWithImage("#preview-modal");
@@ -98,19 +86,19 @@ let userId;
 let newCardSection;
 function handleProfileFormSubmit(inputValues) {
   //profileEditPopup.renderLoading(api);
-  console.log("attempting to submit")
+  console.log("attempting to submit");
   api
     .updateProfileInfo(inputValues)
-  .then(() => {
-    userInfo.setUserInfo(inputValues);
-    profileEditPopup.close();
-  })
+    .then(() => {
+      userInfo.setUserInfo(inputValues);
+      profileEditPopup.close();
+    })
     .catch((err) => {
-   console.log(err);
-  })
+      console.log(err);
+    })
     .finally(() => {
-       profileEditPopup.renderLoading("Save");
-    console.log("done");
+      profileEditPopup.renderLoading("Save");
+      console.log("done");
     });
 }
 
@@ -147,35 +135,17 @@ function renderCard(cardData) {
     handleCardClick,
     handleDeleteClick,
     handleLikeClick
-  )
-   console.log("index.js.:card values Are:", card);
+  );
+  console.log("index.js.:card values Are:", card);
   return card.generateCard();
 }
-
-/*function handleDeleteClick(card) {
-  deleteCardPopup.open();
-  deleteCardPopup.setSubmitAction(() => {
-    deleteCardPopup.renderLoading(true);
-    api
-      .deleteCard(card.cardId)
-      .then(() => {
-        card.handleDeleteCard();
-        deleteCardPopup.close();
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        deleteCardPopup.renderLoading(false);
-      });
-  });
-}*/
 
 function handleDeleteClick(card) {
   // Set the submit action for the delete confirmation
   deleteCardPopup.setSubmitAction(() => {
     deleteCardPopup.renderLoading(true);
-    api.deleteCard(card.cardId)
+    api
+      .deleteCard(card.cardId)
       .then(() => {
         card.handleDeleteCard(); // This should be a method in your Card class that removes the card from the DOM
         deleteCardPopup.close();
@@ -231,9 +201,8 @@ cardAddButton.addEventListener("click", () => {
   addFormValidator.resetValidation();
 });
 
-
 const deleteCardPopup = new PopupWithConfirmation("#delete-modal");
-// Set up the event listeners for the delete confirmation popup
+
 deleteCardPopup.setEventListeners();
 
 editFormValidator.enableValidation();
