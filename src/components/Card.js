@@ -50,31 +50,6 @@ export default class Card {
     this._renderLikes();
   }
 
-  /* _showCardLikes() {
-    this._cardLikeCounter.textContent = this._likes.length;
-    if (this.cardIsLiked()) {
-      this._cardLikeButton.classList.add("element__like-button_active");
-    } else {
-      this._cardLikeButton.classList.remove("element__like-button_active");
-    }
-  }*/
-
-  /*_handleLikeButton() {
-    this._cardElement
-      .querySelector(".element__like-button")
-      .classList.toggle("element__like-button_active");
-  }*/
-
-  /* _handleDeleteButton() {
-    this._cardElement.remove();
-    this._cardElement = null;
-  }*/
-
-  /*handleDeleteCard() {
-    // Logic to remove the card element from the DOM
-    this._element.remove();
-  }*/
-
   handleDeleteCard() {
     this._cardElement.remove();
     this._cardElement = null;
