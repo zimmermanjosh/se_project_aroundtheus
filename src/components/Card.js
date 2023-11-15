@@ -37,33 +37,6 @@ export default class Card {
     });
   }
 
-  /*_setEventListeners() {
-    this._cardElement
-      .querySelector('.element__like-button')
-      .addEventListener('click', () => {
-        this._handleLikeButton();
-      });
-    this._cardElement
-      .querySelector('.element__delete-button')
-      .addEventListener('click', () => {
-        this._handleDeleteButton();
-      });
-    this._cardElement
-      .querySelector('.element__img')
-      .addEventListener('click', ()=> {
-        this._handlePreviewDisplay();
-      });
-  }*/
-
-  _showCardLikes() {
-    this._cardLikeCounter.textContent = this._likes.length;
-    if (this.cardIsLiked) {
-      this._cardLikeButton.classList.add("cards__like-button_active");
-    } else {
-      this._cardLikeButton.classList.remove("cards__like-button_active");
-    }
-  }
-
   _renderLikes() {
     if (this.isLiked) {
       this._cardLikeButton.classList.add("cards__like-button_active");
@@ -77,21 +50,30 @@ export default class Card {
     this._renderLikes();
   }
 
+  _showCardLikes() {
+    this._cardLikeCounter.textContent = this._likes.length;
+    if (this.cardIsLiked()) {
+      this._cardLikeButton.classList.add("element__like-button_active");
+    } else {
+      this._cardLikeButton.classList.remove("element__like-button_active");
+    }
+  }
+
   _handleLikeButton() {
     this._cardElement
       .querySelector(".element__like-button")
       .classList.toggle("element__like-button_active");
   }
 
-  _handleDeleteButton() {
+  /* _handleDeleteButton() {
     this._cardElement.remove();
     this._cardElement = null;
-  }
+  }*/
 
-  handleDeleteCard() {
+  /*handleDeleteCard() {
     // Logic to remove the card element from the DOM
     this._element.remove();
-  }
+  }*/
 
   handleDeleteCard() {
     this._cardElement.remove();
@@ -130,6 +112,7 @@ export default class Card {
     this._cardElement.querySelector(".element__text").textContent = this._name;
 
     this._setEventListeners();
+    this._renderLikes();
 
     return this._cardElement;
   }
