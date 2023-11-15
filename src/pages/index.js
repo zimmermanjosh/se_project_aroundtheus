@@ -97,7 +97,7 @@ function handleProfileFormSubmit(inputValues) {
       console.log(err);
     })
     .finally(() => {
-      profileEditPopup.renderLoading("Save");
+      profileEditPopup.renderLoading(false, "Save");
       console.log("done");
     });
 }
