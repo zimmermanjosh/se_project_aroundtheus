@@ -1,6 +1,6 @@
 {
   "name": "sprint9_avatar_add_upgrade",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "index.js",
   "scripts": {
     "start:prod": "webpack --mode production",
