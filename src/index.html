@@ -28,6 +28,11 @@
             class="profile__img"
             src="<%=require('./images/pictures/joinTheEmpire.jpg')%>"
           />
+          <button
+            class="profile__img-button"
+            type="button"
+            id="profile-avatar__image-button"
+          ></button>
           <div class="profile__info">
             <h1 class="profile__title">Joshua Zimmerman</h1>
             <button
@@ -163,6 +168,26 @@
           <button type="submit" class="modal__save-button delete-button">
             Yes
           </button>
+          <button type="button" class="modal__close"></button>
+        </form>
+      </div>
+    </div>
+
+    <!--Avatar Edit Modal-->
+    <div class="modal" id="avatar-edit-modal">
+      <div class="modal__container">
+        <form class="modal__form" id="avatar-edit-form" novalidate>
+          <h2 class="modal__heading">Change Profile Picture</h2>
+          <input
+            class="modal__input"
+            type="url"
+            name="avatar"
+            id="avatar-edit-url-input"
+            placeholder="Image Link"
+            required
+          />
+          <span class="modal__error" id="avatar-edit-url-input-error"></span>
+          <button type="submit" class="modal__save-button">Save</button>
           <button type="button" class="modal__close"></button>
         </form>
       </div>

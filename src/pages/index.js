@@ -18,6 +18,8 @@ import {
   profileEditForm,
   profileTitleInput,
   selectors,
+  avatarEditButton,
+  avatarEditForm,
 } from "../constants/constants";
 import Section from "../components/Section";
 
@@ -56,14 +58,14 @@ const userInfo = new UserInfo({
   profileAvatarSelector: ".profile__img",
 });
 
-api
+/*api
   .clearAllCards()
   .then(() => {
     console.log("All cards have been deleted.");
   })
   .catch((error) => {
     console.error("Failed to delete all cards:", error);
-  });
+  });*/
 
 const editFormValidator = new FormValidator(configValidation, profileEditForm);
 
@@ -81,9 +83,31 @@ const addNewCardPopup = new PopupWithForm(
 
 const cardPreviewPopup = new PopupWithImage("#preview-modal");
 
+const avatarEditPopup = new PopupWithForm(
+  selectors.avatarPopupSelector,
+  handleAvatarFormSubmit
+);
+
 //const for functions
 let userId;
 let newCardSection;
+
+function handleAvatarFormSubmit(inputValues) {
+  avatarEditPopup.renderLoading(true);
+  api
+    .updateProfileAvatar(inputValues.avatar)
+    .then(() => {
+      userInfo.setAvatar(inputValues.avatar);
+      avatarEditPopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      avatarEditPopup.renderLoading(false, "Save");
+    });
+}
+
 function handleProfileFormSubmit(inputValues) {
   //profileEditPopup.renderLoading(api);
   console.log("attempting to submit");
@@ -203,6 +227,11 @@ cardAddButton.addEventListener("click", () => {
 
 const deleteCardPopup = new PopupWithConfirmation("#delete-modal");
 
+avatarEditButton.addEventListener("click", () => {
+  avatarFormValidator.toggleButtonState();
+  avatarEditPopup.open();
+});
+
 deleteCardPopup.setEventListeners();
 
 editFormValidator.enableValidation();
@@ -211,3 +240,4 @@ addFormValidator.enableValidation();
 profileEditPopup.setEventListeners();
 cardPreviewPopup.setEventListeners();
 addNewCardPopup.setEventListeners();
+avatarEditPopup.setEventListeners();

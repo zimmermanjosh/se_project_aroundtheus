@@ -72,3 +72,8 @@ export const selectors = {
   profilePopupSelector: "#profile-edit-modal",
   avatarPopupSelector: "",
 };
+
+export const avatarEditForm = document.querySelector("#avatar-edit-form");
+export const avatarEditButton = document.querySelector(
+  "#profile-avatar__image-button"
+);
