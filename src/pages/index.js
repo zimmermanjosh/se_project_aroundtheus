@@ -23,6 +23,10 @@ import {
 } from "../constants/constants";
 import Section from "../components/Section";
 
+//const for functions
+let userId;
+let newCardSection;
+
 const api = new Api({
   baseUrl: apiUrl,
   baseHeader: {
@@ -83,14 +87,10 @@ const addNewCardPopup = new PopupWithForm(
 
 const cardPreviewPopup = new PopupWithImage("#preview-modal");
 
-const avatarEditPopup = new PopupWithForm(
+/*const avatarEditPopup = new PopupWithForm(
   selectors.avatarPopupSelector,
   handleAvatarFormSubmit
-);
-
-//const for functions
-let userId;
-let newCardSection;
+);*/
 
 function handleAvatarFormSubmit(inputValues) {
   avatarEditPopup.renderLoading(true);
@@ -227,10 +227,10 @@ cardAddButton.addEventListener("click", () => {
 
 const deleteCardPopup = new PopupWithConfirmation("#delete-modal");
 
-avatarEditButton.addEventListener("click", () => {
+/*avatarEditButton.addEventListener("click", () => {
   avatarFormValidator.toggleButtonState();
   avatarEditPopup.open();
-});
+});*/
 
 deleteCardPopup.setEventListeners();
 
@@ -240,4 +240,4 @@ addFormValidator.enableValidation();
 profileEditPopup.setEventListeners();
 cardPreviewPopup.setEventListeners();
 addNewCardPopup.setEventListeners();
-avatarEditPopup.setEventListeners();
+//avatarEditPopup.setEventListeners();
