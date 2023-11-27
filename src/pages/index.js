@@ -87,10 +87,12 @@ const addNewCardPopup = new PopupWithForm(
 
 const cardPreviewPopup = new PopupWithImage("#preview-modal");
 
-/*const avatarEditPopup = new PopupWithForm(
+const avatarEditPopup = new PopupWithForm(
   selectors.avatarPopupSelector,
   handleAvatarFormSubmit
-);*/
+);
+
+const avatarFormValidator = new FormValidator(configValidation, avatarEditForm);
 
 function handleAvatarFormSubmit(inputValues) {
   avatarEditPopup.renderLoading(true);
@@ -227,10 +229,10 @@ cardAddButton.addEventListener("click", () => {
 
 const deleteCardPopup = new PopupWithConfirmation("#delete-modal");
 
-/*avatarEditButton.addEventListener("click", () => {
+avatarEditButton.addEventListener("click", () => {
   avatarFormValidator.toggleButtonState();
   avatarEditPopup.open();
-});*/
+});
 
 deleteCardPopup.setEventListeners();
 
@@ -240,4 +242,6 @@ addFormValidator.enableValidation();
 profileEditPopup.setEventListeners();
 cardPreviewPopup.setEventListeners();
 addNewCardPopup.setEventListeners();
-//avatarEditPopup.setEventListeners();
+avatarEditPopup.setEventListeners();
+
+avatarFormValidator.enableValidation();

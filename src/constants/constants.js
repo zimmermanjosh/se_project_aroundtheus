@@ -70,7 +70,7 @@ export const selectors = {
   previewModal: "#preview-modal",
   addCardPopupSelector: "#element-add-modal",
   profilePopupSelector: "#profile-edit-modal",
-  avatarPopupSelector: "",
+  avatarPopupSelector: "#avatar-edit-modal",
 };
 
 export const avatarEditForm = document.querySelector("#avatar-edit-form");

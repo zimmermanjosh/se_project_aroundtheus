@@ -23,12 +23,18 @@
       <main class="content">
         <!--/profile_section-->
         <section class="profile page__section">
-          <img
-            alt="avatar"
-            class="profile__img"
-            src="<%=require('./images/pictures/joinTheEmpire.jpg')%>"
-          />
-
+          <div class="profile__avatar-container">
+            <img
+              alt="avatar"
+              class="profile__img"
+              src="<%=require('./images/pictures/joinTheEmpire.jpg')%>"
+            />
+            <button
+              class="profile__image-button"
+              type="button"
+              id="profile-avatar__image-button"
+            ></button>
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Joshua Zimmerman</h1>
             <button
