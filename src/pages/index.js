@@ -62,14 +62,14 @@ const userInfo = new UserInfo({
   profileAvatarSelector: ".profile__img",
 });
 
-/*api
+api
   .clearAllCards()
   .then(() => {
     console.log("All cards have been deleted.");
   })
   .catch((error) => {
     console.error("Failed to delete all cards:", error);
-  });*/
+  });
 
 const editFormValidator = new FormValidator(configValidation, profileEditForm);
 
@@ -99,7 +99,7 @@ function handleAvatarFormSubmit(inputValues) {
   api
     .updateProfileAvatar(inputValues.avatar)
     .then(() => {
-      userInfo.setAvatar(inputValues.avatar);
+      userInfo.setAvatarInfo(inputValues.avatar);
       avatarEditPopup.close();
     })
     .catch((err) => {
@@ -234,14 +234,12 @@ avatarEditButton.addEventListener("click", () => {
   avatarEditPopup.open();
 });
 
-deleteCardPopup.setEventListeners();
-
+avatarFormValidator.enableValidation();
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
 profileEditPopup.setEventListeners();
 cardPreviewPopup.setEventListeners();
+deleteCardPopup.setEventListeners();
 addNewCardPopup.setEventListeners();
 avatarEditPopup.setEventListeners();
-
-avatarFormValidator.enableValidation();

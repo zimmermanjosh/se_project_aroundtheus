@@ -84,4 +84,12 @@ export default class Api {
       body: JSON.stringify(inputValues),
     }).then(this._checkRequest);
   }
+
+  updateProfileAvatar(inputValues) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._baseHeader,
+      body: JSON.stringify({ avatar: inputValues }),
+    }).then(this._checkResponse);
+  }
 }
