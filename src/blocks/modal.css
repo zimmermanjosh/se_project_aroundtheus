@@ -28,6 +28,20 @@
   border-radius: 2px;
 }
 
+.modal__save-button {
+  height: 50px;
+  margin-top: 48px;
+  border: 2px solid #000000;
+  border-radius: 2px;
+  background-color: black;
+  color: white;
+}
+
+.modal__save-button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 .modal__container {
   background-color: #fff;
   margin: auto;
@@ -37,6 +51,10 @@
   width: 430px;
   /*min-width: 430px;*/
   min-height: 330px;
+}
+
+.modal__delete-container {
+  max-width: 430px;
 }
 
 .modal__close {

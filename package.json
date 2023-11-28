@@ -1,15 +1,16 @@
 {
-  "name": "practicum",
-  "version": "0.0.1",
-  "description": "Educational platform",
+  "name": "sprint9_avatar_add_upgrade",
+  "version": "0.0.3",
   "main": "index.js",
   "scripts": {
     "start:prod": "webpack --mode production",
     "start:dev": "webpack serve --mode development",
-    "reset": "rm -rf /node_modules/ && npm install && npm run start:prod && npm run start:dev"
+    "reset": "rm -rf /node_modules/ && npm install && npm run start:prod && npm run start:dev",
+    "predeploy": "npm run start:prod",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
-  "author": "Elise Bouer",
+  "author": "jbz",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "7.18.9",
@@ -19,6 +20,7 @@
     "clean-webpack-plugin": "4.0.0",
     "css-loader": "6.7.1",
     "cssnano": "5.1.12",
+    "gh-pages": "^6.0.0",
     "html-webpack-plugin": "5.5.0",
     "mini-css-extract-plugin": "2.6.1",
     "postcss-loader": "7.0.1",

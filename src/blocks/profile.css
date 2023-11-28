@@ -80,6 +80,24 @@
   opacity: 0.6;
 }
 
+.profile__image-button {
+  background: transparent url(../images/icons/Edit\ Button.svg) center no-repeat;
+  opacity: 0;
+  background-size: 26px;
+  height: 120px;
+  width: 120px;
+  position: absolute;
+  left: 0;
+  border-radius: 50%;
+  background-color: #000;
+  border-style: none;
+  cursor: pointer;
+}
+
+.profile__image-button:hover {
+  opacity: 0.6;
+}
+
 @media screen and (min-width: 320px) and (max-width: 740px) {
   .profile {
     flex-direction: column;
