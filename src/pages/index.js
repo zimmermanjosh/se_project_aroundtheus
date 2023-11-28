@@ -111,7 +111,7 @@ function handleAvatarFormSubmit(inputValues) {
 }
 
 function handleProfileFormSubmit(inputValues) {
-  //profileEditPopup.renderLoading(api);
+  profileEditPopup.renderLoading(true);
   console.log("attempting to submit");
   api
     .updateProfileInfo(inputValues)
@@ -124,7 +124,7 @@ function handleProfileFormSubmit(inputValues) {
     })
     .finally(() => {
       profileEditPopup.renderLoading(false, "Loading...");
-      console.log("done");
+      //console.log("done");
     });
 }
 
