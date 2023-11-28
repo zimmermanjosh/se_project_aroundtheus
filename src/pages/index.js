@@ -62,14 +62,14 @@ const userInfo = new UserInfo({
   profileAvatarSelector: ".profile__img",
 });
 
-api
+/*api
   .clearAllCards()
   .then(() => {
     console.log("All cards have been deleted.");
   })
   .catch((error) => {
     console.error("Failed to delete all cards:", error);
-  });
+  });*/
 
 const editFormValidator = new FormValidator(configValidation, profileEditForm);
 
@@ -111,7 +111,7 @@ function handleAvatarFormSubmit(inputValues) {
 }
 
 function handleProfileFormSubmit(inputValues) {
-  //profileEditPopup.renderLoading(api);
+  profileEditPopup.renderLoading(true);
   console.log("attempting to submit");
   api
     .updateProfileInfo(inputValues)
@@ -123,8 +123,8 @@ function handleProfileFormSubmit(inputValues) {
       console.log(err);
     })
     .finally(() => {
-      profileEditPopup.renderLoading(false, "Save");
-      console.log("done");
+      profileEditPopup.renderLoading(false, "Loading...");
+      //console.log("done");
     });
 }
 
