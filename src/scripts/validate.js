@@ -1,4 +1,4 @@
-const showInputError = (
+/*const showInputError = (
   formElement,
   inputElement,
   errorMessage,
@@ -86,3 +86,4 @@ const configurationObjects = {
 };
 
 enableValidation(configurationObjects);
+*/
