@@ -62,14 +62,14 @@ const userInfo = new UserInfo({
   profileAvatarSelector: ".profile__img",
 });
 
-api
+/*api
   .clearAllCards()
   .then(() => {
     console.log("All cards have been deleted.");
   })
   .catch((error) => {
     console.error("Failed to delete all cards:", error);
-  });
+  });*/
 
 const editFormValidator = new FormValidator(configValidation, profileEditForm);
 
@@ -123,7 +123,7 @@ function handleProfileFormSubmit(inputValues) {
       console.log(err);
     })
     .finally(() => {
-      profileEditPopup.renderLoading(false, "Save");
+      profileEditPopup.renderLoading(false, "Loading...");
       console.log("done");
     });
 }
