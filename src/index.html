@@ -2,43 +2,53 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <meta name="author" content="joshua b zimmerman" />
-    <meta name="keywords" content="parks, us" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width,initial-scale=1.0" name="viewport" />
+    <meta content="joshua b zimmerman" name="author" />
+    <meta content="parks, us" name="keywords" />
     <title>Around the U.S.</title>
-    <link rel="icon"
-          href="./images/favicon.ico" />
+    <link href="./images/favicon.ico" rel="icon" />
   </head>
   <!--/page-->
   <body class="page">
     <div class="page__content">
       <header class="header">
         <img
+          alt="around the world U.S."
           class="header__img"
           src="<%=require('./images/icons/logo-AroundTheWorld__White.svg')%>"
-          alt="around the world U.S."
         />
       </header>
       <!--/content-->
       <main class="content">
         <!--/profile_section-->
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/pictures/joinTheEmpire.jpg')%>"
-            alt="avatar"
-            class="profile__img"
-          />
+          <div class="profile__avatar-container">
+            <img
+              alt="avatar"
+              class="profile__img"
+              src="<%=require('./images/pictures/joinTheEmpire.jpg')%>"
+            />
+            <button
+              class="profile__image-button"
+              type="button"
+              id="profile-avatar__image-button"
+            ></button>
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Joshua Zimmerman</h1>
-            <button type="button"
-                    class="profile__edit-button" id=
-                      "profile-edit-button">
-
-            </button>
+            <button
+              class="profile__edit-button"
+              id="profile-edit-button"
+              type="button"
+            ></button>
             <p class="profile__description">Explorer, dad</p>
           </div>
-          <button type="button" class="profile__add-button" id="profile-add-button"></button>
+          <button
+            class="profile__add-button"
+            id="profile-add-button"
+            type="button"
+          ></button>
         </section>
         <!--/elements_section-->
         <section class="elements page__section">
@@ -66,28 +76,37 @@
         <form class="modal__form" id="profile-edit-form" novalidate>
           <input
             class="modal__input"
-            type="text"
-            placeholder="name"
             id="title-input"
-            minlength="2"
             maxlength="40"
+            minlength="2"
+            name="name"
+            placeholder="name"
             required
-            name="title"
+            type="text"
           />
+          <!--name="title" -->
+
           <span class="modal__error" id="title-input-error"></span>
 
           <input
             class="modal__input"
-            type="text"
-            placeholder="description"
             id="profile-input"
-            minlength="2"
             maxlength="200"
+            minlength="2"
+            name="about"
+            placeholder="description"
             required
-            name="description"
+            type="text"
           />
+          <!--name="description" -->
           <span class="modal__error" id="profile-input-error"></span>
-          <button type="submit" class="modal__button modal__button_disabled" disabled>Save</button>
+          <button
+            class="modal__button modal__button_disabled"
+            disabled
+            type="submit"
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>
@@ -104,31 +123,32 @@
         <form class="modal__form" id="element-add-form" novalidate>
           <input
             class="modal__input"
-            type="text"
-            placeholder="title"
             id="element-input"
-            minlength="1"
             maxlength="30"
-            name="title"
+            minlength="1"
+            name="name"
+            placeholder="name"
             required
+            type="text"
           />
           <span class="modal__error" id="element-input-error"></span>
           <input
             class="modal__input"
-            type="url"
-            name="url"
-            placeholder="url"
             id="image-input"
+            name="link"
+            placeholder="link"
             required
+            type="url"
           />
           <span class="modal__error" id="image-input-error"></span>
           <button
-            type="submit"
-            name="create"
-            id="imageSubmitButton"
             class="modal__button modal__button_disabled"
             disabled
-          >create
+            id="imageSubmitButton"
+            name="create"
+            type="submit"
+          >
+            create
           </button>
         </form>
       </div>
@@ -136,14 +156,40 @@
     <!-- preview modal-->
     <div class="modal" id="preview-modal">
       <div class="modal__container-preview">
-        <button
-          class="modal__close"
-          id="element-image-close"
-        ></button>
-        <img
-          class="modal__image-preview"
-          src="#" alt=" " />
+        <button class="modal__close" id="element-image-close"></button>
+        <img alt=" " class="modal__image-preview" src="#" />
         <p class="modal__caption"></p>
+      </div>
+    </div>
+
+    <!--Delete Card Modal-->
+    <div class="modal" id="delete-modal">
+      <div class="modal__delete-container modal__container">
+        <form class="modal__form modal__delete-form">
+          <h2 class="modal__delete-title modal__heading">Are you sure?</h2>
+          <button type="submit" class="modal__button delete-button">Yes</button>
+          <button type="button" class="modal__close"></button>
+        </form>
+      </div>
+    </div>
+
+    <!--Avatar Edit Modal-->
+    <div class="modal" id="avatar-edit-modal">
+      <div class="modal__container">
+        <form class="modal__form" id="avatar-edit-form" novalidate>
+          <h2 class="modal__heading">Change Profile Picture</h2>
+          <input
+            class="modal__input"
+            type="url"
+            name="avatar"
+            id="avatar-edit-url-input"
+            placeholder="Image Link"
+            required
+          />
+          <span class="modal__error" id="avatar-edit-url-input-error"></span>
+          <button type="submit" class="modal__button">Save</button>
+          <button type="button" class="modal__close"></button>
+        </form>
       </div>
     </div>
 
@@ -155,7 +201,7 @@
           id="element-delete-button"
           title="button"
         ></button>
-        <img class="element__img" src="" alt="" />
+        <img alt="" class="element__img" src="" />
         <div class="element__descr">
           <h2 class="element__text" id="element-title"></h2>
           <button class="element__like-button" type="button"></button>
@@ -163,5 +209,5 @@
       </li>
     </template>
     <!--/scripts-->
-      </body>
+  </body>
 </html>

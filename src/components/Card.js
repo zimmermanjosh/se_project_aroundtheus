@@ -1,65 +1,94 @@
-import '/src/constants/variables.js';
-import {elementImageModal} from "../constants/variables";
-export default class Card {
-  constructor({name, url}, templateSelector, handleCardClick) {
+import "/src/constants/constants.js";
 
+export default class Card {
+  constructor(
+    name,
+    link,
+    isLiked,
+    likes,
+    _id,
+    userId,
+    cardSelector,
+    handleCardClick,
+    handleDeleteButton,
+    handleLikeButton
+  ) {
     this._name = name;
-    this._url = url;
-    this._templateSelector = templateSelector;
+    this._link = link;
+    this.isLiked = isLiked;
+    this._likes = likes;
+    this.cardId = _id;
+    this._userId = userId;
+    this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
+    this._handleDeleteButton = handleDeleteButton;
+    this._handleLikeButton = handleLikeButton;
   }
 
   _setEventListeners() {
-    this._cardElement
-      .querySelector('.element__like-button')
-      .addEventListener('click', () => {
-        this._handleLikeButton();
-      });
-    this._cardElement
-      .querySelector('.element__delete-button')
-      .addEventListener('click', () => {
-        this._handleDeleteButton();
-      });
-    this._cardElement
-      .querySelector('.element__img')
-      .addEventListener('click', ()=> {
-        this._handlePreviewDisplay();
-      });
+    this._cardImage.addEventListener("click", () => {
+      this._handleCardClick(this._getData());
+    });
+    this._cardLikeButton.addEventListener("click", () => {
+      this._handleLikeButton(this);
+    });
+    this._cardDeleteButton.addEventListener("click", () => {
+      this._handleDeleteButton(this);
+    });
   }
 
-  _handleLikeButton() {
-    this._cardElement
-      .querySelector('.element__like-button')
-      .classList.toggle('element__like-button_active');
+  _renderLikes() {
+    if (this.isLiked) {
+      this._cardLikeButton.classList.add("element__like-button_active");
+    } else {
+      this._cardLikeButton.classList.remove("element__like-button_active");
+    }
   }
 
-  _handleDeleteButton() {
+  updateLikes(isLiked) {
+    this.isLiked = isLiked;
+    this._renderLikes();
+  }
+
+  handleDeleteCard() {
     this._cardElement.remove();
     this._cardElement = null;
   }
 
-  _handlePreviewDisplay() {
-    this._handleCardClick(this._name, this._url);
+  _getTemplate() {
+    return document
+      .querySelector(this._cardSelector)
+      .content.querySelector(".elements__content")
+      .cloneNode(true);
   }
 
-  _getTemplate() {
-   return document
-     .querySelector(this._templateSelector).content.querySelector(".elements__content").cloneNode(true);
-
+  _getData() {
+    return {
+      name: this._name,
+      link: this._link,
+    };
   }
 
   generateCard() {
     this._cardElement = this._getTemplate();
-    const cardImage = this._cardElement.querySelector(".element__img");
-    const cardTitle = this._cardElement.querySelector(".element__text");
 
-    cardImage.src = this._url;
-    cardImage.alt = this._name;
-    cardTitle.textContent = this._name;
+    this._cardImage = this._cardElement.querySelector(".element__img");
+
+    this._cardLikeButton = this._cardElement.querySelector(
+      ".element__like-button"
+    );
+
+    this._cardDeleteButton = this._cardElement.querySelector(
+      ".element__delete-button"
+    );
+
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
+    this._cardElement.querySelector(".element__text").textContent = this._name;
 
     this._setEventListeners();
+    this._renderLikes();
 
     return this._cardElement;
   }
 }
-
